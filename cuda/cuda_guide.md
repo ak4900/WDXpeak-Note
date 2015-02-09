@@ -70,3 +70,6 @@ The only safe way to synchronize threads in different blocks is to terminate the
 ## 代码相关
 
 + 通过 cudaGetDeviceProperties 函数可以取得许多数据，除了装置支持的 CUDA 版本之外, 还有装置的名称、内存的大小、最大的 thread 数目、执行单元的频率等等
++ 需要包含头文件`<cuda_runtime.h>`
++ 编译直接可以`nvcc xxx.cu`
++ nvcc 是 CUDA 的 compile 工具,它会将 .cu 檔拆解出在 GPU 上执行的部份,及在 host 上执 行的部份,并呼叫适当的程序进行 compile 动作。在 GPU 执行的部份会透过 NVIDIA 提供的 compiler 编译成中介码,而 host 执行的部份则会透过系统上的 C++ compiler 编译(在 Windows 上使用 Visual C++ 而在 Linux 上使用 gcc)
