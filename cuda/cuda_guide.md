@@ -73,3 +73,17 @@ The only safe way to synchronize threads in different blocks is to terminate the
 + 需要包含头文件`<cuda_runtime.h>`
 + 编译直接可以`nvcc xxx.cu`
 + nvcc 是 CUDA 的 compile 工具,它会将 .cu 檔拆解出在 GPU 上执行的部份,及在 host 上执 行的部份,并呼叫适当的程序进行 compile 动作。在 GPU 执行的部份会透过 NVIDIA 提供的 compiler 编译成中介码,而 host 执行的部份则会透过系统上的 C++ compiler 编译(在 Windows 上使用 Visual C++ 而在 Linux 上使用 gcc)
++ cudaMalloc 和 cudaMemcpy 的用法和一般的 malloc 及 memcpy 类似,不过 cudaMemcpy 则多出一个参数,指示复制内存的方向。从主内存复制到显卡内存,所以使用 cudaMemcpyHostToDevice。如果是从显卡内存到主内存,则使用 cudaMemcpyDeviceToHost。
++ 在 CUDA 中，在函数前面加上 `__global__` 表示这个函数是要在显示芯片上执行的。
++ 在显卡上执行的程序有一些限制，例如它不能有返回值
++ 让 CUDA 执行函数的语法
+    + `function<<<# block, # thread, shared memory size>>>(para....)`
++ 在 CUDA 中,一般的数据复制到的显卡内存的部份,称为 global memory。这些内存是没有 cache 的,而且,存取 global memory 所需要的时间(即 latency)是非常长的,通常是数百个 cycles。由于我们的程序只有一 个 thread,所以每次它读取 global memory 的内容,就要等到实际读取到数据、累加到 sum 之后, 才能进行下一步。
++ 由于 global memory 并没有 cache,所以要避开巨大的 latency 的方法,就是要利用大量的 threads。假设现在有大量的 threads 在同时执行,那么当一个 thread 读取内存,开始等待结果的 时候,GPU 就可以立刻切换到下一个 thread,并读取下一个内存位置。因此,理想上当 thread 的 数目够多的时候,就可以完全把 global memory 的巨大 latency 隐藏起来了。
++ 显卡上的内存是 DRAM,因此最有效率的存取方式,是以连续的方式存取。前面的程序,虽然看起 来是连续存取内存位置(每个 thread 对一块连续的数字计算平方和),但是我们要考虑到实际上 thread 的执行方式。前面提过,当一个 thread 在等待内存的数据时,GPU 会切换到下一个 thread。 也就是说,实际上执行的顺序是类似 thread0 -> thread1 -> thread2。因此,在同一个 thread 中连续存取内存,在实际执行时反而不是连续了。要让实际执行结果是连续 的存取,我们应该要让 thread 0 读取第一个数字,thread 1 读取第二个数字...依此类推。
++ 在 CUDA 中,thread 是可以分组的,也就是 block。一个 block 中的 thread,具有一个共享的 shared memory,也可以进行同步工作。不同 block 之间的 thread 则不行。在我们的程序中,其 实不太需要进行 thread 的同步动作,因此我们可以使用多个 block 来进一步增加 thread 的数目
+
+## 经验技巧
+
++ 利用 `threadIdx.x` 来分 thread 执行，考虑好邻接性。
+￼
