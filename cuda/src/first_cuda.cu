@@ -44,20 +44,38 @@ bool InitCUDA(){
 }
 
 __global__ static void sumOfSquares(int *num, int *result, clock_t *time){
+
+    extern __shared__ int shared[];
+
     const int tid = threadIdx.x;
     const int bid = blockIdx.x;
 
-    int sum = 0;
     int i;
+    int offset = 1, mask = 1;
     if (tid == 0)
         time[bid] = clock();
+
+    shared[tid] = 0;
     for (i = bid * THREAD_NUM + tid; i < DATA_SIZE; i += BLOCK_NUM * THREAD_NUM){
-        sum += num[i] * num[i];
+        shared[tid] += num[i] * num[i];
     }
 
-    result[bid * THREAD_NUM + tid] = sum;
-    if (tid == 0)
+    __syncthreads();
+    while(offset < THREAD_NUM){
+        if ((tid & mask) == 0){
+            shared[tid] += shared[tid + offset];
+        }
+        offset += offset;
+        mask = offset + mask;
+        __syncthreads();
+    }
+
+    if (tid == 0){
+        result[bid] = shared[0];
         time[bid + BLOCK_NUM] = clock();
+    }
+
+
 }
 
 int main(){
@@ -79,16 +97,16 @@ int main(){
 
     sumOfSquares<<<BLOCK_NUM, THREAD_NUM, 0>>>(gpudata, result, time);
 
-    int sum[THREAD_NUM * BLOCK_NUM];
+    int sum[BLOCK_NUM];
     clock_t time_used[BLOCK_NUM * 2];
-    cudaMemcpy(&sum, result, sizeof(int) * THREAD_NUM * BLOCK_NUM, cudaMemcpyDeviceToHost);
+    cudaMemcpy(&sum, result, sizeof(int) * BLOCK_NUM, cudaMemcpyDeviceToHost);
     cudaMemcpy(&time_used, time, sizeof(clock_t) * BLOCK_NUM * 2, cudaMemcpyDeviceToHost);
     cudaFree(gpudata);
     cudaFree(result);
     cudaFree(time);
 
     int final_sum = 0;
-    for(int i = 0; i < THREAD_NUM * BLOCK_NUM; i++){
+    for(int i = 0; i < BLOCK_NUM; i++){
         final_sum += sum[i];
     }
 
@@ -105,8 +123,8 @@ int main(){
     printf("sum: %d time: %d\n", final_sum, max_end - min_start);
 
     final_sum = 0;
-    for(int i = 0; i < DATA_SIZE; i++){
-        final_sum += data[i] * data[i];
+    for(int i = 0; i < BLOCK_NUM; i++){
+        final_sum += sum[i];
     }
     printf("sum (CPU): %d\n", final_sum);
 
