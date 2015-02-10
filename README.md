@@ -9,14 +9,25 @@ Evernote is a great tool to collect and connect to the word. But not a good tool
 
 Here is how I arrange my personal notebook
 
-+ *image*     : contains all the images used in the markdown
 + **computer**  : basic & important knowledge about computer science
 + **algorithm** : Prepare for interview
-+ openmp    : Techniques for parallel computation
-+ english   : notes for learning English
++ **tool**   : programming tools for effeciency
++ facial expression research : research notes for 2015 spring
++ cuda       : cuda programming note
++ openmp     : Techniques for parallel computation
++ english    : notes for learning English
 + foundation of computer architecture : CMU 18640 course notes
-+ python    : Need re-document
-+ html5     : Need re-document
-+ java      : Need re-document
-+ objc      : Need re-document
-+ py-opencv : Use opencv with python
++ fastcode   : CMU 18645 course notes
++ game       : game related notes
++ design     : programming language as well as product related topics
++ management : manage project and code
++ mobile     : mobile development notes
++ cpp        : several notes from coding c plus plus
++ python     : Need re-document
++ html5      : Need re-document
++ java       : Need re-document
++ objc       : Need re-document
++ py-opencv  : Use opencv with python
++ loading    : some notes that do not have a specific category
++ collection : Some old .page documents for computer science
++ *image*    : contains all the images used in the markdown
