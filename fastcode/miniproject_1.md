@@ -21,10 +21,10 @@ make cppunit 的时候会出问题，在./configure 那句里加上LDFLAGS="-ldl
 ## 运行 matrix mul
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/cppunit/lib
-    ./matrix_mul -i ../matrix_mul_02.dat 
+    ./matrix_mul -i ../matrix_mul_02.dat
 
-## 提交 
-    
+## 提交
+
     git commit -a -m “description"
     git push origin master
 
@@ -51,7 +51,7 @@ make cppunit 的时候会出问题，在./configure 那句里加上LDFLAGS="-ldl
 cache_alignment 64 -> 16 block
 
 ## 运行 kmeans
-    
+
     ./omp_main -i ../data/kmeans01.dat -n 3 -o -a
 
 ### cmu 服务器上运行
@@ -92,4 +92,3 @@ cache_alignment 64 -> 16 block
 + `**local_newClusterSize` 本地的新聚类中每一类的数量 `[nthreads][numClusters]`
 + `***local_newClusters` 本地的新聚类中各个坐标 `[nthreads][numClusters][numCoords]`
 + if(!is_perform_atomic) 里都是初始化，没有数据操作，主要在 do while 里完成
-
