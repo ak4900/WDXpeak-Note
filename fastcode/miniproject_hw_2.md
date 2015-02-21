@@ -16,6 +16,27 @@ Run CUDA Visual Profiler
 
 Optimize matrix_mul.cu & cuda_kmeans.cu
 
+## Project 2 grade guideline
+
+### Matrix Multiplication
+
+1. Should success all test cases (7 cases)
+2. Should achieving at least 150 Gflops for 1024 case on GTX670 (GHC28)
+3. Please add new test case 1024 at the end of matrix_mul_02.dat (your will have 7 cases: 5, 8, 10, 32, 33, 1000, 1024 in different lines)
+
+### K-means clustering
+
+1. Should success all test cases.
+2. Sum of all test cases should be achieving at least 1.5X speed up compared to initial cuda code on GTX670 (GHC28)
+
+We’ll announce initial processing time shortly.
+
+We’ll use GHC28 for grading.
+
+Please do not use this machine at least between PDT 00:00am 3:00am and 12:00p.m. (noon) – 3:00 p.m.
+
+We plan to update the motion chart as many as we can (at least once).
+
 ## Matmul
 
 现在的代码只实现了2次幂矩阵大小的乘积，我们要做的是
@@ -94,3 +115,39 @@ There will be at most one thread running on a CUDA core, right? -> Yes, at most 
 > Q3. For a streaming multiprocessor, can it have more than one block running on it?
 
 For a streaming multiprocessor, can it have more than one block running on it? -> Multiple thread blocks can be assigned to a streaming multiprocessor. Streaming multiprocessor runs a thread block at a time and switching to other thread blocks (context switching)
+
+> Nvidia Visual Profiler solution (Confirmed)
+
+    Step0: ssh -X
+    Step1: cp /usr/local/cuda-6.5/libnvvp/nvvp.ini ~/
+    Step2: Add following line in ~/nvvp.ini
+        -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false
+    Step3: Launch visual profiler using following command
+    nvvp --launcher.ini ~/nvvp.ini
+
+I've tested this method, and It works well.
+
+Workaround:  Running visual profiler on your local machine while collecting performance statistic from the remote server (GHC)
+
+    Step 1. Running visual profiler on your local machine (I believe that you can install cuda-toolkit without CUDA-capable GPU)
+    Step 2. Create session.
+    ------ In "Create New Session Window" ------
+    Step 3. Select "Manage" in beside connection slot. (It will open "New Remote Connection" window)
+    ----- In "New Remote Connection Window" ----
+    Step 3a. Add Host name: ghc##.ghc.andrew.cmu.edu
+    Step 3b. Add User name: <YourAndrewID> and click finish.
+    ---------------------------------------------------------------
+
+    Step 4a. Setting Executable properties.
+    ------ In "Create New Session Window" ------
+    Toolkit:  
+    Click "Connect" (right bottom) and connect to remote GHC server
+    Click "Detect" or browser to /usr/local/cuda-6.5/bin
+    Click "Finish"
+    Executable:
+    Click "Browse" and find your executable (i.e. .../kmeans/cuda_main)
+    Working directory:
+    Click "Browse" and set your working directory  (i.e. .../kmenas)
+    Arguments:
+    Set required arguments
+    -----------------------------------------------------------
