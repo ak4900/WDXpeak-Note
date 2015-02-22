@@ -15,21 +15,21 @@
 + What levels of concurrency can be exposed in the kmeans algorithm?
 + What levels of parallelism are available to be exploited?
 + What mapping between concurrency and parallelism can be explored?
-+ How is this relavent to writing fast code?
++ How is this relevant to writing fast code?
 
 ## Module 2.1
 
 + What are the exploitable levels of parallelism in a multicore processor?
 + What is SPMD? And how to use OpenMP to do SPMD?
 + What is the difference between critical and atomic?
-+ How to reduce synchronizatio ncost and avoid false sharing?
-+ What are the scheduling, reduction, data sharing, and synchronizatio noptions for OpenMP?
++ How to reduce synchronization cost and avoid false sharing?
++ What are the scheduling, reduction, data sharing, and synchronization options for OpenMP?
 + How is this relevant to writing fast code?
 
 ## Module 2.2
 
 + Why naive matrix-multiply does not achieve peak performance on the CPU?
-+ What are the different data layourts for matrices?
++ What are the different data layouts for matrices?
 + What is cache blocking? Why do we need it?
 + Is blocking sufficient? What more can we do?
 + What can be learned from this for other computation?
@@ -54,4 +54,14 @@
 + How do threads communicate with each other?
 + What is the caveat in synchronizing threads in a thread block?
 
+## Module 3.2
 
++ What are the three ways to improve execution throughput?
++ When to use SOA vs AOS?
++ What is memory coalescing? When to use it? Why is it important?
++ What is shared memory? How to use it?
++ What is memory bank conflict? How to work around it?
++ What is branch divergence?
++ How to optimize for instruction mix?
++ What is occupancy? How to model/measure it?
++ How to use the code profiler with CUDA?
