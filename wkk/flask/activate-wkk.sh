@@ -1,0 +1,1 @@
+. ~/.virtualenvs/wkk/bin/activate
