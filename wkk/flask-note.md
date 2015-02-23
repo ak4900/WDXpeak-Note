@@ -96,3 +96,36 @@ Flask 会在 templates 文件夹里寻找模板。
     {% endif %}
 
 使用继承，模板会非常有用
+
+## 模板
+
+Jinja2 默认配置
+
++ 所有扩展名为 .html .htm .xml .xhtml 的模板会开启自动转义
++ 模板可以利用 {% autoescape %} 标签选择自动转义的开关
++ 全局变量
+    * config
+    * request
+    * session
+    * g
+    * url_for()
+    * get_flashed_messages()
++ 标准过滤器
+    * tojson()
+
+注册过滤器
+
+    @app.template_filter('reverse')
+    def reverse_filter(s):
+        return s[::-1]
+    或
+    def reverse_filter(s):
+        return s[::-1]
+    app.jinja_env.filters['reverse'] = reverse_filter
+    这样使用
+    {% for x in mylist | reverse %}
+    {% endfor %} 
+
+## 测试 Flask 应用
+
+Python 自带有 unittest 包
