@@ -371,4 +371,163 @@ find 和 index 的差别在于没有找到字符串处理不同
 + 读写文件，r'filepath'可以用原始字符串而不用转义符号
 + 当前工作目录，如果没有指定的话，就是这个文件的所在位置
 + 检查文件和文件夹
-    * 
+    * os.getcwd() 当前工作目录
+    * os.listdir(p) 返回列表，包含 p 中所有文件和文件夹
+    * os.chdir(p) 设置当前目录
+    * os.path.isfile(p)
+    * os.path.isdir(p)
+    * os.stat(fname) 文件信息
+
+读取文本文件
+
+    逐行读取文本文件
+    def print_file(fname):
+        f = open(fname, 'r')
+        for line in f:
+            print (line, end = '')
+        f.close()
+
+    整个读取文本文件
+    def print_file(fname):
+        f = open(fname, 'r')
+        print(f.read())
+        f.close()
+    或者可以写成一行
+    print(open(fname, 'r').read())
+
+文件打开模式
+
++ r 读取
++ w 写入
++ a 文件末尾增加
++ b 二进制
++ t 文本模式
++ + 读写
+
+写入文本文件
+
+    def write_file():
+        f = open('file.txt', 'w')
+        f.write('Long long time ago.')
+
+这里用 `w` 若已存在对应文件，则会删除源文件并新建，所以如果不想覆盖，先检查是否存在
+
+将字符串插入到文件开头
+
+    def insert_title(title, fname = 'file.txt'):
+        f = open(fname, 'r+')
+        temp = f.read()
+        temp = title + '\n\n' + temp
+        f.seek(0)
+        f.write(temp)
+
+处理二进制文件
+
+    def is_gif(fname):
+        f = open(fname, 'br')
+        first4 = tuple(f.read(4))
+        return first4 == (0x47, 0x49, 0x46, 0x38)
+    gif 图像都以这四个字节开头
+
+处理二进制文件方面，pickle 通常是一种方便得多的方式，可以让你轻松读写几乎任何数据结构
+
+    def make_pickled_file():
+        grades = {'alan' : [4, 8, 10, 10],
+                  'tom'  : [7, 7, 7, 8]}
+        outfile = open('grades.dat', 'wb')
+        pickle.dump(grades, outfile)
+
+    def get_pickled_data():
+        infile = open('grades.dat','rb')
+        grades = pickle.load(infile)
+        return trades
+
+## 异常处理
+
+捕获异常，try 语句
+
+    def get_age():
+        while True:
+            try:
+                n = int(input('How old are you?'))
+                return n
+            except ValueError:
+                print('Please enter an integer')
+            except (TypeError, IOError):
+                print('whatever i dont care)
+            except:
+                return 'error'
+            finally:
+                print('doing dirty work)
+
+finally 代码块是肯定会执行的，所以通常用来善后。
+
+with 语句会尽快完成工作，例如
+
+    num = 1
+    with open(fname, 'r') as f:
+        for line in f:
+            print (line)
+            num = num + 1
+    在 for 结束后会立即关闭文件
+
+## 面向对象编程
+
+### 类
+
+    class Person:
+        def __init__(self, name = '', age = 0):
+            self._name = ''
+            self._age = 0
+        def __str__(self):
+            print("Person('%s',%s)" % (self._name, self._age))
+
++ `__init__` 是初始化方法，创建对象时会自动调用，方法的第一个参数必须是 self，是一个指向自己本身的变量
++ `__str__` 用于生成对象的字符串表示
++ 在大多数类中，`__repr__` 与 `__str__` 相同
+
+### Setter / Getter
+
+    def set_age(self, age):
+        if 0 < age <= 150:
+            self._age = age
+
+但这种方式明显比较麻烦，可以使用 `property decorator` 来解决这个问题
+
+    @property
+    def age(self):
+        return self._age
+
+    @age.setter
+    def age(self, age):
+        if 0 < age <= 150:
+            self._age = age
+
+### 私有变量
+
+虽然没有绝对意义上的私有变量，但是可以通过一些约定来尽可能避免，两个下划线
+
+    self.__age
+    若要直接访问
+    p._Person__age
+
+### 继承
+
+    class Player(Person):
+        pass
+
+可以重写方法
+
+### 多态
+
+相同函数可以有不同的行为，与 c++ 的思想类似，不赘述
+
+## Popular Package
+
++ PIL 图像处理
++ Django 类似 Ruby on Rails
++ Bottle 小型交互式网站框架
++ Pygame 2D 游戏
++ SciPy 科学计算
++ Twisted 网络编程库
++ PyPI 包索引
