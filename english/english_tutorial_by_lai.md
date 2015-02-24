@@ -1,115 +1,190 @@
 # 赖世雄美语
+<!-- MarkdownTOC -->
 
-<!-- TOC depth:6 withLinks:1 updateOnSave:1 -->
-- [赖世雄美语](#)
-- [入门](#)
-	- [L01 Greetings](#l01-greetings)
-	- [L02 Courtesy](#l02-courtesy)
-	- [L03 Name, Age and Nationality](#l03-name-age-and-nationality)
-	- [L04 Introductions](#l04-introductions)
-	- [L05 Occupations](#l05-occupations)
-	- [L06 Time](#l06-time)
-	- [L07 Day and Date](#l07-day-and-date)
-	- [L08 The Weather](#l08-the-weather)
-	- [L09 Telephone Conversation I](#l09-telephone-conversation-i)
-	- [L10 Telephone Conversation II](#l10-telephone-conversation-ii)
-	- [L11 Telephone Conversation III](#l11-telephone-conversation-iii)
-	- [L12 Buying Things](#l12-buying-things)
-	- [L13 At the Restaurant](#l13-at-the-restaurant)
-	- [L14 At the Clothing Store](#l14-at-the-clothing-store)
-	- [L15 At the Department Store](#l15-at-the-department-store)
-	- [L16 At the Shoe Store](#l16-at-the-shoe-store)
-	- [L17 At the Bookstore](#l17-at-the-bookstore)
-	- [L18 Taking a Taxi](#l18-taking-a-taxi)
-	- [L19 Booking a Room](#l19-booking-a-room)
-	- [L20 Checking into a Hotel](#l20-checking-into-a-hotel)
-	- [L21 Changing Money](#l21-changing-money)
-	- [L22 Booking an Airline Ticket](#l22-booking-an-airline-ticket)
-	- [L23 At the Airport I](#l23-at-the-airport-i)
-	- [L24 At the Airport II](#l24-at-the-airport-ii)
-	- [L25 At the Post Office](#l25-at-the-post-office)
-	- [L26 At the Doctor's](#l26-at-the-doctors)
-	- [L27 At the Zoo](#l27-at-the-zoo)
-	- [L28 Going to the Movies](#l28-going-to-the-movies)
-	- [L29 Job Interviews](#l29-job-interviews)
-	- [L30 Emergency Calls](#l30-emergency-calls)
-- [中级](#)
-	- [L1 Rome Wasn't Built in a Day](#l1-rome-wasnt-built-in-a-day)
-	- [L2 How to Improve Your English](#l2-how-to-improve-your-english)
-	- [L3 The City of Song](#l3-the-city-of-song)
-	- [L4 He Who Hesitates Is Lost](#l4-he-who-hesitates-is-lost)
-	- [L5 Bungee Jumping](#l5-bungee-jumping)
-	- [L6 Nothing Ventured, Nothing Gained](#l6-nothing-ventured-nothing-gained)
-	- [L7 Doctor Death](#l7-doctor-death)
-	- [L8 No hearts or No Brains?](#l8-no-hearts-or-no-brains)
-	- [L9 Be Thoughtful](#l9-be-thoughtful)
-	- [L10 What Are Friends For?](#l10-what-are-friends-for)
-	- [L11 Power without Pollution](#l11-power-without-pollution)
-	- [L12 Stop the Noise](#l12-stop-the-noise)
-	- [L13 Health Comes First](#l13-health-comes-first)
-	- [L14 Quit Cold Turkey](#l14-quit-cold-turkey)
-	- [L15 Don't Rely on Luck！](#l15-dont-rely-on-luck)
-	- [L16 Study or Flunk](#l16-study-or-flunk)
-	- [L17 A computer Car](#l17-a-computer-car)
-	- [L18 Nothing Is Perfect](#l18-nothing-is-perfect)
-	- [L19 Blame It on Men](#l19-blame-it-on-men)
-	- [L20 A Weighty Problem](#l20-a-weighty-problem)
-	- [L21 Coffee Bathing](#l21-coffee-bathing)
-	- [L22 Whiskey or Coffee](#l22-whiskey-or-coffee)
-	- [L23 Earthquake Survival Tips](#l23-earthquake-survival-tips)
-	- [L24 Just Like a Woman](#l24-just-like-a-woman)
-	- [L25 Restaurant Dos and Don'ts](#l25-restaurant-dos-and-donts)
-	- [L26 The Missing Tip](#l26-the-missing-tip)
-	- [L27 Thank Your Lucky Stars](#l27-thank-your-lucky-stars)
-	- [L28 Going on a Diet](#l28-going-on-a-diet)
-	- [L29 Just a Dream](#l29-just-a-dream)
-	- [L30 Yes, Sir](#l30-yes-sir)
-	- [L31 Good FengShui in New York](#l31-good-fengshui-in-new-york)
-	- [L32 Goldfish, Souls and Coffee Tables](#l32-goldfish-souls-and-coffee-tables)
-	- [L33 A Deadly Current](#l33-a-deadly-current)
-	- [L34 A Lifesaving Kiss](#l34-a-lifesaving-kiss)
-	- [L35 A Sense of Security](#l35-a-sense-of-security)
-	- [L36 The Sex Maniac](#l36-the-sex-maniac)
-	- [L37 Garbage Could Mean Money](#l37-garbage-could-mean-money)
-	- [L38 That's Fashion](#l38-thats-fashion)
-	- [L39 At the Foreign Exchange](#l39-at-the-foreign-exchange)
-	- [L40 Changing Money](#l40-changing-money)
-	- [L41 Getting a Tan](#l41-getting-a-tan)
-	- [L42 Roast Beef](#l42-roast-beef)
-	- [L43 Hi-tech Romance](#l43-hi-tech-romance)
-	- [L44 Better Off with E-mail?](#l44-better-off-with-e-mail)
-	- [L45 Tough Guys Do Dance](#l45-tough-guys-do-dance)
-	- [L46 Anything for a Kiss](#l46-anything-for-a-kiss)
-	- [L47 Fast-food Talk](#l47-fast-food-talk)
-	- [L48 Fast Food, Slow Service](#l48-fast-food-slow-service)
-	- [L49 Stop Snoring!](#l49-stop-snoring)
-	- [L50 Laser Cures Snoring](#l50-laser-cures-snoring)
-	- [L51 Thanksgiving](#l51-thanksgiving)
-	- [L52 A Thanksgiving Get-together](#l52-a-thanksgiving-get-together)
-	- [L53 Monkeying Around](#l53-monkeying-around)
-	- [L54 Variety Is the Spice of Life](#l54-variety-is-the-spice-of-life)
-	- [L55 Life after Death](#l55-life-after-death)
-	- [L56 Baby Trouble](#l56-baby-trouble)
-	- [L57 New Asian Generation](#l57-new-asian-generation)
-	- [L58 Like Father, Like Son](#l58-like-father-like-son)
-	- [L59 About Moral Values](#l59-about-moral-values)
-	- [L60 How to Attract Boys](#l60-how-to-attract-boys)
-	- [L61 Touring by Taxi](#l61-touring-by-taxi)
-	- [L62 Keep the Change](#l62-keep-the-change)
-	- [L63 The Dying Languages](#l63-the-dying-languages)
-	- [L64 Speaking the Same Language](#l64-speaking-the-same-language)
-	- [L65 Italian Culture](#l65-italian-culture)
-	- [L66 It's Nap Time](#l66-its-nap-time)
-	- [L67 All That Glitters Is Not Gold](#l67-all-that-glitters-is-not-gold)
-	- [L68 Don't Judge a Book by Its Cover](#l68-dont-judge-a-book-by-its-cover)
-	- [L69 Mean What You Say](#l69-mean-what-you-say)
-	- [L70 A Promise Is a Promise](#l70-a-promise-is-a-promise)
-	- [L71 Earth in Danger](#l71-earth-in-danger)
-	- [L72 Saving the World](#l72-saving-the-world)
-	- [L73 Don't Be a Fish out of Water](#l73-dont-be-a-fish-out-of-water)
-	- [L74 Get with It, Bob](#l74-get-with-it-bob)
-	- [L75 The Amish](#l75-the-amish)
-<!-- /TOC -->
+- 入门
+	- L01 Greetings
+	- L02 Courtesy
+	- L03 Name, Age and Nationality
+	- L04 Introductions
+	- L05 Occupations
+	- L06 Time
+	- L07 Day and Date
+	- L08 The Weather
+	- L09 Telephone Conversation I
+	- L10 Telephone Conversation II
+	- L11 Telephone Conversation III
+	- L12 Buying Things
+	- L13 At the Restaurant
+	- L14 At the Clothing Store
+	- L15 At the Department Store
+	- L16 At the Shoe Store
+	- L17 At the Bookstore
+	- L18 Taking a Taxi
+	- L19 Booking a Room
+	- L20 Checking into a Hotel
+	- L21 Changing Money
+	- L22 Booking an Airline Ticket
+	- L23 At the Airport I
+	- L24 At the Airport II
+	- L25 At the Post Office
+	- L26 At the Doctor's
+	- L27 At the Zoo
+	- L28 Going to the Movies
+	- L29 Job Interviews
+	- L30 Emergency Calls
+- 中级
+	- L1 Rome Wasn't Built in a Day
+	- L2 How to Improve Your English
+	- L3 The City of Song
+	- L4 He Who Hesitates Is Lost
+	- L5 Bungee Jumping
+	- L6 Nothing Ventured, Nothing Gained
+	- L7 Doctor Death
+	- L8 No hearts or No Brains?
+	- L9 Be Thoughtful
+	- L10 What Are Friends For?
+	- L11 Power without Pollution
+	- L12 Stop the Noise
+	- L13 Health Comes First
+	- L14 Quit Cold Turkey
+	- L15 Don't Rely on Luck！
+	- L16 Study or Flunk
+	- L17 A computer Car
+	- L18 Nothing Is Perfect
+	- L19 Blame It on Men
+	- L20 A Weighty Problem
+	- L21 Coffee Bathing
+	- L22 Whiskey or Coffee
+	- L23 Earthquake Survival Tips
+	- L24 Just Like a Woman
+	- L25 Restaurant Dos and Don'ts
+	- L26 The Missing Tip
+	- L27 Thank Your Lucky Stars
+	- L28 Going on a Diet
+	- L29 Just a Dream
+	- L30 Yes, Sir
+	- L31 Good FengShui in New York
+	- L32 Goldfish, Souls and Coffee Tables
+	- L33 A Deadly Current
+	- L34 A Lifesaving Kiss
+	- L35 A Sense of Security
+	- L36 The Sex Maniac
+	- L37 Garbage Could Mean Money
+	- L38 That's Fashion
+	- L39 At the Foreign Exchange
+	- L40 Changing Money
+	- L41 Getting a Tan
+	- L42 Roast Beef
+	- L43 Hi-tech Romance
+	- L44 Better Off with E-mail?
+	- L45 Tough Guys Do Dance
+	- L46 Anything for a Kiss
+	- L47 Fast-food Talk
+	- L48 Fast Food, Slow Service
+	- L49 Stop Snoring!
+	- L50 Laser Cures Snoring
+	- L51 Thanksgiving
+	- L52 A Thanksgiving Get-together
+	- L53 Monkeying Around
+	- L54 Variety Is the Spice of Life
+	- L55 Life after Death
+	- L56 Baby Trouble
+	- L57 New Asian Generation
+	- L58 Like Father, Like Son
+	- L59 About Moral Values
+	- L60 How to Attract Boys
+	- L61 Touring by Taxi
+	- L62 Keep the Change
+	- L63 The Dying Languages
+	- L64 Speaking the Same Language
+	- L65 Italian Culture
+	- L66 It's Nap Time
+	- L67 All That Glitters Is Not Gold
+	- L68 Don't Judge a Book by Its Cover
+	- L69 Mean What You Say
+	- L70 A Promise Is a Promise
+	- L71 Earth in Danger
+	- L72 Saving the World
+	- L73 Don't Be a Fish out of Water
+	- L74 Get with It, Bob
+	- L75 The Amish
+	- L76 Live and Let Live
+	- L77 Think Before You Speak
+	- L78 Believe It or Not
+	- L79 The Weaker Sex
+	- L80 Girls versus Boys
+	- L81 Stop to Smell the Flowers
+	- L82 Being around Nature
+	- L83 Man's Best Friend
+	- L84 Oh My God!
+	- L85 Beauty Is Only Skin-deep
+	- L86 Me and My Big Mouth
+	- L87 Traveling by Plane
+	- L88 Bon Voyage!
+	- L89 AIDS
+	- L90 What an Idiot
+	- L91 Kayaking
+	- L92 Only the Good Die Young
+	- L93 One Good Turn Deserves Another
+	- L94 As Poor As a Church Mouse
+	- L95 The Poor Man's Cure-all
+	- L96 What's the Point of Chewing Gum?
+	- L97 The Bronze Age
+	- L98 Speaking from the Grave
+	- L99 Stop Swearing
+	- L100 Stop Bullshitting!
+	- L101 A Red-hot Cure
+	- L102 Old Wives' Tales 无稽之谈
+	- L103 The Tallest Building in the World
+	- L104 Who Cares Anyway?
+	- L105 Catch-22 进退维谷
+	- L106 What a Dilemma!
+	- L107 Seeing Is Believing
+	- L108 No Free Lunch
+	- L109 Adorable Koalas in Danger
+	- L110 Killing Is No Solution
+	- L111 I want to Marry Your Wife
+	- L112 You've Got to Be Kidding!
+	- L113 Heavy and Chubby
+	- L114 Muscular My Foot!
+	- L115 A Very Special Juice
+	- L116 I Prefer My Own Brand
+	- L117 Cheer Up!
+	- L118 What a Grouch
+	- L119 Where's the Toilet
+	- L120 It's Too Late
+	- L121 Kick the Habit
+	- L122 Candy Helps?
+	- L123 Early to Bed, Early to Rise
+	- L124 Don't Be a Lazybones
+	- L125 Partying with Foreigners
+	- L126 Wanna Dance?
+	- L127 A Shocking Experience
+	- L128 A Long Ride
+	- L129 Dog Days Off
+	- L130 An Inch Given, a Mile Taken
+	- L131 Lost and Found
+	- L132 What's in the Bag
+	- L133 Smile, Everybody!
+	- L134 Konbanwa, Everybody!
+	- L135 The Roaring Englishman
+	- L136 Letting off Steam
+	- L137 Going to the Barber's
+	- L138 Don't Catch a Cold
+	- L139 The Dancing Cop
+	- L140 Going Bananas in Bangkok
+	- L141 Men or Monkeys
+	- L142 Say Cheese
+	- L143 How to Improve Your Writing Skills
+	- L144 Go for It
+	- L145 Breakfast Improves Mental Sharpness
+	- L146 Doing It in the Pants
+	- L147 Let Experience Be the Teacher
+	- L148 What a Terrible Experience
+- 高级
+
+<!-- /MarkdownTOC -->
+
 
 # 入门
 
@@ -734,4 +809,429 @@
 
 ## L75 The Amish
 
-+
++ Pennsylvania 宾夕法尼亚
++ horse-drawn 马拉的
++ buggles 四轮马车(复数)
++ buggy 四轮马车(单数)
++ not to mention 更别说是
+
+## L76 Live and Let Live
+
++ What on earth for? 究竟是为了什么
++ weird 怪异的
++ To each one's own. 人各有所好
+
+## L77 Think Before You Speak
+
++ embarrassment 困窘
++ let the cat out of the bag 无意中泄露了秘密
++ so to speak 可以这样说
++ learn one's lesson 学了一课，学得教训
+
+## L78 Believe It or Not
+
++ go to the movies 去看电影
++ get sb. to do 使某人去做
+
+## L79 The Weaker Sex
+
++ wrestler 摔跤手
++ impure 猥亵的，污秽的
+
+## L80 Girls versus Boys
+
++ lie on top of 把...压在下面
++ nun 尼姑，修女
++ sex maniac 色情狂
+
+## L81 Stop to Smell the Flowers
+
++ the hustle and bustle 繁忙扰攘
++ It's stressful living in the hustle and bustle of city life.
++ make a living 谋生
+
+## L82 Being around Nature
+
++ birdbrained 笨的
+
+## L83 Man's Best Friend
+
++ the animals of the Chinese horoscope 中国的十二生肖
++ horoscope 天宫图，占星术
++ stand out 突出
++ horse around 闲混，鬼混
++ It's raining cats and dogs.
+
+## L84 Oh My God!
+
++ furry 毛茸茸的
+
+## L85 Beauty Is Only Skin-deep
+
++ skin-deep 肤浅的
++ It follows + that从句 ...是有道理的
++ cosmetics 化妆品
+
+## L86 Me and My Big Mouth
+
++ put it that way 那样叙述
+
+## L87 Traveling by Plane
+
++ attendant 服务员
++ boarding pass 登机证
++ pass up the chance to 错过机会
+
+## L88 Bon Voyage!
+
++ stand in line 排队
++ aisle seat 靠走道的座位
++ aisle 通道
++ take advantage of 利用
+
+## L89 AIDS
+
++ condom 保险套
+
+## L90 What an Idiot
+
++ call girl 应召女郎
+
+## L91 Kayaking
+
++ kayak 划独木舟 独木舟(一人)
++ canoe 乘独木舟 独木舟(多人)
++ life jacket 救生衣
+
+## L92 Only the Good Die Young
+
++ bump into 偶然遇到
++ helmet 头盔 安全帽
++ capsize 颠覆 翻覆
++ Eskimo 爱斯基摩人
++ overturn 翻覆
+
+## L93 One Good Turn Deserves Another
+
++ store clerk 店员
++ grumble 发牢骚 抱怨
++ befriend 待之如友
++ fall ill with 患某疾病
++ pauper 贫民 穷人
+
+## L94 As Poor As a Church Mouse
+
++ draw up 草拟 写
++ come across 偶然遇到
+
+## L95 The Poor Man's Cure-all
+
++ cure-all 万灵丹
++ garlic 大蒜
++ pungent 味道强烈的 刺鼻的
++ odor 气味
++ antiseptic 消毒剂
++ penicillin 青霉素
++ bacteria 细菌
+
+## L96 What's the Point of Chewing Gum?
+
++ stinky 恶臭的
++ germ 细菌
+
+## L97 The Bronze Age
+
++ expedition 远征，探险
++ corpse 尸体
+
+## L98 Speaking from the Grave
+
++ creep 爬行
+
+## L99 Stop Swearing
+
++ swear 咒骂 发誓
++ harsh 严厉的
++ infringe 侵犯
++ infringe on
+
+## L100 Stop Bullshitting!
+
++ manure 肥料
++ Tell you what. 我跟你说吧
++ That's a deal. 一言为定
+
+## L101 A Red-hot Cure
+
++ surgical 外科的
++ painkiller 止痛药
++ chili pepper 红辣椒
++ ointment 药膏
++ ingrredient 成分
+
+## L102 Old Wives' Tales 无稽之谈
+
++ irritate 刺激 使疼痛
+
+## L103 The Tallest Building in the World
+
++ Kuala Lumper 吉隆坡
++ skyscraper 摩天大楼
++ ego 自我 自负
++ have the honor of 有...的荣耀
+
+## L104 Who Cares Anyway?
+
++ the Nile 尼罗河
++ the Amazon 亚马逊河
+
+## L105 Catch-22 进退维谷
+
++ do military service 服兵役
++ a no-win situation 进退维谷的情况
+
+## L106 What a Dilemma!
+
++ make sb. an offer 向某人提出一项建议
++ incentive 诱因 动机
++ You can't eat your cake and have it, too.
+
+## L107 Seeing Is Believing
+
++ hassle 伤脑筋的事
++ contact lenses 隐形眼镜
++ rinse 清洗 冲洗
++ disinfect 消毒 净化
++ every so often 常常 经常
++ disposable 可丢弃的，用后即丢的
++ optician 眼镜商
+
+## L108 No Free Lunch
+
++ be as clear as daylight 非常清楚
+
+## L109 Adorable Koalas in Danger
+
++ koala 考拉
++ eucalyptus 油加利树
++ activist 积极参与份子
++ do all one can to 尽全力
++ disgrace 耻辱 不名誉
+
+## L110 Killing Is No Solution
+
++ campaign 活动
++ You can say that again. 你说得对极了
+
+## L111 I want to Marry Your Wife
+
++ fit the bill 完全符合情形目的或要求
++ look after 照顾
++ take after 长得像
++ pour in 蜂拥而至
+
+## L112 You've Got to Be Kidding!
+
++ be bound to 必定会
++ kick the bucket 一命呜呼
+
+## L113 Heavy and Chubby
+
++ chubby 圆胖的
++ lest 以免
+
+## L114 Muscular My Foot!
+
++ 名词/形容词 + my foot! ...才怪
++ flabby 肌肉松软的
++ couch potato 电视迷
++ make it to someplace 到达某地
+
+## L115 A Very Special Juice
+
++ fountain 泉 喷泉
++ urine 小便 尿
++ therapy 治疗 物理疗法
++ aftershave 刮胡水
++ restroom 公厕
+
+## L116 I Prefer My Own Brand
+
++ Mind you... 告诉你(用作吸引对方注意的开头语)
+
+## L117 Cheer Up!
+
++ better half 另一半 配偶
+
+## L118 What a Grouch
+
++ Hold it a minute. 等一下 慢着
+
+## L119 Where's the Toilet
+
++ to no end 无止境地
+
+## L120 It's Too Late
+
++ highway robbery 拦路打劫
+
+## L121 Kick the Habit
+
++ in vain 徒劳无功
++ Make no mistake. 不要搞错了
+
+## L122 Candy Helps?
+
++ ashtray 烟灰缸
++ cut it out 停止 住嘴
++ You've got a deal. 一言为定
+
+## L123 Early to Bed, Early to Rise
+
++ be in the habit of 有...的习惯
++ be just the thing for 正是某人所需的东西
+
+## L124 Don't Be a Lazybones
+
++ have a hard time doing 从事...很难
+
+## L125 Partying with Foreigners
+
++ refreshment 点心(不可数)
++ overstay one's welcome 逗留过久而惹人生厌
+
+## L126 Wanna Dance?
+
++ not...for the world 绝不可能...
++ compliment 恭维 称赞
++ Sure thing. 当然可以
+
+## L127 A Shocking Experience
+
++ fare (交通)费用
++ be in for sth. 必定会遭遇到...
++ verbally 口头上地
+
+## L128 A Long Ride
+
++ be out of order 故障 坏了
++ Same here.
+
+## L129 Dog Days Off
+
++ call in for... 为...而打电话来
++ guts 胆子 勇气
++ be counted as 被算为是
++ sick leave 病假
++ make sense 有道理
+
+## L130 An Inch Given, a Mile Taken
+
++ This is he/she. (接电话)我就是
++ vet 兽医
+
+## L131 Lost and Found
+
++ pastime 消遣 娱乐
++ stub 存根 票根
+
+## L132 What's in the Bag
+
++ carousel 旋转式行李传送带
++ smart aleck 自作聪明者
+
+## L133 Smile, Everybody!
+
++ all walks of life 各行各业
+
+## L134 Konbanwa, Everybody!
+
++ What on earth is that?
++ What the hell is that?
+
+## L135 The Roaring Englishman
+
++ go bananas 发疯 发狂
++ go nuts = go crazy
++ uptight 紧张的 焦虑的
++ hoaxer 恶作剧的人 哄骗者
+
+## L136 Letting off Steam
+
++ roar one's head off like a lion 大声吼叫
++ go off one's rocker 精神失常 神志不清
++ indigestion 消化不良
++ Look who's talking! 你瞧这话是谁说的！(指对方没资格或不应该说这句话)
+
+## L137 Going to the Barber's
+
++ the barber's 理发厅
++ as simple as ABC 非常简单
+
+## L138 Don't Catch a Cold
+
++ haircut 理发
++ pigtail 辫子
++ crew cut 平头
++ Better still 更好的是
++ bald 光秃的
++ You bet! 当然
++ Get out of here 去你的(通常只用于开玩笑)
++ clown 小丑
+
+## L139 The Dancing Cop
+
++ stand a chance 有机会
++ tension 紧张 焦虑
++ Bangkok 曼谷
++ by leaps and bounds 迅速地
+
+## L140 Going Bananas in Bangkok
+
++ standstill 静止 停顿
+
+## L141 Men or Monkeys
+
++ gorilla 大猩猩
++ cradle 紧抱
++ zookeeper 动物园管理员
++ zoogoer 动物园游客
++ maternal 母亲的
++ paternal 父亲的
++ resemblance 相似
+
+## L142 Say Cheese
+
++ cut that/it out. 闭嘴 别说了
+
+## L143 How to Improve Your Writing Skills
+
++ idiom 惯用语 成语
++ paraphrase 释义
+
+## L144 Go for It
+
++ sit on one's behind 光坐着无所事事
+
+## L145 Breakfast Improves Mental Sharpness
+
++ give it a try 试一试
+
+## L146 Doing It in the Pants
+
++ pants 长裤
++ shorts 短裤
+
+## L147 Let Experience Be the Teacher
+
++ field trip 参观教学
++ be anything of ... 有任何...的才气
+
+## L148 What a Terrible Experience
+
++ What's the matter? 怎么了？
++ make up 杜撰 编造
+
+--- 
+
+# 高级

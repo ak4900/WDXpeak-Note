@@ -32,6 +32,7 @@
     * 文本分类(NLTK)
     * 本地网站界面(flask)
     * 电子书管理
+    * 项目网站搭建
 + 高级功能
     * 根据笔记主题自动更新最新资讯(RSS Wiki News)
     * 根据笔记主题推荐书籍(Douban Amazon)
@@ -51,9 +52,9 @@
     * 统计自然语言处理基础
     * 统计学习方法 李航（自然语言处理和机器学习不同，机器学习依靠的更多是严谨的数学知识以及推倒，去创造一个又一个机器学习算法。而自然语言处理是把那些机器学习大牛们创造出来的东西当Tool使用。所以入门也只是需要涉猎而已，把每个模型原理看看）
     * 中文信息处理丛书：统计自然语言处理（第2版）宗成庆
-    * 《自然语言处理综论》（Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition） 
-    * 《机器学习实战》哈林顿 (Peter Harrington)
-    * 《Python自然语言处理》 
+    * 自然语言处理综论（Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition） 
+    * 机器学习实战哈林顿 (Peter Harrington)
+    * Python自然语言处理
     * !!集体智慧编程
 + 工具包
     * pattern - simpler to get started than NLTK
