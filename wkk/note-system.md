@@ -1,4 +1,4 @@
-# 笔记系统设计
+# 笔记系统设计 Note2Knowledge Kit
 
 ## 核心
 
