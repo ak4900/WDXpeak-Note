@@ -1,0 +1,364 @@
+创建用户
+假设用户名是deploy
+用root用户
+useradd -m -s /bin/bash deploy
+passwd deploy
+cd /home
+ls -l
+mkdir deploy
+chmod  0700 deploy
+chown -R deploy:deploy deploy
+gpasswd -a deploy root
+
+vim /etc/sudoers
+root    ALL=(ALL:ALL) ALL
+deploy  ALL=(ALL:ALL) ALL
+
+chsh 修改默认shell
+
+手动释放内存 (查看内存的命令 top | free -m |ps aux)
+一、通常情况
+
+先来说说free命令：
+# free -m
+total used free shared buffers cached
+Mem: 249 163 86 0 10 94
+-/+ buffers/Cache: 58 191
+SWAP: 511 0 511
+
+其中：
+total 内存总数
+used 已经使用的内存数
+free 空闲的内存数
+shared 多个进程共享的内存总额
+buffers buffer Cache和cached Page Cache 磁盘缓存的大小
+-buffers/cache (已用)的内存数:used - buffers - cached
++buffers/cache(可用)的内存数:free + buffers + cached
+可用的memory=free memory+buffers+cached
+
+有了这个基础后，可以得知，我现在used为163MB，free为86MB，buffer和cached分别为10MB，94MB。
+那么我们来看看，如果我执行复制文件，内存会发生什么变化。
+
+# cp -r /etc ~/test/
+# free -m
+total used free shared buffers cached
+Mem: 249 244 4 0 8 174
+-/+ buffers/cache: 62 187
+Swap: 511 0 511
+
+在我命令执行结束后，used为244MB，free为4MB，buffers为8MB，cached为174MB，天呐，都被cached吃掉了。别紧张，这是为了提高文件读取效率的做法。
+
+为了提高磁盘存取效率，Linux做了一些精心的设计，除了对dentry进行缓存（用于VFS，加速文件路径名到inode的转换），还采取了两种主要Cache方式：Buffer Cache和Page Cache。前者针对磁盘块的读写，后者针对文件inode的读写。这些Cache有效缩短了 I/O系统调用（比如read，write，getdents）的时间。
+
+二、手动释放缓存
+
+/proc是一个虚拟文件系统，我们可以通过对它的读写操作做为与Kernel实体间进行通信的一种手段。也就是说可以通过修改/proc中的文件，来对当前kernel的行为做出调整。那么我们可以通过调整/proc/sys/vm/drop_caches来释放内存。操作如下：
+
+# cat /proc/sys/vm/drop_caches
+0
+首先，/proc/sys/vm/drop_caches的值，默认为0。
+
+# sync
+手动执行sync命令（描述：sync 命令运行 sync 子例程。如果必须停止系统，则运行sync 命令以确保文件系统的完整性。sync 命令将所有未写的系统缓冲区写到磁盘中，包含已修改的 i-Node、已延迟的块 I/O 和读写映射文件）
+
+# echo 3 > /proc/sys/vm/drop_caches
+# cat /proc/sys/vm/drop_caches
+3
+将/proc/sys/vm/drop_caches值设为3
+
+# free -m
+total used free shared buffers cached
+Mem: 249 66 182 0 0 11
+-/+ buffers/cache: 55 194
+Swap: 511 0 511
+
+再来运行free命令，会发现现在的used为66MB，free为182MB，buffers为0MB，cached为11MB。那么有效的释放了buffer和cache。
+
+有关/proc/sys/vm/drop_caches的用法在下面进行了说明
+/proc/sys/vm/drop_caches (since Linux 2.6.16)
+Writing to this file causes the kernel to drop clean caches,dentries and inodes from memory, causing that memory to become free.
+To free pagecache, use echo 1 > /proc/sys/vm/drop_caches;
+to free dentries and inodes, use echo 2 > /proc/sys/vm/drop_caches;
+to free pagecache, dentries and inodes, use echo 3 > /proc/sys/vm/drop_caches.
+Because this is a non-destructive operation and dirty objects are not freeable, the user should run sync first.
+
+以下是一段脚本
+# vim /root/satools/freemem.sh
+
+#!/bin/bash
+
+used=`free -m | awk 'NR==2' | awk '{print $3}'`
+free=`free -m | awk 'NR==2' | awk '{print $4}'`
+
+echo "===========================" >> /var/log/mem.log
+date >> /var/log/mem.log
+echo "Memory usage | [Use：${used}MB][Free：${free}MB]" >> /var/log/mem.log
+
+if [ $free -le 100 ] ; then
+                sync && echo 1 > /proc/sys/vm/drop_caches
+                sync && echo 2 > /proc/sys/vm/drop_caches
+                sync && echo 3 > /proc/sys/vm/drop_caches
+                echo "OK" >> /var/log/mem.log
+else
+                echo "Not required" >> /var/log/mem.log
+
+将脚本添加到crond任务，定时执行即可。
+# echo "*/30 * * * * root /root/satools/freemem.sh" >> /etc/crondtab
+
+#!!查看某个进程的内存占用
+pmap -x pid 
+rss就是这个进程的总占用
+---------------------------------------------------
+tar 压缩解压
+01-.tar格式
+解包：[＊＊＊＊＊＊＊]$ tar xvf FileName.tar
+打包：[＊＊＊＊＊＊＊]$ tar cvf FileName.tar DirName（注：tar是打包，不是压缩！）
+
+02-.gz格式
+解压1：[＊＊＊＊＊＊＊]$ gunzip FileName.gz
+解压2：[＊＊＊＊＊＊＊]$ gzip -d FileName.gz
+压 缩：[＊＊＊＊＊＊＊]$ gzip FileName
+
+03-.tar.gz格式
+解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.gz
+压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.gz DirName
+
+04-.bz2格式
+解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz2
+解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz2
+压 缩： [＊＊＊＊＊＊＊]$ bzip2 -z FileName
+
+05-.tar.bz2格式
+解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz2
+压缩：[＊＊＊＊＊＊＊]$ tar jcvf FileName.tar.bz2 DirName
+
+06-.bz格式
+解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz
+解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz
+
+07-.tar.bz格式
+解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz
+
+08-.Z格式
+解压：[＊＊＊＊＊＊＊]$ uncompress FileName.Z
+压缩：[＊＊＊＊＊＊＊]$ compress FileName
+
+09-.tar.Z格式
+解压：[＊＊＊＊＊＊＊]$ tar Zxvf FileName.tar.Z
+压缩：[＊＊＊＊＊＊＊]$ tar Zcvf FileName.tar.Z DirName
+
+10-.tgz格式
+解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tgz
+
+11-.tar.tgz格式
+解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.tgz
+压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.tgz FileName
+
+12-.zip格式
+解压：[＊＊＊＊＊＊＊]$ unzip FileName.zip
+压缩：[＊＊＊＊＊＊＊]$ zip FileName.zip DirName
+
+13-.lha格式
+解压：[＊＊＊＊＊＊＊]$ lha -e FileName.lha
+压缩：[＊＊＊＊＊＊＊]$ lha -a FileName.lha FileName
+14-.rar格式
+解压：[＊＊＊＊＊＊＊]$ rar a FileName.rar
+压缩：[＊＊＊＊＊＊＊]$ rar e FileName.rar    
+
+--------------------------------------------------
+使用wget進行全站抓取的命令:
+wget -mkp -e robots=off -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6" "http://www.example.com/"
+含義:
+-m, --mirror, 表示命令用於鏡像, 設置一些遞歸參數什麼的.
+-k, --convert-links, 轉換網頁中的鏈接. 如果沒用這個參數, 鏈接還是指向源網站的.
+-p, --page-requisites, 把正確顯示網頁所需的圖片, 樣式表什麼的一併保存下來.
+-e robots=off, 忽略robots.txt, 有些網站使用robots.txt禁止抓取.
+-U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6" , --user-agent, 把自己爲裝成瀏覽器. 有些網站只允許瀏覽器訪問.
+load cookie
+wget --load-cookies cookies.txt
+
+其他参数
+-c 断点续传
+-r 递归下载，这个东西会把整个网站无限递归下去下载，所以最好指定层数 -l
+-l 同上一起用指定递归层数
+-m 制作mirror
+-i 批量下载，把url放到down.txt, and then wget -i down.txt
+--reject=gif 不下载gif
+--http-user=
+--http-password=
+
+其他递归参数
+A,--accept=LIST　　 可以接受的文件类型
+-R,--reject=LIST　　拒绝接受的文件类型
+-D,--domains=LIST　　可以接受的域名
+--exclude-domains=LIST　　拒绝的域名
+-L,--relative 　　只下载相对链接
+--follow-ftp　　 只下载HTML文档中的FTP链接
+-H,--span-hosts 　　可以下载外面的主机
+-I,--include-directories=LIST　　允许的目录
+-X,--exclude-directories=LIST 　　拒绝的目录
+
+代理
+~/.wgetrc 
+http-proxy = xxx.xxx.xxx.xxx:port
+ftp-proxy = xxx.xxx.xxx.xxx:port
+--proxy-user=
+--proxy-password=
+
+---------------------------------
+bash 里面按ctrl-r （emacs的向上查找）
+可以快速查找之前输入过的命令
+
+set -o vi 可以把bash设置成vim模式
+-------------------------------------
+grep
+grep --context=3 select log.txt #在log.txt搜select并指定上下文是3
+grep -n3 显示搜索结果上下3行
+grep -v grep 不显示有grep的行
+----------------------------------
+sed
+
+------------------------------
+awk 把管道过来的参数扔大括号里给其他命令执行
+ps aux | grep chrome | awk '{print $2}'
+
+-------------------------
+iptables
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+先清理一下过去的规则，注意要用sudo
+
+打开你的dns端口，输入如下命令：
+iptables -A INPUT -i ppp0 -p udp -sport 53 -j ACCEPT
+
+-----------------------
+tmux
+send prefix之后的一些操作
+$ session改名
+s 查看session并且可以在session之间跳转
+& 关闭当前窗口
+x 关闭pane
+? 列出所有key_binding
+[ 复制模式 不同的tmux有不同的设置，默认是空格键开始选择，回车确定选择,(也有可以进入vim的v模式选择，也有emacs的ctrl+@进入选择alt+w复制)
+] 粘贴模式
+# 列出buffer
+= 选择复制粘贴的buffer
+alt+上下左右 resizepane + 5 
+ctrl+上下左右 resizepane + 1
+
+在ssh上客户端机打开tmux后, 客户端的家伙也打开shell并使用tmux attach，大家可以同步输入命令东东了
+prefix d 之后可以脱离tmux，然后再用 tmux attach可以回来
+也可以tmux ls查看有多少个session
+
+真要关session的话，用tmux kill-session -t session名
+
+
+---------------------------------
+notify-send
+sudo aptituede install notify-send
+notify-send "信息"
+
+登入终端后想发给其他用户时，先查询那些用户在X-display里头
+$ who
+markmerk3 tty7         2010-09-23 10:59 (:0)
+markmerk3 pts/1        2010-09-30 13:30 (:0.0)
+fschmitt pts/2        2010-10-08 11:44 (ip-77-25-137-234.web.vodafone.de)
+markmerk3 pts/0        2010-09-29 18:51 (:0.0)
+seamonkey pts/6        2010-09-27 15:50 (:1.0)
+markmerk3 pts/5        2010-09-27 14:04 (:0.0)
+seamonkey tty8         2010-09-27 15:49 (:1)
+markmerk3 pts/13       2010-09-28 17:23 (:0.0)
+markmerk3 pts/3        2010-10-05 10:40 (:0.0)
+
+看tty,可以见到 markmerk3 在0, seamonkey在1
+然后
+DISPLAY=:0 sudo -u markmerk3 notify-send "fuck that shit" 就可以发送给markmerk
+
+-----------------------------
+查看硬盘使用情况
+df -h /
+-----------------------------
+ack 添加对其他文件的支持
+Ack默认包含很多filetype => extensions的设置，但新出现的语言不一定支持。好在ack提供--type-add TYPE=.EXTENSION[,.EXT2[,...]], --type-set TYPE=.EXTENSION[,.EXT2[,...]]来扩展。经常用的可以加到~/.ackrc里
+$ cat ~/.ackrc
+--type-add
+ruby=.haml,.ru
+--type-add
+css=.scss,.sass,.less
+--type-add
+js=.coffee
+
+----------------------------
+zsh 快速
+1）zsh 可以快速记住你cd的目录，按123456789可以快速切换到各种目录，按d可以查看有那些目录
+2）有些深目录 app/assets/javascript/slides，可以用首字母a/a/j/s <tab>
+3) 和autojump配合用，用j跳转目录！
+4) alias -s 可以指定某些后缀使用什么软件打开
+alias -s txt=mvim
+5) alias -g 可以指定某些很特定的字符变量，例如| grep
+alias -g GG='| grep'
+以后可以 ll GG desktop 这样相当于 ll | grep desktop
+
+------------------------------
+find --exec用法
+find . -type d -exec du {} \;
+{}代表查到的文件，交给du去算算搜到用了的容量， 最后记得\;
+
+------------------------------
+sort 
+ls -l | sort -k5 -nr
+k命令是以地几个字段去作为排序参数，然后 -nr是从大到小，默认是从小到打
+
+-------------------------------
+rsync
+rsync -av ./xxxx/ ssh@xxx.xxx.xx:/aaa/yyyy 同步xxxx/下所有文件到服务器/yyyy下
+rsync -av ./xxxx ssh@xxx.xxx.xx:/aaa/yyyy 同步xxxx/下所有文件到服务器/yyyy/xxxx下 注意和上一个命令有/
+
+-P 现示传输速率
+
+-----------------------------
+curl　不断提交表单
+先在浏览器随便填填然后用 $(form).serialize()获取表单数据
+#!/bin/bash
+for i in $(seq 10000); do
+  curl -d "表单数据" "http://bestapp.wufoo.com/forms/bestapp-cae/";
+done;
+
+要cookie 的话，document.cookie拿到后,  --cookie "auth_token=ObdKmfzC0Xj_t2_j2NDk4w; referer_url=https%3A%2F%2Fwww.jinshuju.net%2Flogin; request_method=GET; __utma=41636281.2050899793.1393836689.1393836689.1393836689.1; __utmb=41636281.41.9.1393837746331; __utmc=41636281; __utmz=41636281.1393836689.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"
+
+--user-agent
+
+---------------------
+du找出占用率高最前１０个文件夹
+du --max-depth=1 | sort -k1 -nr
+
+
+------------------
+format 硬盘
+linode挂载好硬盘后
+fdisk -l |grep '^Disk' 查看一下
+fdisk /dev/xdvc
+
+m - print help
+p - print the partition table
+n - create a new partition
+d - delete a partition
+q - quit without saving changes
+w - write the new partition table and exit
+
+创建partition后
+sudo mkfs.ext4 /dev/sda2
+
+-----------------
+改网卡配置
+/etc/network/interfaces
+
+auto eth0 eth0:0
+iface eth0:0 inet static
+address 192.168.181.81
+netmask 255.255.128.0
+
+修改完后
+sudo /etc/init.d/networking restart

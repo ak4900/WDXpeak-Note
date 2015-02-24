@@ -1,0 +1,170 @@
+一，入门
+(1)变量赋值
+a=3 #之间不能有任何空格
+a=pk shit=fuck piece=o #单行可以进行多个赋值
+heihei="我爱 纸巾" #要空格时要加双引号
+c="$pk $shit $piece" #当变量值要用到几个变量去取值时，就要使用双引号加空格
+echo $heihei #取出时前面加$符号
+
+（2）echo输出 和标准输出
+echo shut the fuck up #输出：shut the fuck up
+echo -n haha #省略最后换行符,不换行输出
+
+一般linux把普通输出到&1, 错误信息输出到&2, &0是标准输入（默认就是键盘）
+ls xxx 2 > output.txt #没有xxx文件,ls会出错，这样才可以把出错信息重定向输出到outputtxt
+ls xxx & > output.txt #这样是无论什么信息都会扔到过去，更简洁的写法
+
+（3）printf输出 
+printf "fuck you damn\n" #换行输出，\n换行通配符
+格式：printf fomat-string [aguments] #aguments常用 %s表示字符串 %d表示十进制整数
+printf "我爱北京天安门!%s" 才怪！ 
+
+(4)I/O重定向
+a） 重定向
+program < file  #从文件内容输入东西到程序 
+tr -d '\r' < xxx.txt > yyy.txt #先把xxx.txt的回车删除，然后把内容输出到yyy.txt
+！！重定向符 > 到文件时，文件不存在则会创建，存在的话会覆盖掉
+！！使用 >>重定向时，文件不存在会创建，存在的话则会在尾部追加
+
+b) 管道
+program1 | program2 #可将program1的标准输出改成program2的标准输入
+
+管道比重定向要好：虽然重定向和管道都能实现同样东西，但管道不需要临时文件就能链接多个程序，效率更高
+技巧：把< >想象成漏斗，东西由大口进小口出
+
+（5）tr  替换修改删除字符
+tr -选项 原始字符 替换后的字符
+常用选项：-d 删除；-c 替换源字符前后的字符；-s 替换源字符，若源字符重复相连，则把多个替换成一个，如tr -s 'c' 'z' < ccccccccaaaa ,结果 zaaaa
+
+（6）stty 用作设置终端的各类设置
+stty -echo #禁止终端显示输入信息 输入密码类信息时常用可用 stty echo重新打开
+
+（7）/dev/null 用作重定向时无需处理的数据 
+如： if grep 正则 >/dev/null  #如果匹配某个正则的时候就处理XXX ，这个无需输出数据的时候使用
+
+（8）访问shell脚本参数 ！！
+$1 $2 $3  这些特定变量表示存入shell命令后的地几个参数，当参数大于9时，从10开始就要使用${10}
+例如 ./fuckBill haahaha heiheihei#$1就代表hahaha $2就代表heiheihei
+$0 = shell名称或shell脚本名称
+$1 = 第一个shell参数
+$# = 位置参数的个数
+"$*" = "$1 $2 $3 $4 .. $n"
+"$@" = "$1" "$2" "$3" "$4" .. "$n"
+$? = 最近执行的命令的退出状态
+$$ = 当前shell脚本的PID
+$! = 最近启动的后台作业的PID
+$PWD = 当前目录
+
+二。查找与替换 
+(1)grep
+（grep[posix],egrep[正则方面支持更强大],fgrep[不支持正则表达式，只支持字符串，可支持多个，效率很高）
+-E 等于使用egrep进行匹配，扩展正则表达式 
+-F 默认，等于fgrep，字符串匹配 
+-i 忽略大小写 
+
+(2)sed 替换
+与正则表达式的各种配合，平且可以批量修改文件
+
+(3)cut 剪下文件内容的某段，某行，某个字符开始的内容
+cut -c  1，3 fortest.txt #从文件截取1，3位置的字符
+
+(4)join
+合并两个行文件，会自动匹配key，value 少用
+
+三。文本处理工具
+(1)sort 排序
+-b 忽略开头空白
+-d 仅字母 数字 空白才排序
+-c 检测是否有正确排序
+-f 忽略大小写
+-k 定义排序键值
+-r 由大到小或由小到大
+
+(2)uniq 去除重复
+通常时 sort xxx | uniq
+去除重复记录
+
+(3)fmt 格式化段落
+一些很长的段落可以用fmt 格式化，可以用-w -s 等指定一行多少个单词
+
+(4)wc 计算统计 行数 字数 字符数
+-c 字符 
+-l 行
+-w word单词数
+
+(5)head tail 提取文本开头几行或结尾几行 查看日志的时候 tail特别有用
+head -n 1 xxx.txt #提取第一行，tail同
+
+----------------------------------------------------
+文件判断符
+-b FILE
+      FILE exists and is block special
+-c FILE
+      FILE exists and is character special
+-d FILE
+      FILE exists and is a directory
+-e FILE
+      FILE exists
+-f FILE
+      FILE exists and is a regular file
+-g FILE
+      FILE exists and is set-group-ID
+-G FILE
+      FILE exists and is owned by the effective group ID
+-h FILE
+      FILE exists and is a symbolic link (same as -L)
+-k FILE
+      FILE exists and has its sticky bit set
+-L FILE
+      FILE exists and is a symbolic link (same as -h)
+-O FILE
+      FILE exists and is owned by the effective user ID
+-p FILE
+      FILE exists and is a named pipe
+-r FILE
+      FILE exists and read permission is granted
+-s FILE
+      FILE exists and has a size greater than zero
+-S FILE
+      FILE exists and is a socket
+-t FD  file descriptor FD is opened on a terminal
+-u FILE
+      FILE exists and its set-user-ID bit is set
+-w FILE
+      FILE exists and write permission is granted
+-x FILE
+      FILE exists and execute (or search) permission is granted
+
+常用 -f 文件 -d 目录 -l 链接符
+---------------------------------------------------
+编写shell脚本
+#! /usr/bin/env ruby #这一句表示当前脚本使用ruby打开
+
+if [ $# != 1 ]
+then
+   echo """ 
+	FUCK THAT SHIT
+	""" >&2 #把错误信息无论如何都重定向到屏幕
+fi
+
+for i in 1 2 a b
+do
+    echo $i
+done
+
+
+for file in `ls`
+do
+    echo -n "Want to delete:$file ? (Y/n):"
+    read AAA
+    if [ "#{AAA:-y}" = "y" ];then  #这行#{}意思是读入的AAA如果为空的话，自动赋值为y
+	echo delete $file
+	rm $file
+	echo ...done
+    else
+	echo ...pass
+    fi
+done
+
+
+

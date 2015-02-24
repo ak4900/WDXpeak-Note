@@ -1,0 +1,700 @@
+1 更新源 /etc/apt/sources.list
+sudo passwd
+-----------------------------------
+快捷键
+alt+shift 上 分别查看当前桌面有那些窗口
+alt+ctrl 小键盘0-9 当前窗口变更位置
+
+-----------------------------------
+设置emacs系统按键绑定
+gconf by running gconf-editor, and chang­ing the /desktop/gnome/interface/gtk_key_theme key to Emacs.
+
+#ubuntu 12.04 unity设置方法：
+    gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+按键全选快捷键！看一个日本blog教的
+http://blog.goo.ne.jp/gleaning/e/a8ff1269345a7145d4eb4f9eb35d5133
+在~/.emacs.el 里面加入
+(global-set-key [?\\C-/] 'mark-whole-buffer)
+------------------------------------
+ati闭源驱动，上官网下载完chmod 777以下再run 
+卸载:
+sudo /usr/share/ati/fglrx-uninstall.sh
+
+sudo apt-get install envyng-core
+sudo encyng -t
+------------------------------------
+2 emacs chrome firebug ssh iptux unrar cmake libncurses5-dev bison chkconfig filezilla(ftp客户端) kchmviewer chmsee Cairo-Dock gimp pidgin skype tree
+
+pdf软件: foxitreader Okular(不错的pdf阅读) Evince xpdf epdfview 
+
+fcitx(输入法替换，选用) 
+
+remmina（远程桌面）
+
+scrot shutter(截图软件)
+
+tmux shell窗口管理好用工具 #解决不读取bashrc的问题，cat ~/.bashrc > ~/.bash_profile
+
+--------------------------------------
+11.10开始要用经典界面要装 个gnome-shell，不然有些软件没法用
+
+12.04 也开始装gnome-shell，配合compiz 非常好用
+
+----------------------------------------
+unity 安装屏幕保护程序
+sudo apt-get remove gnome-screensaver
+sudo apt-get install xscreensaver xscreensaver-gl-extra xscreensaver-data-extra
+设置屏保自启动:
+“Dash主页”->“应用程序”->“自定义”->“已安装”->“启动应用程序”->点击“添加”按钮
+xscreensaver -nosplash
+
+-------------------------------------
+2.1 挂载常用硬盘 
+sudo fdisk -l 查看常用 硬盘情况
+sudo mount -o iocharset -t auto /dev/sda5 ~/fun
+修改 /etc/fstab 
+注意要挂载ntfs-3g格式的话要先 apt-get install ntfs-3g*
+
+/dev/sda5 ~/fun ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+/dev/sda6 ~/test ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+/dev/sda7 ~/work ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+
+UUID=FE286F26286EDCE1 /home/jas/test/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=480CCEF80CCEDFD4 /home/jas/system2/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=0E6878CF6878B755 /home/jas/e/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=7E34816B3481276D /home/jas/g/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=20F0DCA9F0DC8706 /home/jas/win7/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=4824229A24228AD0 /home/jas/game/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=768830B4883074A9 /home/jas/music/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=A6A853BAA85387A7 /home/jas/work/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+UUID=5230615830614457 /home/jas/back/ ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+
+使用wubi安装时，所在分区 在/文件系统/host下面
+
+ls -al /dev/disk/by-uuid //查看分区uui
+安装 ntfsprogs 然后 sudo ntfslabel -nv /dev/sda5 查看分区卷标
+
+说明：/dev/sdaX可以以管理员身份通过命令fdisk -l得知，只要找你需要挂载的那个分区即可。/media/Y这是一个文件夹，应该提前建立好。”user,rw”
+  
+sudo blkid 也可查看分区详细状态
+
+/dev/sdaX /media/Y vfat user,rw,utf8,umask=000 0 0
+
+ntfs-3G的参数设置
+users – 假如ntfs-3g可执行文件设置了SUID root(命令：chmod u+s /bin/ntfs-3g ) ，则允许任何人挂载/卸载NTFS分区。请注意，你要用users 而不是user
+uid – 指定NTFS分区中文件和目录的拥有者（用十进制数表示）
+gid – 指定NTFS分区中文件和目录的用户组（用十进制数表示）
+fmask – 文件权限（八进制数掩码）
+dmask – 目录权限（八进制数掩码）
+
+-------------------------------------
+2.12环境变量问题
+sudo env 查看sudo 的环境变量
+在脚本加入~/.bashrc 或者 /etc/profile
+export $JAVA_HOME=/home/jas/jdk
+然后sudo -s
+-------------------------------------
+触摸板调整！
+#先在xorg.conf设置加入一个触摸板section
+sudo apt-get install utouch input-utils
+sudo lsinput
+#执行后会找到下面这个
+/dev/input/event7
+   bustype : BUS_BLUETOOTH
+   vendor  : 0x5ac
+   product : 0x30e
+   version : 352
+   name    : "Apple Wireless Trackpad"
+   phys    : "XX:XX:XX:XX:XX:XX"
+   uniq    : "XX:XX:XX:XX:XX:XX"
+   bits ev : EV_SYN EV_KEY EV_REL EV_MSC
+#然后在 /etc/X11/xorg.conf加入
+Section "InputClass"
+        Identifier "Apple Wireless Trackpad"
+        MatchIsTouchpad "on"
+        MatchUSBID "05ac:030e" #这一行与上面找到的vendor和product相关
+        Driver "synaptics"
+        Option "SHMConfig" "True"
+EndSection
+
+#如果每次开机都要重新链接或者不会自动链接的话，加入pincode 0000 让他自动连,方法：
+1.Determine the physical (model-specific) and unique device IDs from the output of lsinput (from the "input-tools" package) as shown above.
+
+2.Create /var/lib/bluetooth/<physical_ID>/pincodes as the root user (or with sudo):
+
+ # This folder *should* already exist, create it with 'sudo mkdir' if not.
+ # You can use TAB to complete, if it's the only Bluetooth device on your system:
+ cd /var/lib/bluetooth/<physical_ID>
+
+ sudo gedit pincodes
+Add this line to the new file, save, and exit:
+ <unique_ID> 0000
+where <physical_ID> is a backslash-escaped physical device ID, like D8\:30\:62\:38\:18\:02, and <unique_ID> is your device's unique ID, both from the output of lsinput.
+
+#command line方法
+hcitool scan
+Scanning ...
+        XX:XX:XX:XX:XX:XX       Apple Wireless Trackpad
+sudo apt-get install bluez-compat
+sudo hidd --connect xx:xx:xx:xx:xx:xx
+
+#一些辅助工具
+sudo apt-get install gsynaptics
+apt-get install gpointing-device-settings 
+
+snyclient -l #显示当前触摸板设置 val=new_val, 可以设置各种需要的功能
+#为4个角的按键
+RTCornerButton=2
+RBCornerButton=0
+LTCornerButton=3
+LBCornerButton=0
+#多指按键
+TapButton1=1    #一指，左键，默认
+TapButton2=3    #两指，右键；
+TapButton3=0    #三指，仅适合硬件支持多触点的触摸板，否则没法感应三指同
+#边沿圆周滚动
+CircularScrolling=1 #打开圆周滚动
+CircScrollTrigger=3 #右边沿，除了0代表任意边沿，1～8分别代表从顶开始顺时针的九宫格外围8个位置。
+------------------------------------
+12.04 之后鼠标滚动的natrual scrolling问题
+方法一:
+1.在当前用户 home 目录下添加或修改 .Xmodmap 文件
+2.里面内容为：pointer = 1 2 3 5 4 7 6 8 9 10 11 12
+3.注销当前用户再登录即可
+方法二：
+sudo add-apt-repository ppa:zedtux/naturalscrolling
+sudo apt-get update
+sudo apt-get install naturalscrolling
+方法三：
+xinput list #先查出触摸板的id
+xinput get-button-map id
+xinput set-button-map id 1 2 3 5 4 7 6 8 9 10 11 12
+
+-------------------------------------
+2.3 归档管理器打开zip压缩包中文文件名显示乱码问题。解决方法如下：
+
+sudo gedit /etc/environment
+加入下面两行
+
+UNZIP="-O CP936"
+ZIPINFO="-O CP936"
+
+Ubuntu 9.10的UNZIP没有了-O选项，我们可以使用7zip（独立于unzip的zip解压程序）和convmv（文件名编码转换程序）解决乱码问题，方法如下：
+
+第一步 首先安装7zip和convmv（如果之前没有安装的话）
+
+sudo apt-get install p7zip-full convmv
+第二步 假设zip文件名为abc.zip，那么
+
+LANG=C 7z x abc.zip
+convmv -f cp936 -t utf8 -r --notest *
+-------------------------------------
+2.4  stardict
+词典文件在 java开发工具/翻译词典 里面
+
+　　sudo tar -xjvf stardict-kdic-computer-gb-2.4.2.tar.bz2
+
+　　命令执行后，将生成stardict-kdic-computer-gb-2.4.2目录。接着输入命令：
+
+　　sudo mv stardict-kdic-computer-gb-2.4.2 /usr/share/stardict/dic/.
+-------------------------------------
+2.5 音乐播放器
+rhythmbox
+Amarok
+Exaile
+audacious (安装W32codecs 播放ape)
+-------------------------------------
+3 更改gedit 设置
+  如果经常使用gbk的编码，那么就可以通过终端下面执行gconf-editor,然后选在apps下gedit-2下preferences下的encodings下的auto_detected,双击，添加gbk编码，同时gbk编码移动到utf-8的后面，这个细节也很重要。否则有时候还是会检测成其他编码。出现乱码。
+-------------------------------------
+4 更改HOSTS 设置
+-------------------------------------
+5  easystroke(鼠标手势)
+Alt + F9 最小化窗口
+Alt + F10 最大化窗口
+Alt + F4 关闭窗口
+-------------------------------------
+6  parcellite（粘贴板增强）
+设置开机启动
+sudo gnome-session-properties 
+添加
+-------------------------------------
+6.1 smplayer
+-------------------------------------
+6.2 rabbitvcs(图形化界面svn)
+先在系统管理中添加源
+deb http://ppa.launchpad.net/rabbitvcs/ppa/ubuntu lucid main
+安装必要的支持包
+ sudo apt-get install python-nautilus python-configobj python-gtk2 python-glade2 python-svn python-dbus subversion meld
+
+ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 34EF4A35 
+ sudo apt-get update
+ sudo apt-get install rabbitvcs-cli  rabbitvcs-core rabbitvcs-gedit rabbitvcs-nautilus rabbitvcs-thunar thunarx-python
+重启nautilus
+ killall -9 nautilus
+
+OK!
+------------------------------------- 
+------------------------------------- 
+7.0 安装 JDK
+先把.bin文件设置成可运行，然后运行
+修改 /etc/enviroment里面的 path 和 增加JAVA_HOME
+
+-------------------------------------    
+7.01 安装tomcat
+-------------------------------------    
+-------------------------------------    
+7 eclipse
+subcilpse
+colortheme : http://eclipse-color-theme.github.com/update
+utf-8
+php pdt
+emacs
+verdana 14px
+背景色问题
+为了解决这个问题，当然要改掉Ubuntu主题中Tooltip的背景色了。可以在下面的菜单中找到：
+系统->首选项->外观->主题->自定义（是个按钮）->颜色（选项卡）->工具提示
+对应到英文系统应该是：
+system->preference->appearance->theme->custom->color->tooltip
+默认的配置是：背景黑色，前景白色。改为：前景黑色，背景土黄色（你可以自己决定）。。。这时Eclipse就该恢复正常了。
+
+：：：：：：11.10颜色问题：：：：：
+我已经找到 11.10 的设置方法了：
+打开 dconf-editor, 然后找：org - gnome -desktop - interface，然后找到 gtk-color-scheme 这一项，默认是空的，需要你自己写进去。
+写的格式是：
+项目名称：颜色名称；项目名称：颜色名称；
+项目名称要在这里找
+http://live.gnome.org/GnomeArt/Tutorial ... olicColors
+
+比如我是这么写的：base_color:#FAF9DE;selected_bg_color:#008522
+（背景为浅黄色，选择框为绿色）
+写完之后按回车确认，马上生效！
+
+这里还有一个极其严重的 bug ：下方提示你需要用"\n"来分隔，但其实不行！必须用分号分隔才对
+-------------------------------------    
+7.1 netbeans
+乱码解决 ：
+(1)把/usr/share/fonts/truetype/arphic/（或者直接fonts） 文件夹下的字体拷贝到 JAVA_HOME/jre/lib/fonts/fallback下面，就OK了。记得fallback一般是自己建立的。
+(2)修改{netbeans}/etc/netbeans.conf文件,# command line switchs:下面那行命令后添加如下启动参数：
+-J-Duser.language=zh -J-Duser.country=US -J-Dawt.useSystemAAFontSettings=on
+language=zh 是可以支持显示中文 country=US是为了制定开发环境
+-------------------------------------    
+7.2 node js
+./configure
+make && make install
+-------------------------------------    
+8 mysql
+
+#先是简单装法
+sudo apt-get install mysql-server libmysqlclient15-dev
+delete some unsafe root user
+grant all on *.* to scott@localhost identified by 'tiger';
+flush privileges;
+
+##
+
+build-essential 这个包也要装
+
+sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1
+
+shell> scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql (编译时没修改默认这里设定mysql重要)
+shell> cp support-files/my-medium.cnf /etc/mysql/my.cnf
+shell> cp support-files/mysql.server /etc/init.d/mysqld
+
+sudo useradd mysql 
+sudo groupadd mysql
+sudo chown root ./ -R
+sudo chown mysql data  -R
+
+shell> chkconfig mysqld on
+注意一些权限设置，和err log
+进入mysql删除掉一些没用的user
+grant all on *.* to root@localhost identified by "123456"
+fulsh privileges;
+
+[client]
+default-character-set=utf8
+port    = 3306
+socket  = /tmp/mysql.sock
+ 
+[mysqld]
+character-set-server = utf8
+replicate-ignore-db = mysql
+replicate-ignore-db = test
+replicate-ignore-db = information_schema
+user    = mysql
+port    = 3306
+socket  = /tmp/mysql.sock
+basedir = /usr/local/webserver/mysql
+datadir = /data0/mysql/data
+log-error = /data0/mysql/mysql_error.log
+pid-file = /data0/mysql/mysql.pid
+-------------------------------------    
+9 Redis
+sudo apt-get install tcl8.5-dev
+不设置默认安装 在/usr/local/bin 下
+make PREFIX=/some/other/directory install
+-------------------------------------    
+-------------------------------------    
+15 更改显卡风扇速度
+然后用新立得安装“nvclock”、“nvclock-gtk”这两个包（如果是KDE用户请安装“nvclock-qt”）。
+安装好以后在终端里面输入“nvclock_gtk"就可以运行图形界面的nvclock了
+
+sudo nvclock -F 30 -f 把风扇速度调成30%
+-------------------------------------   
+16 设置 collab SVN
+解压得到 csvn文件夹，复制到 ～/csvn
+csvn/bin install
+csvn/bin start
+csvn/bin console
+
+要注意 csvn/data/conf/csvn_main_httpd.conf 里面得 user 和 group得修改
+-------------------------------------   
+17 ssh远程链接命令
+ssh jojo@192.168.1.106
+
+传文件: 
+scp 文件 jas@192.168.1.100:/home/jas/  //相当与把文件传到远程JAS的目录下
+scp -r root@xxx.com:/home/xxx /home/jas/ //将远端目录复制到本地
+-------------------------------------    
+shell
+ln -s ./下载 download
+
+------------------------------------
+imagemagick批量转换图片大小
+Posted on 2011 年 02 月 18 日 by 和上
+直接拍出来的照片太大了，需要压缩一下再上传到网上，图片很多，使用gimp一张张处理太麻烦了，于是祭出imagemagick的convert大杀器，一下子就解决了。5
+#!/bin/sh
+for img in `ls *.JPG`
+do
+convert -resize 1024 ${img} re${img}
+done
+------------------------------------
+unity下gvim会会有缓慢问题，启动加入gvim -f 参数
+echo 'alias gvim="gvim -f"' >> ~/.bashrc
+
+#12.04解法#
+sudo apt-get install gtk2-engines-pixbuf
+echo 'alias gvim="env Ubuntu_MENUPROXY=0 gvim -f"' >> ~/.bashrc
+source ~/.bashrc
+echo 'alias gvim="gvim -f"' >> ~/.bashrc
+source ~/.bashrc
+
+gvim和ibus输入法问题
+解决放法：进输入法设置, 把 “在应用程序窗口中启用内嵌编辑模式” 前面的勾去掉。
+------------------------------------
+flash player
+直接用firefox装
+firefox 插件 flash-aid ，这个插件会帮助你修正最新的flash插件
+
+或者直接在ubuntu软件中心搜索flash安装
+------------------------------------
+sudo apt-get install exuberant-ctags ctags
+
+
+----------------------------------
+selinux的死人问题
+etc/selinux/config       里把selinux="enforcing"改成了disalde就成了
+setenforce 0
+
+--------------------------------
+ubuntu 10.04安装tweak
+    sudo add-apt-repository ppa:tualatrix/ppa
+    sudo apt-get update
+    sudo apt-get install ubuntu-tweak
+
+-------------------------------
+Apple track pad 问题
+  sudo apt-add-repository ppa:utouch-team/daily
+  sudo apt-get update
+  sudo apt-get install ginn 
+touchegg
+打开方法方法很简单，用dconf。如果没有安装这个软件就先装上。
+然后 org->gnome->settings-daemon->peripherals->touchpad
+在右侧有一个touchpad-enabled 打上钩触摸板就能用了。当然其它的功能也都是在这里设置。
+
+
+-----------------------------
+视频录制 xvidcap，去官网sourceforg 项目处下载interpid包，可以解决声音问题
+	gtk-recordmydesktop
+视频编辑工具 kino, kdenlive, avidemux
+
+recordmydesktop 声音设置: http://v.youku.com/v_show/id_XMTMzMzgwMDcy.html
+
+
+--------------------------
+12.04 安装compiz
+sudo apt-get install compiz compiz-core compiz-dev compiz-fusion-plugins-extra compiz-fusion-plugins-main compiz-gnome compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default compizconfig-backend-gconf compizconfig-settings-manager fusion-icon libcompizconfig0 libdecoration0 libdecoration0-dev python-compizconfig
+
+Ubuntu 11.04版和11.10版使用Unity桌面的用户，在启动“compiz fusion icon”之前，需要安装一个辅助软件dconf-tools：
+    sudo apt-get install dconf-tools
+执行:
+    dconf-editor
+在弹出的“Configuration Editor”窗口中，依次点击左侧展开“desktop”－>“unity”，点击选择“panel”（一定要点击一下，右边才有显示）
+在右边Name下列出的“systray-whitelist”项目中，点击Value下的值，在中括号里的最后加上‘fusion’，改完后不要点鼠标，按回车确认。
+修改了这个键值，就能实现在Unity桌面右上角的任务栏里出现蓝色的立方体“fusion icon”图标。修改后的值如下：
+代码:
+    ['JavaEmbeddedFrame', 'Mumble', 'Wine', 'Skype', 'hp-systray', 'scp-dbus-service', 'fusion']
+
+如果您想顺带解决Untiy下在任务栏显示中文输入法托盘图标等问题，
+干脆把“systray-whitelist”白名单项目中括号里的值全删除了，改为'all'即可，改完后不要点鼠标，按回车确认。
+代码:
+    ['all']
+修改完后，改完后不要点鼠标，按回车确认即可生效。
+千万不要点击窗口右下角的“Set to Defaule”（恢复到默认）按钮，这不是“确认”或者“保存”按钮。
+
+-----------------------
+12.04 gnome-classic 系统托盘 通知栏不显示图表问题
+改完上面例子的['all']之后， win+alt+右键点击任务栏， 添加 通知图标 
+
+----------------------
+goldendict dsl词典设置
+SL 词典的设置，首先利用 dictzip 将 DSL 文件压缩。
+   sudo apt-get install dictzip
+   dictzip your_dsl_file.dsl
+这样会生成文件 your_dsl_file.dsl.dz.
+以上面提到的朗文五为例，假设主词典文件名为 Longman5.dsl.dz，那么你需要将那一大堆 wav 文件和 jpg 文件压缩成 zip 格式的压缩包，文件名必须为：Longman5.dsl.files.zip，并将此压缩包放在与主词典文件同一目录下，否则 Goldendict 将无法找到数据文件。注意，zip 压缩包内没有目录层次，应直接包含所有数据文件。
+zip Longman5.dsl.files.zip ./*
+
+添加构词规则库
+编辑-》词典-》词典来源-》构词法规则库可以设置其所在目录。英语构词法规则库到这里下载，注意需要解压缩：
+http://prdownload.berlios.de/goldendict/en_US_1.0.zip
+
+推荐WordNet 3.0字典:
+代码:
+sudo apt-get install goldendict-wordnet
+安装后第一次运行就能自动加入英文构词法规则库和已经存在的stardict字典，非常方便。
+
+zip 操作时候提示列表过长的两种解决方法
+    find . "*" |xargs -i zip -r En-En-Longman_DOCE5.dsl.files.zip {}
+    for d in ./*; do zip -r En-En-Longman_DOCE5.dsl.files.zip "$d"; done
+
+babylon 和 dsl 可以得到完美支持
+
+--------------------
+thinkpad 键盘支持小红点
+sudo apt-get install gpointing-device-settings
+安装完之后重启
+12.04里头安装完后中建的功能也好了
+
+-------------------
+thinkpad 键盘切换fn 和 ctrl方法
+首先输入xev，按下键盘后可以看到对应的keycode，如Esc 9，Fn 151，win 133。
+输入xmodmap -pk
+找到Esc对应名称，为Escape，
+接着打开或新建 gedit ~/.Xmodmap
+加入 keycode 133 = Escape
+意思很明显就是：定义keycode 133为 Escape按键
+
+-------------------
+ubuntu命令行下前缀用户名很长的问题
+修改~/.bashrc文件中的PS1即可。 本来57行左右就有一个系统设的ps1变量
+
+PS1是主要的提示符设置，在ubuntu一般为： 
+${debian_chroot:+($debian_chroot)}\u@\h:\w\$ 
+具体的提示符，按分类含义如下： 
+主要信息： 
+\u 当前登录用户名 
+\h 当前计算机名称（譬如ubuntu） 
+\H 当前计算机的域名全程，譬如（ubuntu.ubuntu.com) 
+\w 当前目录 
+\W 当前目录的basename 
+\$ 一般用户为$，root用户为> 
+
+时间显示 
+\t 当前时间（24小时制，HH:MM:SS 分别代表 小时：分钟：秒） 
+\T 当前时间（12小时制） 
+\@ 当前时间（AM/PM显示） 
+\d 当前日期 
+Shell信息： 
+\v Bash版本 
+\V Bash的发布版本号 
+\S Shell名称 
+\! Bash命令的历史编号 
+\j job序号 
+\l Shell的终端名称 
+
+我是直接将用户名和主机写成固定的值，如shell@ubuntu 
+PS1="\[\e]0;${debian_chroot:+($debian_chroot)}shell@ubuntu: \w\a\]$PS1" 
+要让改变立即生效source  ~/.bashrc即可 
+
+-------------------------
+设置goagent的方法
+linux下载好appengine后，执行下面两步即可，不用照主页上面的说明做。
+修改ID(通用方法)：goagent/server/python/app.yaml
+用appengine上传：google_appengine/appcfg.py update goagent/server/python/
+
+it works!!
+first download Google App Engine SDK for Python  
+https://code.google.com/appengine/downloads.html then find google_appengine_1.6.2.zip
+move google_appengine_1.6.2.zip to the directory  where goagent has been unzipped.
+in terminal, change the current directory to goagent, then enter :
+  google_appengine/appcfg.py update goagent/server/python/   to deploy goagent
+
+下面遇到的所谓urllib2的问题也可以用原来的google sdk上传解决
+另外如果遇到 the application does not exist(app_id='xxx') 
+可以用 appcfg.py update --no_cookies python/ 这样解决
+或者可以remove .appcfg_cookies也可以解决
+
+如果遇到这个错误
+fancy_urllib.InvalidCertificateException: Host appengine.google.com returned an invalid certificate (hostname mismatch): {'notAfter': 'Apr 11 00:14:07 2013 GMT', 'subjectAltName': (('DNS', '*.mail.google.com'), ('DNS', '*.docs.google.com'), ('DNS', '*.talkgadget.google.com'), ('DNS', '*.sites.google.com'), ('DNS', '*.plus.google.com'), ('DNS', '*.drive.google.com')), 'subject': ((('countryName', u'US'),), (('stateOrProvinceName', u'California'),), (('localityName', u'Mountain View'),), (('organizationName', u'Google Inc'),), (('commonName', u'*.mail.google.com'),))} 
+To learn more, see http://code.google.com/appengine/kb/general.html#rpcssl
+
+上网查了一下，是因为我翻墙导致验证appengine.google.com的证书时就不认可了，方法也好解决：
+
+找到刚才的的报错文件google_appengine/lib/fancy_urllib/fancy_urllib/__init__.py
+把165~170行的这段验证代码删掉就行了
+   1: if self.cert_reqs &; ssl.CERT_REQUIRED:
+   2:   cert = self.sock.getpeercert()
+   3:   hostname = self.host.split(':', 0)[0]
+   4:   if not self._validate_certificate_hostname(cert, hostname):
+   5:     raise InvalidCertificateException(hostname, cert,
+   6:                                       'hostname mismatch')
+
+安装gevent 
+sudo apt-get install libevent-dev python-dev
+curl -O http://gevent.googlecode.com/files/gevent-1.0b4.tar.gz && tar xvzpf gevent-1.0b4.tar.gz && cd gevent-1.0b4 && python setup.py install
+
+greenlet问题
+sudo apt-get install python-setuptools
+easy_install greenlet
+
+urllib2 error的, 把python/app.yaml version改成2
+
+
+2012年11月 9日 星期五 22时37分39秒 CST
+hkhost 74.125.128.17|74.125.128.18|74.125.128.19|74.125.128.31|74.125.128.32|74.125.128.33|74.125.128.34|74.125.128.35|74.125.128.36|74.125.128.37|
+
+gaeproxy 设置hosts的地方
+data/data/org.gaeproxy/localproxy.py $5
+
+--------------------------
+编译安装python 3.2
+二、编译安装Python3.2
+tar jxvf Python-3.2.tar.bz2
+cd Python-3.2
+./configure
+make && make install
+三、创建链接
+安装编译之后，但使用 python -V 命令查看python版本号仍然是Python 2.7，
+所以我们需要为python3.2创建个链接。
+
+#back up old file
+$mv /usr/bin/python /usr/bin/python-2.7.bak
+#soft link to the python3.2
+$ln -s /usr/local/bin/python3.2 /usr/bin/python
+#check the python version
+$python -V #3.2
+
+-------------------------
+ack http://betterthangrep.com
+sudo apt-get install aptitude
+sudo aptitude install ack-grep
+------------------------
+sl
+sudo apt-get install sl 
+sl #一辆火车呼啸而过
+
+-----------------------
+squid
+
+1.安装。
+在Ubuntu的源中具有squid的稳定版，所以直接在线安装即可。
+在终端中，输入命令：
+sudo apt-get install squid
+
+2.配置。
+默认情况下，Squid无法使用，因此需要配置。
+其配置文件为：/etc/squid/squid.conf，其默认的配置文件较复杂，以下为比较简易的squid.conf配置文件：
+
+#squid.conf begin
+http_port 3128 #监听端口号，默认为3128
+icp_port 0 #多个squid代理服务器可以通过icp协议相互沟通，形成树形层次关系（父代理、兄弟代理、子代理），构建代理服务器群；此处的“0”代表禁用icp端口
+cache_mem 64 MB #设置内存缓冲的大小，此数值不可超过服务器物理内存的1/3，否则会影响总体性能
+cache_swap_low 80 #与磁盘容量有关的配置，80为百分比
+cache_swap_high 85 #与磁盘容量有关的配置，85为百分比
+maximum_object_size 32000 KB #设定squid可以接收的最大对象的大小，大于此数值的对象将不被存储；如果cache_dir所在磁盘很大时，可以适当加大此数值
+cache_dir ufs /var/spool/squid 500 64 1024 #设置缓存的位置和大小，500代表缓存最大为500M，64和1024代表一级和二级目录数
+cache_access_log /var/log/squid/access.log #访问日志文件的存放路径
+cache_log /var/log/squid/cache.log #缓存日志文件的存放路径
+cache_store_log /var/log/squid/store.log #日志文件的存放路径
+pid_filename /var/run/squid.pid #日志文件的存放路径
+
+acl all src 0/0 #定义acl(访问控制列表)
+acl localhost src 127.0.0.1 #定义本机ip地址
+acl clientUser1 src 10.130.99.106 #定义客户端1的ip地址
+acl clientUser2 src 10.130.88.48 #定义客户端2的ip地址
+
+http_access allow clientUser1 #允许客户端1使用本代理
+http_access allow clientUser2 #允许客户端2使用本代理
+http_access allow localhost #允许本机使用本代理
+http_access deny all #拒绝除上述的任何其他ip地址使用本代理
+
+cache_effective_user squid #设置squid的管理员用户，对应cache_dir目录的所属用户
+cache_effective_group squid #设置squid的管理员用户组，对应cache_dir目录的所属组
+coredump_dir /var/spool/squid#设置squid的数据堆目录
+#squid.conf end
+
+3.使用。
+3.1 验证配置文件是否有效
+在终端中，输入命令：
+sudo squid -k parse
+注：如果没有输出反馈，表明配置文件有效，可继续以下内容；如果配置有误，将输出错误信息，你需要重新编辑配置文件。
+3.2 初始化cache缓存目录
+在终端中，输入命令：
+sudo squid -z
+注：初始化配置文件中定义的cache_dir，在使用squid之前必须初始化cache缓存目录。
+3.3 启动squid服务
+在终端中，输入命令：
+sudo service squid start
+注：如果想停止squid，可以输入命令：sudo squid -k shutdown。
+
+-----------------------
+把zsh设置成默认shell
+chsh -s /bin/zsh
+
+如果是编译安装的，先在/etc/shells加入/usr/local/bin/zsh,然后再chsh
+
+zsh安装agnoster
+cd ~/.fonts/ && git clone https://github.com/scotu/ubuntu-mono-powerline.git && cd ~
+在 ~/.zshrc 把主题设置为 agnoster
+这样我自己的vim配置也会变好
+
+-----------------------
+把ctrl 和 capslock对换
+系统设置 键盘布局 键盘布局 选项 ctrl位置 
+
+
+-----------------------
+查看包的版本信息
+apt-cache show libzmq
+-----------------------
+http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
+mongodb
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
+sudo apt-get update
+sudo apt-get install mongodb-10gen
+echo "mongodb-10gen hold" | dpkg --set-selections 查看版本
+
+These packages configure MongoDB using the /etc/mongodb.conf file in conjunction with the control script. You will find the control script is at /etc/init.d/mongodb.
+This MongoDB instance will store its data files in the /var/lib/mongodb and its log files in /var/log/mongodb, and run using the mongodb user account.
+Note If you change the user that runs the MongoDB process, you will need to modify the access control rights to the /var/lib/mongodb and /var/log/mongodb directories.
+You can start the mongod process by issuing the following command:
+sudo service mongodb start
+------------------
+sound card 
+1) make sure alsamixer is installed using synaptic.
+2) open terminal and run alsamixer. Scroll right (cursor keys) to the column called "IEC958 O" [ = IEC958 Output].
+3) If the column shows a small box with "MM" in it, digital output is disabled. Use "m" to toggle it on and it should now show a high-lighted green "00".
+4) If you want analogue output as well (as I do for my mic/headset), then scroll left to the "IEC958 In Monitor" and toggle it on.
+5) exit alsamixer using <Esc>. [not actually sure if this is needed to save the settings, but its what I did!].
+
+--------------------
+pinyin 
+/usr/lib/ibus-sunpinyin/ibus-setup-sunpinyin
+
+-------------
+服务器编码错误
+bash: warning: setlocale: LC_ALL: cannot change locale (en_GB.UTF-8)
+dpkg-reconfigure locales

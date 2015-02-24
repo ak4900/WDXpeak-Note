@@ -1,0 +1,212 @@
+关键词：MySQL命令         
+一、连接MySQL 
+格式： mysql -h主机地址 -u用户名 -d数据库名 -p用户密码
+#（注:u与root可以不用加空格，加了空格也可以，但-p后不能有空格，空格也算密码中的一个字符）
+
+二、修改密码
+a)格式：mysqladmin -u用户名 -p旧密码 password 新密码
+例1：mysqladmin -uroot -p password ab12 #注：因为开始时root没有密码，所以-p旧密码一项就可以省略了。
+mysqladmin -uroot -pab12 password djg345
+
+b)直接修改user表的root用户口令：
+mysql> user mysql;
+mysql> update user set pasword=password('21century') where user='root';
+mysql> flush privileges;
+#注：flush privileges的意思是强制刷新内存授权表，否则用的还是缓冲中的口令。
+
+三、增加新用户。（注意：和上面不同，下面的因为是MySQL环境中的命令，所以后面都带一个分号作为命令结束符）
+格式：grant select on 数据库.* to 用户名@登录主机 identified by "密码"
+grant all on *.* to scott@localhost identified by 'tiger';
+flush privileges;
+
+四 命令
+1、显示数据库列表：
+show databases;
+
+2、显示库中的数据表：
+use mysql；／／打开库，学过FOXBASE的一定不会陌生吧
+show tables;
+
+3、显示数据表的结构：
+describe 表名;
+desc 表名
+
+4、建库：
+create database 库名;
+
+5、建表：
+create table 表名 (字段设定列表)；
+
+6、删库和删表:
+    drop database 库名;
+drop table 表名；
+drop database if exists school; //如果存在SCHOOL则删除
+
+7、将表中记录清空：
+delete from 表名;
+
+8、显示表中的记录：
+select * from 表名;
+
+###############  自己的一些笔记 ###########
+\s #查看整个mysql状态
+show character set; #查看所有字符标示，在create table后面指定字符集有用
+show variables; #显示配置文件设置,可以用 show variables like xxx 去筛选
+insert into draws(english,chinese) values('a','b'), ('b','c')
+show engines; #查看所有支持的引擎
+
+#建表:
+create table [if not exists] 表名  (
+    字段 类型 属性,
+sss
+)[表类型][字符集]
+
+#创建表或者database时候指定好字符集
+create table xxx()engine=innodb default character set utf8 collate utf8_general_ci #!!!!
+create database haha default character set utf8 collate utf8_general_ci;
+
+#数值型:
+# 名  正负  无符号(0开始) 字节
+tinyint # -128~127  0～255 1字节
+smallint # -32768 ~32767 0~65535 2字节
+mediumint #           0~16777215 3字节
+int # -2147483048 4字节
+bigint #-922337203685477285808  8字节
+float #4字节
+double #8字节
+decimal #12字节
+
+#字符型
+char
+varchar
+text #mediumtext longtext
+blob #二进制数据 longblob
+
+#日期型
+date #yyyy-mm-dd
+time #hh:mm:ss
+datetime #:yyyy-mm-dd hh:mm:ss
+timestamp #yyyymmddhhmmss
+year #yyyy
+
+#字段属性
+unsigned #不用负数
+zerofill #前导0自动补齐
+auto-increment #自动递增
+null (not null) #设定
+default 
+
+#索引
+创建索引
+create index 索引名 on 表名(字段1,字段2)
+用alter的方法创建索引:
+alter table table_name add index index_name (column_list) ;
+alter table table_name add unique (column_list) ;
+alter table table_name add primary key (column_list) ;
+
+在建表时也可以加入 index 索引名(字段1,字段2)
+索引是增加了读的速度
+
+查看索引
+show keys from 表名;
+show index from 表名;
+
+删除索引
+drop index index_name on table_name ;
+alter table table_name drop index index_name ;
+alter table table_name drop primary key ;
+
+删除字段
+alter table table_name drop column column_name;
+
+#表类型
+Myisam #全文索引,快读,不支持事务
+innodb #支持外间,占用空间大,支持事务
+create table()engine=innodb; #建表时指定引擎
+
+#字符集 !!!!
+show variables like utf8
+在和客户端交互时，可以输入set names utf8，一次就可以设置好交互的字符
+
+#修改database字符集#
+alter database fuck character set utf8;
+
+#更改服务端#
+mysqldump -u x -p --default-character-set=utf8
+
+##########################################
+三、一个建库和建表以及插入数据的实例
+drop database if exists school; //如果存在SCHOOL则删除
+create database school; //建立库SCHOOL
+use school; //打开库SCHOOL
+create table teacher //建立表TEACHER
+(
+    id int(3) auto_increment not null primary key,
+    name char(10) not null,
+    address varchar(50) default ’深圳’,
+    year date
+); 
+
+//以下为插入字段
+insert into teacher values(’’,’glchengang’,’深圳一中’,’1976-10-10’);
+insert into teacher values(’’,’jack’,’深圳一中’,’1975-12-23’);
+
+注：在建表中（1）将ID设为长度为3的数字字段:int(3)并让它每个记录自动加一:auto_increment并不能为空:not null而且让他成为主字段primary key
+（2）将NAME设为长度为10的字符字段
+（3）将ADDRESS设为长度50的字符字段，而且缺省值为深圳。varchar和char有什么区别呢，只有等以后的文章再说了。
+（4）将YEAR设为日期字段。
+如果你在MySQL提示符键入上面的命令也可以，但不方便调试。你可以将以上命令原样写入一个文本文件中假设为school.sql，然后复制到c:\\下，并在DOS状态进入目录\\mysql\\bin，然后键入以下命令： mysql -uroot -p密码 < c:\\school.sql
+
+
+五、备份数据库
+1、mysqldump --opt school>school.bbb
+
+mysqldump --opt school>school.bbb
+
+导出meeting数据库：
+mysqldump -uroot -p21century meeting > db_meeting.sql
+
+导人dbname数据库:
+mysqldump -uroot -p21century dbname < xxx.sql
+或者直接用mysql也行:
+mysql -uroot -p21century dbname < xxx.sql
+
+或在里头使用 source xxx.sql
+
+
+6、给表改名:
+    RENAME TABLE ztemp TO ztemp4;
+
+7、修改字段属性：
+ALTER TABLE bbabase CHANGE news_id id VARCHAR(5) NOT NULL;
+
+8、在表中的content后增加一字段：
+ALTER TABLE bbabase ADD leave_time DATETIME NOT NULL AFTER
+
+----------------------
+update 多条并每条指定条件的技巧
+update article
+    set visit=( case id
+	when 1 then 10
+	when 2 then 30
+	end
+    )
+where id in (1,2) //最后这句where很关键，不然其他条目的visit会变成null
+
+----------------------
+inner join, outer join(left right)区别,full join, cross join（注意条件用on 不用 where）
+假设users has_many articles through user_id
+1）inner join就是我们一般常用的表连接
+select * from users inner join articles on users.id = articles.user_id;
+上面这个例子的inner join可以省略
+
+2) outer join会与full或left或right连用
+select users.name, articles.title from users left outer join articles on users.id = articles.user_id;
+这里left outer join的意思是，左边表users表不满足条件的项也会出现在结果中，也就是左边users假如没有articles的也会出来,没有的字段用null占住,举一反三，right的话就是满足右表articles, full的话就是所有不满足的项都出来，排列在满足条件的项下面
+name  title
+jas   null
+
+3)cross join
+交叉联接（cross join）执行两个表的笛卡尔积（就是把表A和表B的数据进行一个N*M的组合）。也就是说，它匹配一个表与另一个表中的每一行；我们不能通过使用ON子句在交叉联接指定谓词，虽然我们可以使用WHERE子句来实现相同的结果，这是交叉联接基本上是作为一个内部联接了。
+
+没啥用
