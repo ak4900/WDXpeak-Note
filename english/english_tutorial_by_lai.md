@@ -33,15 +33,15 @@
 	- L29 Job Interviews
 	- L30 Emergency Calls
 - 中级
-	- L1 Rome Wasn't Built in a Day
-	- L2 How to Improve Your English
-	- L3 The City of Song
-	- L4 He Who Hesitates Is Lost
-	- L5 Bungee Jumping
-	- L6 Nothing Ventured, Nothing Gained
-	- L7 Doctor Death
-	- L8 No hearts or No Brains?
-	- L9 Be Thoughtful
+	- L01 Rome Wasn't Built in a Day
+	- L02 How to Improve Your English
+	- L03 The City of Song
+	- L04 He Who Hesitates Is Lost
+	- L05 Bungee Jumping
+	- L06 Nothing Ventured, Nothing Gained
+	- L07 Doctor Death
+	- L08 No hearts or No Brains?
+	- L09 Be Thoughtful
 	- L10 What Are Friends For?
 	- L11 Power without Pollution
 	- L12 Stop the Noise
@@ -182,6 +182,19 @@
 	- L147 Let Experience Be the Teacher
 	- L148 What a Terrible Experience
 - 高级
+	- L01 Let's Visit New York
+	- L02 The Amish
+	- L03 Indoor Pollution
+	- L04 Pizza, Please!
+	- L05 Hot Animals around the World: Chameleons
+	- L06 Table Manners in Anglo-America
+	- L07 The Delights of South Island
+	- L08 Ireland's Contribution to English
+	- L09 Why Is Basketball So Popular
+	- L10 Marlena Smalls and The Gullah: The Revival of a Unique Community
+	- L11 English in the Caribbean
+	- L12 The Louvre: The World's Best Museum?
+	- L13 The Ivy League Schools: Excellence in Education
 
 <!-- /MarkdownTOC -->
 
@@ -415,17 +428,17 @@
 
 # 中级
 
-## L1 Rome Wasn't Built in a Day
+## L01 Rome Wasn't Built in a Day
 
 + It's up to you.
 + speak up 大声说话；开口说出来
 
-## L2 How to Improve Your English
+## L02 How to Improve Your English
 
 + How are you doing in...
 + How come + 主语 + 动词... 为什么？
 
-## L3 The City of Song
+## L03 The City of Song
 
 + pastime 消遣，娱乐
 + birthplace 诞生地；发源地
@@ -433,32 +446,32 @@
 + 事物 + fill the air 充满着某物
 + be alive with... 充满...
 
-## L4 He Who Hesitates Is Lost
+## L04 He Who Hesitates Is Lost
 
 + have the time of one's life 度过某人一生最愉快的时光
 + As the saying goes, "..."
 + As the saying puts it, "..."
 
-## L5 Bungee Jumping
+## L05 Bungee Jumping
 
 + guts 勇气(恒用复数)
 
-## L6 Nothing Ventured, Nothing Gained
+## L06 Nothing Ventured, Nothing Gained
 
 + feel as free as a bird
 
-## L7 Doctor Death
+## L07 Doctor Death
 
 + end one's life
 + immoral 不道德的
 + mercy killing 安乐死
 
-## L8 No hearts or No Brains?
+## L08 No hearts or No Brains?
 
 + Where there is life, there is hope
 + have no heart 铁石心肠
 
-## L9 Be Thoughtful
+## L09 Be Thoughtful
 
 + remark 言论 The secretary made a favorable remark about her boss
 + spoil 破坏，变坏
@@ -1235,3 +1248,173 @@
 --- 
 
 # 高级
+
+## L01 Let's Visit New York
+
++ by far the 最高级形容词 名词 最...的...
++ This is by far the most wonderful thing that has ever happened to me.
++ cosmopolitan 世界性的 来自世界各地的
++ abound 大量存在 充满
++ mecca 向往的地方
++ hail from 来自于
+
+## L02 The Amish
+
++ out of choice 出于自由选择
++ wrack 折磨 损坏
++ splinter group (从大团体中分裂出来的)小派别
++ conservative 保守的
++ to make a long story short 长话短说
++ peculiar 特有的
++ spring up 兴起 出现
++ enduring 持久的
++ endearing 可爱的
+
+## L03 Indoor Pollution
+
++ garbage dump 垃圾场
++ side effect 副作用
++ splash 溅起 飞溅
++ agitate 搅动 摇动
++ adversely 不利地
++ perspective 正确判断 合理观察
++ propane 丙烷 瓦斯
++ carbon monoxide 一氧化碳
++ carbon dioxide 二氧化碳
++ particulate 微粒状物质
++ give off 发散 放出
++ telecommunications 电信
++ peripheral (电脑的)周边设备
++ ventilation 通风设备
++ come to light 显露 披露 被发现
++ There is no place like home.
+
+## L04 Pizza, Please!
+
++ restaurateur 餐厅老板
++ ethnicity 血统
++ paternity 父系 身份起源
++ assorted 各种各样混杂在一起的
++ be no exception 没有例外
+
+## L05 Hot Animals around the World: Chameleons
+
++ chameleon 变色龙
++ catch the eye of 引起注意
++ catch the fancy of 投某人心意
++ perennial 永久的 持久不断的
++ box-office hit/bomb 非常卖座/票房惨淡的电影
++ bizarre 怪异的
++ turret 炮塔
++ simultaneous 同时发生的
++ come in handy 派上用场
++ scaly 有鳞的
++ prehensile 能卷缠和抓牢的
++ sylvan 森林的
++ inventory 表 目录 清单
++ blend into 与...融合
++ flourish 繁衍 活跃
++ terrarium 小动物饲养园
+
+## L06 Table Manners in Anglo-America
+
++ saucer 小茶碟
++ steer 使前进
++ the rocks and reefs 重重障碍
++ stuffy 沉闷的
++ etiquette 礼节 礼仪
++ It's the thought that counts. 礼轻情意重
++ customary 管理的
++ cutlery 刀叉类餐具
+
+## L07 The Delights of South Island
+
++ antipodes 对跖(zhi二声)地(地球上正相对的两个地区)
++ spectacularly 壮观地 华丽地
++ quaint 古怪有趣的
++ balmy 和煦的 温和的
++ traverse 横越 穿过 横贯
++ scuba diving 水肺潜水
++ snorkeling 浮潜
++ crave 渴望 热望
++ outpost 边远地区
++ thumping 砰砰响的
++ entice 引诱 诱惑
++ alluring 诱惑人的
++ make a point of 必定/照例...
+
+## L08 Ireland's Contribution to English
+
++ lexicon 全部词汇
++ be second to none 无出其右
++ virtually 几乎 简直
++ pillar 巨擘 中坚分子
++ punctuate 使插入
++ reckoning 计算
++ prose satirist 散文讽刺作家
++ satirize 讽刺 讥讽
++ constellation 星座 星群
++ suffice 足够
+
+## L09 Why Is Basketball So Popular
+
++ be mobbed by 被...围攻
++ run for 竞选
++ ballyhooed 大肆宣传的 哗众取宠的
++ commendable 可称赞的
++ stratospheric 同温层的
++ concerted 协同的 一致的
++ soar 升高 高涨
++ dedicated 忠诚的 热忱的
++ sprout 萌芽
+
+## L10 Marlena Smalls and The Gullah: The Revival of a Unique Community
+
++ ring a bell 唤起记忆 听来耳熟
++ troupe 歌舞团 剧团
++ anachronistic 过时的 落伍的
++ vibrant 生气蓬勃的
++ hangover 残留物
++ descendant 后裔 后代
++ ethnic 种族的
++ acappella 不用乐器伴奏
++ be nothing short of 不缺少
++ render 演奏 演出
++ intersperse (with) 点缀
+
+## L11 English in the Caribbean
+
++ homogenous 同类的 同质的
++ lilt 轻快的旋律
++ reggae 雷盖
++ syncopate 切分(音乐的节拍)
++ be reminiscent of 使人想起
++ patois 方言 土话
++ prowess 杰出的才能 本领
++ renown 声誉 名望
++ disposition 性情
++ attune 使适应
++ cadence 抑扬顿挫
+
+## L12 The Louvre: The World's Best Museum?
+
++ as a consequence of 由于
++ amassing 积聚 搜罗
++ paramount 最重要的
++ unsurpassed 无法超越的
++ the Renaissance 文艺复兴时期
++ bucolic 乡村的
++ tourist attraction 观光胜地
++ prestigious 有名望的
++ connoisseur 鉴赏家 行家
+
+## L13 The Ivy League Schools: Excellence in Education
+
++ namesake 依某人名字取名者
++ tertiary 第三的
++ lineage 血统 世系
++ exert 发挥 运用
++ garner 收藏 收集
++ be endowed with 天生具有
++ make the grade 成功 达到水准
++ 
