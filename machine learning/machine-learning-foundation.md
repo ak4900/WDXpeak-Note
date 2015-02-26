@@ -68,4 +68,13 @@ Hsuan-Tien Lin htlin@csie.ntu.edu.tw
     * 找到 wt 的一个分类错误的点(xn(t), yn(t)), 即 sign(wt^T xn(t)) 不等于 yn(t)
     * 试着去改正这个错误 wt+1 <- wt + yn(t)xn(t) until no more mistakes
     * 返回最后得到的 w 为 g, 这个 w 称为 w(pla)
-    * 
++ Cyclic PLA
+    * For t = 0,1,...
+    * find the next mistake of wt called (xn(t), yn(t)), aka sign(wt^T xn(t)) 不等于 yn(t)
+    * correct the mistake by wt+1 <- wt + yn(t)xn(t)
+    * until a full cycle of not encountering mistakes
+    * 可以采用标准的遍历，或者也可以是预先计算好的随机顺序
++ Linear Separability 线性可分
+    * if PLA halts, (necessary condition) D allows some w to make no mistake
+    * 有一条线可以区分数据，即有解，有解的时候 PLA 算法才会停
++ TODO 2-3
