@@ -195,6 +195,31 @@
 	- L11 English in the Caribbean
 	- L12 The Louvre: The World's Best Museum?
 	- L13 The Ivy League Schools: Excellence in Education
+	- L14 Alpine Treasures
+	- L15 Webcams: Electronics Tool or the End of Privacy
+	- L16 When Is the Best Time
+	- L17 Precious and Semi-Precious Stones
+	- L18 Hot Animals Around the World: The Koala
+	- L19 Asian Americans
+	- L20 Scourge of Plains: Tornadoes
+	- L21 What's So Big about Moby Dick?
+	- L22 Boston: Health of American Culture
+	- L23 Paper's Long March
+	- L24 Coffe or Tea Break?
+	- L25 Earthquake Precautions
+	- L26 Berries: Nature's Natural Desserts
+	- L27 The Global Proliferation of English
+	- L28 Thips on English Body Language
+	- L29 The Fundamentals of Public Speaking
+	- L30 New Orleans: Birthplace of Jazz
+	- L31 The Fine Art of Giving
+	- L32 Professional Telephone Etiquette
+	- L33 Did You Remember Your Tickets
+	- L34 English Small Talk Topics: What Is OK and What Is Not
+	- L35 Hot Animals around the World: The Panda
+	- L36 Vancouver: Asia's Newest City
+	- L37 The Germanic Languages
+	- L38 Learning How to Apologize
 
 <!-- /MarkdownTOC -->
 
@@ -1417,4 +1442,276 @@
 + garner 收藏 收集
 + be endowed with 天生具有
 + make the grade 成功 达到水准
-+ 
+
+## L14 Alpine Treasures
+
++ tightfitting 紧身的
++ bodice 女人穿的紧身上衣
++ botanical 植物的
++ ubiquitous 到处都有的 无处不在的
++ edelweiss 薄雪草
++ remembrance 回忆 纪念
++ take pride in 以...为傲
++ embroidery 刺绣
++ authenticity 真实 真迹
++ dairy product 乳制品
+
+## L15 Webcams: Electronics Tool or the End of Privacy
+
++ sinister 邪恶的
++ unobtrusively 客气地 不引人注目的
++ acoustics 音响学
++ legitimate 合理的
++ sleaxy 堕落的
++ voyeur 八卦佬
++ espionage 间谍活动
++ surreptitiously 鬼鬼祟祟地 神不知鬼不觉地
++ paranoid 疑神疑鬼的
++ devious 诡诈的 狡诈的
+
+## L16 When Is the Best Time
+
++ continuum 连续体
++ penchant 倾向 爱好
++ be held in high esteem 受到尊敬
++ border on 近似 接近
++ be out of line 不妥当 不合适
+
+## L17 Precious and Semi-Precious Stones
+
++ flatter 谄媚 拍马屁
++ suffice it to say 只要说...就够了
++ carat 克拉
++ translucence 半透明
++ pendant 垂饰
++ auction 竞卖 拍卖
++ plummet 垂直或突然地坠下
++ deface 损毁...的外貌
+
+## L18 Hot Animals Around the World: The Koala
+
++ make a fuss 紧张 急躁 大惊小怪
++ make a comeback 卷土重来 东山再起
++ if at all 如果真有其事
++ venture 冒险从事
++ fend for oneself 自谋生计
++ take its/their toll 造成伤亡/损失
++ ravage 蹂躏 荼毒 破坏
+
+## L19 Asian Americans
+
++ catch sb. by surprise 令某人大吃一惊
++ Hispanic 西班牙裔美国人
++ topple 使倒塌
++ minority 属于少数派的
++ surge 激增
++ demographer 人口统计学家
++ multi-ethnic 多种族的
++ be home to 是...的生长地
++ encompass 包括 包含
+
+## L20 Scourge of Plains: Tornadoes
+
++ scourge 灾难 祸害
++ oppressive 沉闷的 闷热的
++ murmur 低语
++ pitch 颠簸 向下倾斜
++ suck up 吸取
++ hurl 用力投掷
++ cacophony 刺耳的声音
++ perish 死亡 灭亡
++ in excess of 超过
++ pulverized 毁坏的
++ at its worst 在最不理想的状况下
+
+## L21 What's So Big about Moby Dick?
+
++ twilight 黄昏 曙光
++ blockbuster 轰动的人或事情
++ make waves 兴风作浪
++ lukewarm 冷淡的
++ have a keen eye for 对...有独到的眼光
++ tenor 进程 一般趋势
++ untrammeled 未受束缚的 不受限制的
++ capitalism 资本主义
++ crush 镇压 征服
++ exuberance 丰富 繁荣
++ harbinger 先驱者
++ enthrall 使...入迷
++ exhilarating 使人兴奋的
+
+## L22 Boston: Health of American Culture
+
++ tuck 使隐藏
++ Declaration of Independence 美国独立宣言
++ adherence 坚持 固定
++ dicta 意见 断言
++ huddle 挤作一团 聚成一堆
++ cater to 投合 迎合
++ state-of-the-art 使用最先进技术的
++ venue 举办地点
++ high-brow 被认为文化修养高的
++ be a must for 对...而言是必须的
+
+## L23 Paper's Long March
+
++ heady 不可一世的
++ technocrat 科技主义者
++ papyrus 纸草
++ forebear 祖先 前身
++ cellulose 纤维质
++ deficiency 欠缺 不足
++ fell 砍伐
+
+## L24 Coffe or Tea Break?
+
++ spontaneous 自然发生的
++ institutionalized 成惯例的
++ substantial 丰富的 多的
++ customary 习惯上的
++ consternation 惊慌
++ stripe 种类 型
+
+## L25 Earthquake Precautions
+
++ slam against 猛力撞上
++ groggily 酒醉地 东倒西歪地
++ wend one's way 前进 行走
++ lumber 笨拙地向前走
++ drift off 睡着 渐入梦乡
++ contemplate 考虑
++ rattle 嘎嘎作响
++ pane 玻璃窗
++ heave 上下晃动
++ shudder 颤动
++ temblor 地震
++ subside 平息 减弱
++ devastate 摧毁 破坏
++ coverage 报道
++ cataclysmic 巨变的
+
+## L26 Berries: Nature's Natural Desserts
+
++ brew 冲好 泡开
++ sentry 哨兵 岗哨
++ sprinkle 撒
++ mound 堆 小山
++ concoction 调制品
++ asparagus 芦笋
++ forage 搜寻(粮食)
++ condiment 调味品 佐料
++ gelatin 石花菜 植物胶
++ syrup 糖浆
++ hit the spot (食物/饮料)令人满意 恰到好处
+
+## L27 The Global Proliferation of English
+
++ proliferation 扩散 激增
++ stimulus 刺激 鼓励
++ be in full bloom 盛开
++ imperialism 帝国主义
++ engender 酿成 产生
++ surplus 剩余 过剩
++ the dispossessed 被迫失去一切的人
++ cede 让与 放弃
+
+## L28 Thips on English Body Language
+
++ bystander 旁观者
++ go sour 变坏 出差错
++ akimbo 两手叉腰地
++ defiant 挑衅的 违抗的
++ stance 姿势 态度
++ The opposite is true.
++ devious 不坦诚的 不率直的
++ misinterpret 曲解 误解
+
+## L29 The Fundamentals of Public Speaking
+
++ deliver a speech 发表演讲
++ scenario 脚本 可能出现的情节
++ menace 威胁 威吓
++ tongue-in-cheek 以玩笑看待的
++ kinky 古怪的 怪异的
++ attentively 专心地
++ taxing 辛苦的 吃力的
++ submissive 服从的 恭顺的
++ accomplished 有才艺的 有造诣的
++ savvy 有专业知识的
++ profound 深奥的 高深的
+
+## L30 New Orleans: Birthplace of Jazz
+
++ crescent 新月 弦月
++ riparian 河滨上的
++ wind down 平静下来
++ resuscitate 使复苏
++ improvise 即兴演出
++ spawn 大量出现 酿成
+
+## L31 The Fine Art of Giving
+
++ beam (at) 微笑
++ thrust 攻击 刺入
++ disclose 透露 揭发
++ upscale 生活水准高的 上流的
++ poise 沉着处世的能力
+
+## L32 Professional Telephone Etiquette
+
++ discourteous 不礼貌的
++ prospects 希望 前途(恒为复数)
++ etiquette 礼仪 礼节
++ put...into practice 把...付诸实行
+
+## L33 Did You Remember Your Tickets
+
++ sitcom 情景喜剧
++ rule of thumb 根据经验的做法
+
+## L34 English Small Talk Topics: What Is OK and What Is Not
+
++ acquaintance 认识的人
++ broach 提及 提到
++ taboo 禁忌
++ grunt 咕噜声 怨言
++ tactfully 圆滑地
++ shoot the breeze 闲聊 瞎扯
++ probe 探索 探究
++ indiscretion 言行不检
++ get the upper hand 占上风
+
+## L35 Hot Animals around the World: The Panda
+
++ stand out 突出 杰出
++ subsist on 靠...为生
++ alternate with 夹杂着
++ endear A to B 使 A 受到 B 的喜爱
++ be anything but 绝不是
++ be few and far between 少之又少
++ razor-thin 渺茫的
++ encroachment 侵犯 侵占
++ strive to 努力要...
+
+## L36 Vancouver: Asia's Newest City
+
++ manic 狂躁的
++ serene 宁静的
+
+## L37 The Germanic Languages
+
++ extant 现存的
++ far-reaching (影响)深远的
+
+## L38 Learning How to Apologize
+
++ see things straight 将事情理清
++ elicit 引出
++ tardiness 迟到
++ rectify 改正 矫正
++ ameliorate 改善
++ exasperate 激怒
++ unrequited 无回报的
++ unrequited love 单恋
++ heartfelt 诚挚的
++ lament 哀悼
