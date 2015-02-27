@@ -39,4 +39,28 @@
 
 ## 发现群组 Discovering Groups
 
+数据聚类(data clustering) 用以寻找紧密相关的事、人或观点，并将其可视化的方法。
+
+### 监督学习和无监督学习
+
++ 利用样本输入和期望输入来学习如何预测的技术被称为监督学习法(supervised learning methods)，例如神经网络、决策树、向量支持机和贝叶斯过滤。
++ 聚类是无监督学习(unsupervised learning)的一个例子。还有非负矩阵因式分解(non-negative matrix factorization)和自组织映射(self-organizing maps)
+
+### 单词向量 Word Vectors
+
+为聚类算法准备数据的常见做法是定义一组公共的数值型属性，然后利用这些属性对数据项进行比较。例如可以根据内容对博客用户进行分类
+
+### 分级聚类
+
+通过连续不断地将最为相似的群组两两合并，来构造出一个群组的层级结构。其中的每个群组都是从单一元素开始的。通常，待分级聚类完成之后，我们可以利用树状图(dendrogram)来展现所得到的结果。
+
+但是这种聚类的计算量惊人，很多时候 Kmeans 是一个更好的方法。
+
++ 先对笔记进行分词，然后聚类找到风格，又或者是自动提取出关键字
++ Beautiful Soup 用来处理网页
++ 多维缩放技术(multidimensional scaling) 缩放的过程中一些信息可能会丢失掉，但缩放后的结果会更加有助于我们理解算法的原理
+
+## 搜索与排名 Searching and Ranking
+
+
 
