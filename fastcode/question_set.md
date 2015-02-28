@@ -65,3 +65,21 @@
 + How to optimize for instruction mix?
 + What is occupancy? How to model/measure it?
 + How to use the code profiler with CUDA?
+
+## Module 3.3
+
++ What are the important properties of a Map function?
++ What are the important properties of a Reduce function?
++ What are the important properties of s Scan function?
++ How to compact an array in a data-parallel way?
++ How to find unique elements in an array in a data-parallel way?
+
+## Module 3.4
+
++ What are parallel software patterns?
++ What are the three goals the software patterns aim to achieve?
++ What is a software architecture?
++ How is it important for writing fast code?
++ What the the five categories of patterns in OPL?
++ What are the nine sections in an OPL pattern?
++ What are the areas of consideration for your Term Project?
