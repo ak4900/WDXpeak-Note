@@ -28,7 +28,7 @@ Allows instruction re-ordering, register-renaming
 
 Locality, Temporal Locality, Spatial Locality
 
-Compulsory misses, Capacity misses, conflict misses
+Compulsory misses, Capacity misses, Conflict misses
 
 ## Concurrency vs Parallelism
 
