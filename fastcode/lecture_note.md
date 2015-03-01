@@ -123,9 +123,11 @@ Capturing the opportunity to run faster when more than one thread of instruction
 + SMT-Level: OS abstract it to core-level parallelism
 + Core-Level: Using threads to describe work done on different cores
 
-## Roofline Model
+## False Sharing
 
-Attainable Performance(ij) = min(FLOP/s with Optimization(1-i), AI*Bandwidth with Optimization(1-j)
++ Cache loads and stores work with 4-16 word long cache lines(64B for Intel)
+    * If two threads are wrting to the same cache line, conflicts occurs
++ Even if the address differs, one will still suffer performance penalty
 
 ## Optimization Categorization
 
@@ -139,6 +141,45 @@ Attainable Performance(ij) = min(FLOP/s with Optimization(1-i), AI*Bandwidth wit
 ## Measuring Arithmetic Intensity
 
 Arithmetic Intensity = (# of FP Operations to run the program) / (# of Bytes Accessed in the Main Memory)
+
+Arithmetic Intensity = FLOPs / (Allocations + Compulsory + Conflict + Capacity)
+
+## Roofline Model
+
+Attainable Performance(ij) = min(FLOP/s with Optimization(1-i), AI*Bandwidth with Optimization(1-j)
+
+Plot on log-log scale
+
+Lantency -> Runtime
+
+Throughput -> Performance
+
++ Throughput
+    * Usually measured in floating point operations per second(FLOPS)
+    * Floating point operations = addition + multiplication
+
+Higher Performance != Shorter Runtime
+
+True Arithmetic Intensity (AI) ~ Total Flops / Total DRAM Bytes
+
++ Arithmetic intensity is ultimately limited by compulsory traffic
++ Arithmetic intensity is diminished by conflict or capacity misses
+
+## Data: Three Classes of Locality
+
++ Spatial Locality
+    * data is transferred from cache to registers in words
+    * However, data is transferred to the cache in 64-128 Byte lines
+    * using every word in a line maximizes spatial locality
+    * transform data structures into struct of arrays(SoA) layout
++ Temporal Locality
+    * reusing data(either registers or cachelines) multiple times
+    * amortizes the impact of limited bandwidth
+    * transform loop s or algorithms to maximize reuese.
++ Sequential Locality
+    * Many memory address patterns access cache lines sequentially
+    * CPU's hardware stream prefetchers exploit this observation to hide speculatively load data to memory lantency
+    * Tansform loops to generate long, unit-stride accesses 
 
 ## GPU is an Accelerator
 
@@ -156,6 +197,14 @@ Arithmetic Intensity = (# of FP Operations to run the program) / (# of Bytes Acc
 
 ## Why Warps
 
+Each Fermi core can maintain 48 warps of architecural context.
+
+Each warp manages a 32-wide SIMD vector worth of computation
+
+With ~20 registers for each trhead:
+
+4(Bytes/register) x 20(Registers) x 32(SIMD lanes) x 48 (Warps) = 128KB per core x 16 (core) = 2MB total of register files
+
 + Software abstract info hid an extra level of architecture complexity
 + A 128KB register file is a large memory (takes more than one cycle)
 + Hardware provide 160wide physical SIMD units, half-pump register files
@@ -172,7 +221,7 @@ Arithmetic Intensity = (# of FP Operations to run the program) / (# of Bytes Acc
 + Fully exposed the concurrency in the application
 + The HW/Runtime makes the decision to selectively sequentialize the execution as necessary
 
-## Threads
+## !! Threads
 
 + Threads are the computation performed in each SIMD lane in a core
     + CUDA provides a SIMT programming abstraction to assist users

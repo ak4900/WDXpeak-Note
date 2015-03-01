@@ -42,7 +42,7 @@ Four Parts:
 
 Three areas: memory, instruction and scheduling.
 
-Tools: CUDA Visual Profiler
+Tools: CUDA Visual Profiler / CUDA Occupancy Calculator
 
 ## Code Interpretation Questions
 
