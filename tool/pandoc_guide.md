@@ -24,7 +24,12 @@
 
 这个命令不但会把 css 文件嵌入到 html 中，也会把所有外部文件压缩进单个 html 文件中
 
+### 转换成 Epub
+
+    pandoc mybook.txt -o mybook.epub
+
 ### 转换成 doc
+
     pandoc -f markdown -t docx file.md -o file.docx
 
 ### 转换成 PPT

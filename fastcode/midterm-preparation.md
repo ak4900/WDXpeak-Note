@@ -57,9 +57,9 @@ First part
 Second part
 
 + a) loads: 4(line 17, 18, 21 x 2) stores: 1(line 30)
-+ b) for each thread block: 1+1+128+64+32+16+8+4+2+1
-    * 1 from line 21
-    * 1 from line 30
++ b) for each thread block: 256+256+(128+64+32+16+8+4+2+1)x3
+    * 1 from line 21, need to times the number of threads
+    * 1 from line 30, need to times the number of threads
     * other from `for loop`
 + c) 5 iterations have branch divergance. Branch Divergance only appears in one warp which has two instruction paths. So for the size of 128, 64, 32, every thread in one warp has same path, thus no branch divergance. But for the size of 16, 8, 4, 2, 1, the threads in one warp have two different paths.
 + d) Copy `d_A`, `d_B` and `d_C` from the global memory to the shared memory. Suppose the cacheline can store n elements, using the shared memory can eliminate about (n-1)/n of the accesses.
