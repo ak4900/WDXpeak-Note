@@ -17,6 +17,14 @@ Teachers
 
 Instructions in a sequence that can be computed at the same time.
 
++ Advantages
+    * No changes in sequential software necessary
++ Disadvantages
+    * Significantly more complex processor architecture
+    * Longer to design the processor
+    * Longer to verify the correctness of the processor design
+    * Consumes more energy than simple in-order processor
+
 ## Out-of-order Pipelines
 
 Allows instruction re-ordering, register-renaming
@@ -30,9 +38,28 @@ Locality, Temporal Locality, Spatial Locality
 
 Compulsory misses, Capacity misses, Conflict misses
 
++ Advantages
+    * Power-efficient wya to improve instruction throughput
+    * Exploitable in many compute-intensive applications
++ Disadvantages
+    * Explicit representation in vector instructions
+    * Software requires re-compilation to take advantage of new SIMD capabilites.
+    * May require hand-tuning to expoit full benefit
+
+## Simultaneous multithreading
+
+Capturing the opportunity to run faster when more than one thread of instructions are available.
+
++ Advantages
+    * Gain power-efficiency by increase processor pipeline utilization
++ Disadvantages
+    * Requires multiple threads available
+    * May trigger confilicts in shared cache during execution
+    * Does not improve latency of each thread
+
 ## Concurrency vs Parallelism
 
-+ Concurrency: We expose concurrency in our application.
++ Concurrency: We expose concurrency in our application
 + Parallelism: We exploit parallelism in our platform
 
 ## The process of problem solving:
@@ -59,6 +86,12 @@ Compulsory misses, Capacity misses, Conflict misses
 + Issues
     + Worst case running time is super-polynomial
     + Approximation can be arbitrarily bad
+
+## How to write fast code
+
++ **Expose** concurrencies in applications and algorithms
++ **Exploit** parallelisms on application platform
++ **Explore** mapping between concurrency and parallelism
 
 ## The phases(kmeans)
 

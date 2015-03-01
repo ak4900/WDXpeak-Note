@@ -1,21 +1,49 @@
 ## Module 1.2
 
 + What are the differences between multicore and manycore processors?
+    * Multicore: yoke of oxen. Each core optimized for executing a single thread.
+    * Manycore: flock of chickens. Cores optimized for aggregate throughput, deemphasizing individual performance.
 + What is instruction level parallelism? What is SIMD?
+    * ILP: Instructions in a sequence that can be computed at the same time.
+    * ILP(wiki): a measure of how many of the operations in a computer program can be performed simultaneously
+    * SIMD(wiki): computers with multiple processing elements that perform the same operation on multiple data points simultaneously. data level parallelism. 
 + What is simultaneous multithreading?
+    * a technique for improving the overall efficiency of superscalar CPUs with hardware multithreading. SMT permits multiple independent threads of execution to better utilize the resources provided by modern processor architectures.
 + What are the three metrics for a memory hierarchy?
+    * Capacity: Size, e.g. number of bytes of data
+    * Latency: From start to finish, in units of time, e.g. CPU clock cycles
+    * Throughput: Tasks accomplished per unit time, e.g. GB/s
 + What are the different system granularity?
+    * Remote Procedure Call based Implementations
+    * MPI-based Implementations
+    * Pthread-based Implementations
+    * Multicore Task Queue-based Implementations
+    * Manycore Throughput Optimized Implementations
 + How is this relevant to writing fast code?
 
 ## Module 1.3
 
 + What is the different between concurrency and parallelism?
+    * Concurrency: We expose concurrency in our application
+    * Parallelism: We exploit parallelism in our platform
 + What are the four key elements of the human problem solving process?
+    * Understand the current state
+    * Observe the internal representation
+    * Search among alternatives
+    * Select from a set of choices
 + What are the characteristics of a current algorithm implementation?
+    * Efficiency
+    * Simplicity
+    * Portablility
+    * Scalability
 + What levels of concurrency can be exposed in the kmeans algorithm?
+    * ?
 + What levels of parallelism are available to be exploited?
+    * ?
 + What mapping between concurrency and parallelism can be explored?
-+ How is this relevant to writing fast code?
+    * SIMD & core-level parallelism across data-points
+        - Update membership for each data point sequentially
+        - Histogram computation
 
 ## Module 2.1
 
