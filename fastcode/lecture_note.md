@@ -62,6 +62,25 @@ Capturing the opportunity to run faster when more than one thread of instruction
 + Concurrency: We expose concurrency in our application
 + Parallelism: We exploit parallelism in our platform
 
+Concurrency: A sequence of instructions executes concurrently if they execute independent of each other as if they were executed at the same time.
+
++ They do not need to be executed truly at the same time though.
++ On a single processor computer, multi-tasking systems execute programs concurrently by interleaving their operations such that they appear to execute at the same time.
+
+Parallelism: Instruction streams that execute in parallel actually execute at the same time
+
++ Parallelism allows multiple instructions to be executed at the exact same time
++ Parallelism requires multiple processing units, ranging from small pipeline stages up through multithreaded architectures and multicore and multiprocessing systems
+
+Difference
+
++ Time
++ In concurrency, at any given time, a single operation is occurring.
+    * High clock rates and clever interleaving can give the illusion of parallelism
+    * All modern desktop/server OS give you this. Embedded, maybe not.
++ In parallelism, at a given point in time, multiple operations are occurring.
+    * This is important to distinguish. Parallelism means it is extremely difficult (often impossible) to predict the interleaving of instructions.
+
 ## The process of problem solving:
 
 + Understand the current state
@@ -189,11 +208,58 @@ True Arithmetic Intensity (AI) ~ Total Flops / Total DRAM Bytes
     + Some memory intensive applications (Aggregate memory bandwidth is higher)
     + Advantage diminishes when task granularity becomes too large to fit in shared memory
 
+## GPU Programming Model: Stream
+
++ Stream -> kernel -> stream
++ Streams: An array of data units
++ Kernels
+    * Take streams as input, produce streams at output
+    * Perform computation on streams
+    * Kernels can be linked together
+
 ## CUDA: Compute Unified Device Architecture
 
 + Integrated host + device app C program
 + Serial or modestly parallel parts in host C code
 + Highly Parallel parts in device SPMP kernel C code
+
+## CUDA Programming Model
+
++ Executing kernel functions within threads
++ Threads organization
+    * Blocks and Grids
++ Hardware mapping of threads
+    * Computation-to-core mapping
+        - Thread -> Core
+        - Thread blocks -> Multi-processors
++ Thread organization
+    * an array of threads -> block
+    * an array of blocks -> grid
++ All threads in one grid execute the same kernel
++ Grids are executed sequentially
++ Thread Cooperation
+    * Threads within a block
+        - Shared memory
+        - Atomic operation on Share memory & global memory
+        - Barrier
+    * Threads between blocks
+        - Atomic operation on global memory
+    * Threads between grids
+        - NO WAY!
++ Thread Mapping and Scheduling
+    * A grid of threads takes over the whole device
+    * A block of threads is mapped on one multi-processor
+        - A multi-processor can take more than one blocks.(Occupancy)
+        - A block can not be preempted until finish
+    * Threads within a blocks are shceduled to run on multi-processors
+    * Threads are grouped into warps(32) as scheduling units
++ Parallel Memory Sharing
+    * Local Memory: per-thread
+    * Shared Memory: per-Block
+    * Global Memory: per-application
++ Shared Memory
+    * Each Multi-processor has 32KB of Shared Memory - 32 banks of 32bit words
+    * Visible to all threads in a thread block
 
 ## Why Warps
 
@@ -254,6 +320,12 @@ With ~20 registers for each trhead:
     + In Fermi, 48 warps of context are maintained per core
     + In Fermi, each thread block can have up to 1024 threads
 
+## Synchronization
+
++ `__syncthreads()`
+    * waits until all threads in the thread block have reached this point and all global and shared memory accesses made by these threads prior to `__syncthreads()` are visible to all threads in the block
+    * used to coordinate communication between the threads of the same block
+
 ## Compilation
 
 + Any source file containing CUDA language extensions must be compiled with NVCC
@@ -268,7 +340,7 @@ With ~20 registers for each trhead:
 
 ## SOA vs AOS
 
-Struct of Arrays
+Struct of Arrays: 一共只有一个 struct
 
     typedef struct
     {
@@ -289,6 +361,21 @@ Array of Struct
 x | y | z | x | y | z | x | y | z
 
 It depends on the usage of the data.
+
+Note that AoS pads within each struct. While SoA pads between the arrays.
+
+These have the following trade-offs:
+
+1. AoS tends to be more readable to the programmer as each "object" is kept together.
+2. AoS may have better cache locality if all the members of the struct are accessed together.
+3. SoA could potentially be more efficient since grouping same datatypes together sometimes exposes vectorization.
+4. In many cases SoA uses less memory because padding is only between arrays rather than between every struct.
+
+## Optimization Strategies
+
++ Global Memory Access Pattern -> Coalescing
++ Control Flow -> Divergent branch
+
 
 ## Memory Coalescing
 
@@ -315,8 +402,6 @@ Threads can access any words in any order, including the same words, and a singl
 Trick: Double Buffering
 
 先载入到 global memory 再折腾到 shared memory
-
-### Using Shared Memory
 
 Declared a fixed sized variable at compile time
 
