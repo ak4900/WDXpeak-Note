@@ -56,7 +56,7 @@ First part
 
 Second part
 
-+ a) loads: 4(line 17, 18, 21 x 2) stores: 1(line 30)
++ a) loads: 2(21 x 2) stores: 1(line 30)
 + b) for each thread block: 256+256+(128+64+32+16+8+4+2+1)x3
     * 1 from line 21, need to times the number of threads
     * 1 from line 30, need to times the number of threads
