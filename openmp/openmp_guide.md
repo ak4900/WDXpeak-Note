@@ -377,6 +377,12 @@ reduction (operator: var1, val2, ...)
 	
 critical 与 atomic 的区别在于，atomic 仅适用于上一节规定的两种类型操作，而且 atomic 所防护的仅为一句代码。critical 可以对某个并行程序块进行防护。
 
+For a simple increment to a shared variable, atomic and critical are semantically equivalent, but atomic allows the compiler more opportunities for optimisation (using hardware instructions, for example). 
+
+In other cases, there are differences. If incrementing array elements (e.g. a[i]++ ), atomic allows different threads to update different elements of the array concurrently whereas critical does not. If there is a more complicated expression on the RHS (e.g. a+=foo() ) then the evaluation of foo() is protected from concurrent execution with critical but not with atomic. 
+
+Using a critical section is a legitimate way of implementing atomics inside the compiler/runtime, but most current OpenMP compilers do a better job than this. 
+
 ## 线程同步之事件同步机制
 
 互斥锁同步包括atomic、critical、mutex函数，其机制与普通多线程同步的机制类似。而事件同步则通过nowait、sections、single、master等预处理器指示符声明来完成。
