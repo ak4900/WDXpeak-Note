@@ -60,7 +60,7 @@
 + What is the difference between critical and atomic?
     * critical: 并行程序块，同时只能有一个线程能访问该并行程序块
     * atomic: 只适用于两种情况：自加减操作以及基本的操作符
-    * critical 与 atomic 的区别在于，atomic 仅适用于上一节规定的两种类型操作，而且 atomic 所防护的仅为一句代码。critical 可以对某个并行程序块进行防护。
+    * critical 与 atomic 的区别在于，atomic 仅适用于两种基本类型操作，而且 atomic 所防护的仅为一句代码。critical 可以对某个并行程序块进行防护。
 + How to reduce synchronization cost and avoid false sharing?
     * Be aware of the cache line sizes for a platform
     * Avoid accessing the same cache line from different threads
