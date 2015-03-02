@@ -68,4 +68,4 @@ __global__ function parameters are passed to the device:
     * 1 from line 30, need to times the number of threads
     * other from `for loop`
 + c) 5 iterations have branch divergance. Branch Divergance only appears in one warp which has two instruction paths. So for the size of 128, 64, 32, every thread in one warp has same path, thus no branch divergance. But for the size of 16, 8, 4, 2, 1, the threads in one warp have two different paths.
-+ d) Copy `d_A`, `d_B` and `d_C` from the global memory to the shared memory. Suppose the cacheline can store n elements, using the shared memory can eliminate about (n-1)/n of the accesses.
++ d) Line 30 stores an identical value to global memory 256 times to the same addres, which causes massive performance losses in the memory system performance. The simple solution is to add a conditional so that only thread 0 will do so. We can eliminate 1024*255 stores to the global memory.
