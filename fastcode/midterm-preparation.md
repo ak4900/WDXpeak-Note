@@ -56,6 +56,12 @@ First part
 
 Second part
 
+__global__ function parameters are passed to the device:
+
++ via shared memory and are limited to 256 bytes on devices of compute capability 1.x,
+
++ via constant memory and are limited to 4 KB on devices of compute capability 2.0.
+
 + a) loads: 2(21 x 2) stores: 1(line 30)
 + b) for each thread block: 256+256+(128+64+32+16+8+4+2+1)x3
     * 1 from line 21, need to times the number of threads
