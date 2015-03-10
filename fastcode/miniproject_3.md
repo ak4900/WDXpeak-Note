@@ -12,6 +12,16 @@ GOAL: Extend functionality of HashtagSim to compute similariteis between any pai
 
 GOAL: Your extended HashtagSim program(Task 2) must finish within 90 minutes on a cluster of 5 medium instances(c1.medium) on Amazon EMR
 
+## Testing
+
+n-gram
+
+    ant
+    hadoop jar 18645-proj3-0.1-latest.jar -program ngramcount -input data/tweets10m/tweets10m.txt -output data/ngram10m -n 3
+
+    hadoop jar 18645-proj3-0.1-latest.jar -program hashtagsim -input data/tweets1m/tweets1m.txt -output data/hashtag1m -tmpdir tmp
+
+
 ## N-gram
 
 In the fields of computational linguistics and probability, an n-gram is a contiguous sequence of n items from a given sequence of text or speech. The items can be phonemes, syllables, letters, words or base pairs according to the application. The n-grams typically are collected from a text or speech corpus.
