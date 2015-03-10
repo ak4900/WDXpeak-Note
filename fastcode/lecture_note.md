@@ -484,13 +484,13 @@ How do we perform removal in parallel?
 + Scan - compute index
 + Map - copy to new array
 
-![compact](./_resource/fc3.3.1.jpg)
+![compact](./_resources/fc3.3.1.jpg)
 
 ## Data Parallel Algorithms - FindUniq
 
 FindUniq: Removing duplicates from an array - take in an set, produces an equal or smaller set of unique values
 
-![finduniq](./_resource/fc3.3.2.jpg)
+![finduniq](./_resources/fc3.3.2.jpg)
 
 在某些特殊情况可以利用 hash insertion 去掉 sort 的步骤, hash table 已经是有序的，就是打表的方法。
 
@@ -510,7 +510,7 @@ Aims to achieve three goals:
 
 OPL: The Organization
 
-![opl](./_resource/fc3.4.1.jpg)
+![opl](./_resources/fc3.4.1.jpg)
 
 Structural Patterns:
 
@@ -528,7 +528,7 @@ Monte Carlo Methods
 
 ### Applications to Your Term Projects
 
-![map](./_resource/fc3.4.2.jpg)
+![map](./_resources/fc3.4.2.jpg)
 
 ## Distributed Computing
 

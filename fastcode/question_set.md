@@ -114,7 +114,7 @@
 + How would one model {branch mispredicts, TLB misses, or too many streams for the prefetchers} on the roofline.
     * See the complete graph below
 
-![roofline](./_resource/qs1.jpg)
+![roofline](./_resources/qs1.jpg)
 
 ## Module 3.1
 

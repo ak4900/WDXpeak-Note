@@ -45,7 +45,7 @@ Hsuan-Tien Lin htlin@csie.ntu.edu.tw
     * 机器学习可能得到的假设 g:X->Y
     * {(xn, yn)} from f -> ML -> g
  
- ![learning flow](./_resource/mlf1.jpg)
+ ![learning flow](./_resources/mlf1.jpg)
 
 + f 我们不知道
 + g 越接近 f 越好 
@@ -56,7 +56,7 @@ Hsuan-Tien Lin htlin@csie.ntu.edu.tw
 
 + 每一个样本的数据可以看成一个向量，可以给每一个向量计算出一个加权得分，每一个维度有一个权重。
 + 把 threshold 收进公式中，可以得到一个统一的表达，最后的得分等于两个向量相乘
-+ ![mlf2](./_resource/mlf2.jpg)
++ ![mlf2](./_resources/mlf2.jpg)
 + perceptrons <-> linear(binary) classifiers 线性分类器
 + select g from H
     * H = all possible perceptrons, g = ? 从这么多可能的线之中，选出一条最好的，最能区分数据的
