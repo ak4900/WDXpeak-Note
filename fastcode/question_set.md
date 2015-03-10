@@ -217,3 +217,13 @@
 + What the the five categories of patterns in OPL?
 + What are the nine sections in an OPL pattern?
 + What are the areas of consideration for your Term Project?
+
+## Module 4.1
+
++ Why Distributed Computing?
++ How common are failures in Large Scale Distributed Computing?
++ How are failures handled in HADOOP?
++ What is MapReduce?
++ When developing a MapReduce application what components and functions need to be defined?
++ How are data bottlenecks reduced in HDFS?
++ What are the advantages of Cloud Computing?

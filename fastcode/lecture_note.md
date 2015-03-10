@@ -529,3 +529,235 @@ Monte Carlo Methods
 ### Applications to Your Term Projects
 
 ![map](./_resource/fc3.4.2.jpg)
+
+## Distributed Computing
+
++ Speedup not necessarily from better algorithm, but from scale
++ When an algorithms is converted to MapReduce it may operate significantly slower than sequential code on a single node
++ Mapping algorithms to a MapReduce framework is the challenge
+
+## Big Data
+
++ Web Data: Search, Advertisements, Behavioral data, Social graphs
++ Computational Physics Experiments
+    * Atomic Energy Research
+    * Numerical Wind Tunnels
++ The Earth Simulator
+    * Global Climate Change Research
++ Weather Forecasting
++ The Human Genome Project, AIDS Research
+
+## Distributed and Cloud Computing
+
++ Distributed Computing
+    * Using distributed systems to solve computational problems.
+    * Problem is divided in to many tasks, each of which is solved by one or more computers.
++ Cloud Computing
+    * Distributed Computing on Cloud Resources
+
+Distributed Computing on Cloud Computing Infrastructure = Scalable Computing
+
+## Scalabel Computing
+
++ Embarrassingly parallel problems
+    * Shared Nothing Architecture
++ Two dimensions of scalability
+    * Data: Given twice the amount of data, the same algorithm should take no more than twice as long to run
+    * Resources: Given a cluster of twice the size, the same algorithm should take no more than half as long to run
+
+## Big Data
+
++ Decompose the original problem in smaller, parallel tasks
++ Schedule tasks on workers distributed in a cluster
+    * Data locality
+    * Resource availability
++ Ensure Workers get the data they need
++ Coordinate synchronization among workers
++ Share partial results
++ Handle failures
++ Implementation details are complex
++ Shared memory approach(OpenMP)
+    * Developer needs to take case of almost everything
+    * Synchronization, Concurrency
+    * Resource Allocation
++ MapReduce: a shared nothing approach
+    * Most of the above issures are taken care of
+    * Problem decomposition and sharing partial results need particular attention
+    * Optimization(memory and network consumption) are tricky
+
+## Failures in Distributed Computing
+
++ In large-scale distriuted computing, failure is ensured
++ Without fail-safe mechanisms distributed computing cannot work
++ HADOOP: MapReduce + HDFS(Hadoop Distributed Filesystem)
+    * Fail-safe Storage: By default stores 3 separate copies of each block
+    * Fail-safe Task Management: Failed tasks re-scheduled up to 4 times
+
+-> Reliable and scalable computing
+
+## HADOOP -> MapReduce
+
++ What is MapReduce?
+    * A programming model
+        - Inspired by function programming
+        - Model to express distributed computations on massive amounts of data
+    * An execution framework
+        - Designed for large-scale data processing
+        - Designed to run on clusters of commodity hardware
++ Separate the what from how
+    * Abstract away the "distributed" part of the system -> handled by framework
++ For optimal performance knowledge of framework is key
+    * Custom data reader/writer
+    * Custom data partitioning
+    * Memory utilization
+
+### Map & Reduce
+
++ Map: (map operation in functional programming)
+    * Transformation over a dataset
+    * Apply a function f(x) to all elements in isolation
+    * The application of f(x) to each element of a dataset can be parallelized in a straightforward manner
++ Reduce: (fold operation in functional programming)
+    * Aggregation operation defined by a function g(x)
+    * Data locality: elements in the list brought together
+    * If we can group elements of the list, then reduce phase can proceed in parallel
++ The framework coordinates the map and reduce phases
+    * How intermediate results are grouped for the reduce to happen in parallel
+
+### Designing a MapReduce algorithm
+
++ Key-value pairs are the basic data structures in MapReduce
+    * Keys and values can be: integers, strings, arbitrary data structures
++ The design of a MapReduce algorithm involves:
+    * Define a key-value structures for application
+    * Define mapper and reducer functions
+        - map: (k1,v1)->[(k2,v2)]
+        - reduce: (k2,[v2]) -> [(k3,v3)]
+
+### A MapReduce Job
+
++ Dataset: stored on the underlying distributed filesystem
+    * Split across files and across machines
++ Mapper: The mapper is applied to every input key-value pair to generate intermediate key-value pairs
++ Reducer: The reducer is applied to all values associated with the same intermediate key to generate output key-value pairs
++ A distributed "group by" operation is implicitly performed between the map and reduce phases
+    * Intermediate data arrives at each reducer in order, sorted by the key
+    * No ordering is guaranteed across reducers
++ Output Keys from reducers are written to distributed filesystem
++ Intermediate keys are transient
+
+### Simplified View of MapReduce
+
++ Mappers applied to all input key-value pairs -> generate intermediate pairs
++ Reducers applied to all intermediate values associated with the same intermediate key
++ Between map and reduce lies a barrier that involves a large distributed sort and group by
+
+### Word Count in MapReduce
+
++ Define the appropriate key-value structures?
+    * Input (docid, doc)
+    * Mapper (word, 1)
+    * Output (word, C(word))
++ Define Mapper and Reducer functions
+    * Mapper: tokenize the document, outputs key-value (word, 1)
+    * The framework guarantees all values associated with the same key(word) are brought to the same reducer
+    * Reducer: receives all values associated to some key (word)
+    * Sums the values and writes output key-value pairs(word, C(word))
+
+### Implementation Details
+
++ A partitioned is in charge of assigning intermediate keys(words) to reducers
+    * Partitioner can be customized
++ How many map and reduce tasks?
+    * The framework essentially takes care of map tasks
+    * The designer/developer takes care of reduce tasks
+
+### A MapReduce Job on Hadoop
+
+Master-slave architecture
+
++ JobTrackerNode creating object for the job, determines number of mappers/reduces, schedules jobs, bookkeeping tasks' status and progress
++ TaskTrackerNode: slaves manages individual tasks
+
+## HADOOP -> HDFS
+
++ Improve computing throughput by co-locating data and computation
++ Abandon the separation between compute and storage nodes
+    * Not mandatory but highly desirable for MapReduce computing
++ Distributed filesystems:
+    * Write once, read many workloads
+    * Does not handle concurrency, but allows replication
+    * Optimized for throughput not latency
++ HDFS(Hadoop Distributed FileSystem)
+    * Tailored to the specific requirements of MapReduce
+
+### HDFS I/O
+
++ A typical read from a client involves:
+    * Contact the NameNode to determine where the actual data is stored
+    * NameNode replies with block identifiers and locations(which DataNode)
+    * Contact the DataNode to fetch data
++ A typical write from a client invovles:
+    * Contact the NameNode to update the namespace and verify permissions
+    * NameNode allocates a new block on a suitable DataNode
+    * The client directly streams to the selected DataNode
+    * HDFS files are immutable
++ Data is never moved through the NameNode -> no bottleneck
+
+### HDFS Replication
+
++ By default, HDFS stores 3 separate copies of each block
+    * Ensures reliability, availability and performance
++ Replication policy
+    * Spread replicas across different racks -> Robust against cluster node and rack failures
++ Block replication benefits MapReduce
+    * Scheduling decisions can take replicas into account
+    * Exploit better data locality
++ HDFS also transparently checksums all data during I/O
+
+### HDFS Constraints
+
++ Input splits for MapReduce based on individual files
+    * Mappers are launched for every file
+    * High startup correctness
+    * Inefficient "shuffle and sort"
+
+Small number of large files preferred over a large number of small files
+
+## Cloud Computing - Advantages
+
++ Illusion of infinite computing resources on demand
++ Elimination of an up-front commitment by user
++ Ability to pay for use of computing resources on a short-term basis as needed
++ Lowering entry barrier for large scale computing
+    * Removing equipment fixed cost
++ Making available economy-of-scale
+    * Reducing operating variable cost
+
+## Developing Algorithms in Hadoop
+
++ Algorithm development involves:
+    * preparing the input data
+    * Implement the mapper and the reducer
+    * Optionally, design the combiner and the partitioner
++ How to recast existing algorithms in MapReduce?
+    * It is not always obvious how to express algorithms
+    * Data structures play an important role
+    * Optimization is hard
++ Developer needs to understand the framework
++ Learn by examples
+    * Design Patterns
+    * Synchronization is most trick aspect
+
+## Efficiency, Bottlenecks & Precautions
+
++ Efficiency
+    * Reduces I/O bandwidth(number of intermediate key-value pairs)
+    * Un-necessary object creation and destruction(garbage collection)
++ Bottlenecks
+    * In-mapper combining depends on having sufficient memory
+    * Multiple threads compete for same resources
++ Precautions
+    * Breaks functional programming paradigm due to state preservation
+    * Preserving state -> algorithm behavior might depend on execution order
+
