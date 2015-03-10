@@ -21,6 +21,28 @@ n-gram
 
     hadoop jar 18645-proj3-0.1-latest.jar -program hashtagsim -input data/tweets1m/tweets1m.txt -output data/hashtag1m -tmpdir tmp
 
+    hadoop jar 18645-proj3-0.1-latest.jar -program hashtagsim -input data/tweets1k/tweets1k.txt -output data/hashtag1k -tmpdir tmp
+
+    hadoop jar 18645-proj3-0.1-latest.jar -program hashtagsim -input data/tweets10k/tweets10k.txt -output data/hashtag10k -tmpdir tmp
+
+    hadoop jar 18645-proj3-0.1-latest.jar -program hashtagsim -input data/tweets100k/tweets100k.txt -output data/hashtag100k -tmpdir tmp
+
+
+aws emr create-cluster --name "Test cluster hashtagsim" --ami-version 2.4.11 --log-uri s3://dawang.log-uri.hashtagsim --enable-debugging --instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=c1.medium InstanceGroupType=CORE,InstanceCount=4,InstanceType=c1.medium --steps Type=CUSTOM_JAR,Jar=s3://dawang.fastcode/18645-proj3-0.1-latest.jar,Args=["-input","s3://dawang.tweets1m/tweets1m.txt","-output","s3://dawang.output/hashtag1m","-program","hashtagsim","-tmpdir","tmp"] --auto-terminate
+
+ "ClusterId": "j-3SNCE9K14PV5W"
+
+# Check cluster status from command line
+aws emr describe-cluster --cluster-id $CID
+aws emr describe-cluster --cluster-id j-3SNCE9K14PV5W
+
+## Modify
+
+Task1: Modify -> Mapper/Driver -> run
+
+Task2: Modify -> Driver/Similarity -> run
+
+
 
 ## N-gram
 
