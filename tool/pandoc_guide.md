@@ -1,5 +1,10 @@
 帮助 : pandoc --help
 
+
+pandoc --latex-engine=xelatex -V mainfont='STSong' --template=/Users/dawang/Desktop/ch-template.latex wakeup-travel.md -o tek.pdf
+
+pandoc --latex-engine=xelatex -V mainfont='Lantinghei SC' --template=/Users/dawang/Desktop/ch-template.latex wakeup-travel.md -o tek.pdf
+
 ### 生成 HTML
 
     pandoc in.md -0 out.html
