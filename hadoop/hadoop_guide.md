@@ -24,6 +24,7 @@ Map/Reduce框架运转在`<key, value>` 键值对上，也就是说， 框架把
 
     (input) <k1, v1> -> map -> <k2, v2> -> combine -> <k2, v2> -> reduce -> <k3, v3> (output)
 
+
 ## 核心功能描述
 
 应用程序通常会通过提供map和reduce来实现 Mapper和Reducer接口，它们组成作业的核心。
