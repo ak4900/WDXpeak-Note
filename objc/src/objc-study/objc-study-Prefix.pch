@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'objc-study' target in the 'objc-study' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif
