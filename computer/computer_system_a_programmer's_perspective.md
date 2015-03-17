@@ -219,6 +219,12 @@ _Notes from Da Wang, Feb.2 2015_
 		- 9.6 地址翻译
 - 第三部分：程序间的交互和通信
 	- 第 10 章：系统级 I/O
+		- 10.1 Unix I/O
+		- 10.2 打开和关闭文件
+		- 10.3 读和写文件
+		- 10.4 用 RIO 包健壮地读写
+		- 10.5 读取文件元数据
+		- 10.6 共享文件
 
 <!-- /MarkdownTOC -->
 
@@ -2055,6 +2061,61 @@ DRAM 缓存不命中称为__缺页(page fault)__。在虚拟存储器的习惯�
 
 ## 第 10 章：系统级 I/O
 
+输入/输出是在主存和外部设备之间拷贝数据的过程。所有语言的运行时系统都提供执行 I/O 的较高级别的工具。
+
+### 10.1 Unix I/O
+
+一个 Unix 文件就是一个 m 字节的序列。所有的 I/O 设备，如网络、磁盘和终端，都被模型化为文件，而所有的输入和输出都被当作对相应文件的读和写来执行。这种将设备优雅地映射为文件的方式，允许 Unix 内核引出一个简单、低级的应用接口，称为 Unix I/O，这使得所有的输入和输出都能以一种统一且一致的方式来执行：
+
++ 打开文件：一个应用程序通过要求内核打开相应的文件，来宣告它想要访问一个 I/O 设备。内核返回一个小的非负整数，叫做__描述符__，它在后续对此文件的所有操作中标识这个文件。内核记录有关这个打开文件的所有信息。应用程序只需记住这个描述符。
++ 改变当前的文件位置。
++ 读写文件
++ 关闭文件
+
+### 10.2 打开和关闭文件
+
+进程是通过调用 `open` 函数来打开一个已存在的文件或者创建一个新文件的。若成功则返回新文件描述符，否为返回 -1。
+
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <fcntl.h>
+
+	int open(char *filename, int flags, mode_t mode);
+
+进程通过调用 `close` 函数关闭一个打开的文件。若成功则返回 0，否则 -1。
+
+	#include <unistd.h>
+
+	int close(int fd);
+
+### 10.3 读和写文件
+
+应用程序是通过分别调用 `read` 和 `write` 函数来执行输入和输出的。
+
+	#include <unistd.h>
+
+	ssize_t read(int fd, void *buf, size_t n);
+	ssize_t write(int fd, const void *buf, size_t n);
+
+### 10.4 用 RIO 包健壮地读写
+
+提供两类不同的函数：无缓冲的输入输出函数与带缓冲的输入函数。
+
+### 10.5 读取文件元数据
+
+应用程序能够通过调用 `stat` 和 `fstat` 函数，检索到关于文件的信息，有时也称为文件的__元数据(metadata)__。
+
+	#include <unistd.h>
+	#include <sys/stat.h>
+
+	int stat(const char *filename, struct stat *buf);
+	int fstat(int fd, struct stat *buf);
+
+![csapp10.8](./_resources/csapp10.8.jpg)
+
+### 10.6 共享文件
+
+可以用许多不同的方式来共享 Unix 文件。内核用三个相关的数据结构来表示打开的文件：
 
 
 
