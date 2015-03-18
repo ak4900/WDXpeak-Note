@@ -34,6 +34,10 @@ aws emr create-cluster --name "Test cluster ngramcount" --ami-version 2.4.11 --l
 
 aws emr create-cluster --name "cluster hashtagsim -dawang -p3" --ami-version 2.4.11 --log-uri s3://dawang.log-uri.hashtagsim --enable-debugging --instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=c1.medium InstanceGroupType=CORE,InstanceCount=4,InstanceType=c1.medium --steps Type=CUSTOM_JAR,Jar=s3://dawang.fastcode/18645-proj3-0.1-latest.jar,Args=["-input","s3://dawang.tweets1m/tweets1m.txt","-output","s3://dawang.output/hashtag1m-p3","-program","hashtagsim","-tmpdir","tmp"] --auto-terminate
 
+aws emr create-cluster --name "cluster hashtagsim -dawang -p2 50000" --ami-version 2.4.11 --log-uri s3://dawang.log-uri.hashtagsim --enable-debugging --instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=c1.medium InstanceGroupType=CORE,InstanceCount=4,InstanceType=c1.medium --steps Type=CUSTOM_JAR,Jar=s3://dawang.fastcode/18645-proj3-0.1-latest-2.jar,Args=["-input","s3://dawang.tweets1m/tweets1m.txt","-output","s3://dawang.output/hashtag1m-p3.2.50000","-program","hashtagsim","-tmpdir","tmp2"] --auto-terminate
+
+aws emr create-cluster --name "cluster hashtagsim -dawang -p3 50000" --ami-version 2.4.11 --log-uri s3://dawang.log-uri.hashtagsim --enable-debugging --instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=c1.medium InstanceGroupType=CORE,InstanceCount=4,InstanceType=c1.medium --steps Type=CUSTOM_JAR,Jar=s3://dawang.fastcode/18645-proj3-0.1-latest-3.jar,Args=["-input","s3://dawang.tweets1m/tweets1m.txt","-output","s3://dawang.output/hashtag1m-p3.3.50000","-program","hashtagsim","-tmpdir","tmp3"] --auto-terminate
+
  "ClusterId": "j-37G25YG1V3HH1"
 
 # Check cluster status from command line

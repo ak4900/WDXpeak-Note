@@ -25,6 +25,7 @@
     * 分区与类别(Inbox, Knowledge)的自动设定
     * !!笔记自动评分
     * 从 Evernote 导入笔记
+    * 邮件推送
 + 实现细节
     * 中英文分词(NLTK, Jieba, 斯坦福中文分类器)
     * 词性标注(NLTK)
@@ -51,7 +52,7 @@
     * 统计自然语言处理基础
     * 统计学习方法 李航（自然语言处理和机器学习不同，机器学习依靠的更多是严谨的数学知识以及推倒，去创造一个又一个机器学习算法。而自然语言处理是把那些机器学习大牛们创造出来的东西当Tool使用。所以入门也只是需要涉猎而已，把每个模型原理看看）
     * 中文信息处理丛书：统计自然语言处理（第2版）宗成庆
-    * 自然语言处理综论（Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition） 
+    * 自然语言处理综论（Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition）
     * 机器学习实战哈林顿 (Peter Harrington)
     * Python自然语言处理
     * !!集体智慧编程
