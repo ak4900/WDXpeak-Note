@@ -5,6 +5,8 @@ pandoc --latex-engine=xelatex -V mainfont='STSong' --template=/Users/dawang/Desk
 
 pandoc --latex-engine=xelatex -V mainfont='Lantinghei SC' --template=/Users/dawang/Desktop/ch-template.latex wakeup-travel.md -o tek.pdf
 
+## 生成各种格式
+
 ### 生成 HTML
 
     pandoc in.md -0 out.html
@@ -61,4 +63,9 @@ pandoc --latex-engine=xelatex -V mainfont='Lantinghei SC' --template=/Users/dawa
 
 ### 生成 PDF
 
-考虑到不想装庞大的 MacTex，所以这部分以后再说
+装了 MacTex 就行了，就是中文比较麻烦，需要用额外的模板
+
+
+- [ ] a bigger project
+    - [ ] test
+
