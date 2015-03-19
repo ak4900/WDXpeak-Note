@@ -35,7 +35,7 @@
 
 ## 总结
 
-![](../image/style6.jpg)
+![](_resources/style6.jpg)
 
 1. Use the end of a sentence to introduce long, complex, or otherwise difficult-to-process material, particularly unfamiliar technical terms and new information.
 2. Use the stress position at the very end to emphasize words that you want your readers to hear emphasized in their minds' ear.
