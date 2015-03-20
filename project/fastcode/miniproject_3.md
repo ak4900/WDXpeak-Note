@@ -66,6 +66,35 @@ In this NgramCount application, given an input corpus, we’re interested in the
 
 ## HashtagSim
 
+From slides <Finding Contextually Similar Hashtags in Twitter Wordnet>
+
++ Every hashtag appears in some context
++ Use the co-occurring words as feature vector of hashtags
++ Use inner product to calculate similarity
+
+Implementation
+
++ Count Words: Linear
++ Sort Words: O(nlogn)
++ Get Top-occuring Words: Constant
++ Get Feature Vector: Linear
++ Get Individual Similarity O(n^2)
++ Compute Total Similarity O(n^2)
+
+Optimizations
+
++ Pairwise similarity - Inveerse Word Count Vector
+    + Remove redundant calculation
+    + Easier to be implemented as MapReduce job
++ Remove 500 top occurring words {today, via, twitter, ...}
++ Remove stop words {it, the, is, to, you, I, ok, not, or, ...}
++ Remove low co-occurrences 相关联的词太少就直接去掉，比方说一共就出现了一两次的那种
++ Restrict features to 100 co-occurred words 一个词对应只选择出现次数最多的十个feature
+
+
+
+---
+
 !! [倒排索引可以救中国](http://en.wikipedia.org/wiki/Inverted_index)
 
 This program analyzes the similarities between hashtags, which are used primarily in Twitter.com to label the tweets. A hashtag is denoted by a ‘#’ followed by a word. For example, a recent tweet from Barack Obama reads: “The excuses not to #ActOnClimate need to end”. In this tweet, “#ActOnClimate” is a hashtag.
