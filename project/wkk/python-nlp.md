@@ -14,6 +14,27 @@
     - 1.3 计算语言：简单的统计
         - 频率分布
         - 细粒度的选择词
+        - 词语搭配和双连词(bigrams)
+    - 1.4 回到 Python：决策与控制
+        - 对每个元素进行操作
+    - 1.5 自动理解自然语言
+    - 1.6 深入阅读
+- 第二章：获得文本语聊和词汇资源
+- 第三章：加工原料文本
+    - 3.1 从网络和硬盘访问文本
+    - 3.2 字符串：最底层的文本处理
+    - 3.3 使用 Unicode 进行文字处理
+    - 3.4 使用正则表达式检测词组搭配
+    - 3.5 正则表达式的有益应用
+        - 提取字符块
+        - 查找词干
+    - 3.6 规范化文本
+    - 3.7 用正则表达式为文本分词
+    - 3.8 分割
+- 第四章：编写结构化程序
+- 第五章：分类和标注词汇
+- 第六章：学习分类文本
+- 第七章：从文本提取信息
 
 <!-- /MarkdownTOC -->
 
@@ -152,3 +173,215 @@
 
 #### 细粒度的选择词
 
+我们可以选择一些有特定特征和信息量的词，例如找出文本汇总长度超过15个字符的词，并且出现次数不能太少：
+
+    >>> fdist5 = FreqDist(text5)
+    >>> sorted([w for w in set(text5) if len(w) > 7 and fdist5[w] > 7])
+
+![nlp11](./_resources/nlp11.jpg)
+
+#### 词语搭配和双连词(bigrams)
+
+一个搭配是经常在一起出现的词，使用 `bigrams` 函数可以方便生成，例如：
+
+    >>> bigrams(['more','is','said','than','done'])
+    [('more','is'),('is','said'),('said','than'),('than','done')]
+
+而如果想要找到频繁出现的双连词，`collocations()`函数可以做到：
+
+    >>> text4.collocations()
+
+![nlp12](./_resources/nlp12.jpg)
+
+NLTK 频率分布类中定义的函数
+
+例子 | 描述
+--- | ---
+fdist = FreqDist(samples) | 创建包含给定样本的频率分布
+fdist.inc(sample) | 增加样本
+fdist['monstrous'] | 计数给定样本出现的次数
+fdist.freq('monstrous') | 给定样本的频率
+fdist.N() | 样本总数
+fdist.keys() | 以频率递减顺序排序的样本链表
+for sample in fdist: | 以频率递减的顺序遍历样本
+fdist.max() | 数值最大的样本
+fdist.tabulate() | 绘制频率分布表
+fdist.plot() | 绘制频率分布图
+fdist.plot(cumulative=True) | 绘制累积频率分布图
+fdist1 < fdist2 | 测试样本在 fdist1 中出现的频率是否小于 fdist2
+
+### 1.4 回到 Python：决策与控制
+
+一些词比较运算符
+
+函数 | 含义
+s.startswith(t) | s 是否以 t 开头
+s.endswith(t) | s 是否以 t 结尾
+t in s | s 是否包含 t
+s.islower() | 是否小写
+s.isupper() | 是否大写
+s.isalpha() | 是否字母
+s.isalnum() | 是否数字字母
+s.isdigit() | 是否数字
+s.istitle() | 是否首字母大写
+
+#### 对每个元素进行操作
+
+    >>> [len(w) for w in text1]
+    >>> [w.upper() for w in text1]
+
+### 1.5 自动理解自然语言
+
+语言理解是智能行为的重要组成部分
+
++ 词义消岐：特定上下文中的词被赋予的是哪个意思
++ 指代消解(anaphora resolution)：检测主语和动词的宾语
++ 语义角色标注(semantic role labeling)：确定名词短语如何与动词相关联
++ 自动生成语言
++ 机器翻译：语言理解的圣杯
++ 文本对齐
++ 人机对话系统：图灵测试 `nltk.chat.chatbots()`
++ 文本含义识别(Recognizing Textual Entailment, RTE)
+
+![nlp13](./_resources/nlp13.jpg)
+
+![nlp14](./_resources/nlp14.jpg)
+
+
+### 1.6 深入阅读
+
++ <Handbook of Natural Language Processing, 2nd> Indurkhya, Nitin, Fred Damerau
++ ACL, The Association for Computational Linguistics
++ Blog: LanguageLog
+
+## 第二章：获得文本语聊和词汇资源
+
+有以下一些语料库
+
++ 古腾堡语料库 `nltk.corpus.gutenberg.fileids()` / `from nltk.corpus import gutenberg`
++ 网络和聊天文本 `from nltk.corpus import webtext`
++ 布朗语料库：包含500个不同来源的文本，按照文体分类
++ 路透社语料库：新闻文档，分为90个主题，按照训练和测试分为两组
++ 就职演说语料库
++ 标注文本语料库：词性标注、命名实体、句法结构、予以角色
++ 词汇列表语料库
++ 停用词语料库
++ 比较词表
++ WordNet：面向语义的英语词典，同义词集，反义词集、概念层级，上/下位词 `nltk.app.wordnet()`，组织成一个网络
+
+## 第三章：加工原料文本
+
+先导入几个东西
+
+    >>> from __future__ import division
+    >>> import nltk, re,
+
+### 3.1 从网络和硬盘访问文本
+
+编号2554的文本是《罪与罚》，利用如下方式访问：
+
+    >>> from urllib import urlopen
+    >>> url = "http://www.gutenberg.org/files/2554/2554.txt"
+    >>> raw = urlopen(url).read()
+    >>> type(raw)
+    >>> len(raw)
+    >>> raw [:75]
+
+然后需要进行分词，生成一个词汇和标点符号的链表
+
+    >>> tokens = nltk.word_tokenize(raw)
+    >>> type(tokens)
+    >>> tokens[:10]
+
+从这个链表生成一个 NLTK 文本，就可以利用之前见过的处理了
+
+    >>> text = nltk.Text(tokens)
+    >>> type(text)
+    >>> text[1020:1060]
+    >>> text.collocations()
+
+处理 HTML 内容可以使用 `nltk.clean_html(html)`，更多的处理可以使用 `Beautiful Soup 包`
+
+![nlp15](./_resources/nlp15.jpg)
+
+处理 RSS 订阅，使用 `feedparser` 包
+
+### 3.2 字符串：最底层的文本处理
+
+具体略，参见 python 学习文档
+
+![nlp16](./_resources/nlp16.jpg)
+
+字符串是不可变的，链表是可变的
+
+### 3.3 使用 Unicode 进行文字处理
+
+Unicode 支持超过一百万种字符。每个字符分配一个编号，称为编码点。在 Python 中，编码点写作 \uXXXX 的形式，其中 XXXX 是四位十六进制形式数。
+
+![nlp17](./_resources/nlp17.jpg)
+
+`unicodedata` 模块可以检查 Unicode 字符的属性
+
+具体就是转为 unicode 最后再转回来
+
+### 3.4 使用正则表达式检测词组搭配
+
+    >>> [w for w in wordlist if re.search('ed$', w)]
+    >>> [w for w in wordlist if re.search('^..j..t..$', w)]
+    >>> [w for w in wordlist if re.search('^[ghi][mno][jlk][def]$', w)]
+
++ 和 * 符号有时被称为 Kleene 闭包，或者闭包
+
+### 3.5 正则表达式的有益应用
+
+#### 提取字符块
+
+    >>> word = 'supercalifragilisticexpialidocious'
+    >>> re.findall(r'[aeiou]', word')
+    >>> wsj = sorted(set(nltk.corpus.treebank.words()))
+    >>> fd = nltk.FreqDist(vs for word in wsj for vs in re.findall(r'[aeiou]{2,}', word))
+    >>> fd.items()
+
+#### 查找词干
+
+去掉像后缀的
+
+    def stem(word):
+        for suffix in ['ing','ly','ed','ious','ies','ive','es','s','ment']:
+            if word.endswith(suffix):
+                return word[:-len(suffix)]
+    return word
+
+### 3.6 规范化文本
+
++ 词干提取器：Porter 和 Lancaster
++ 词形归并：WordNet
+
+### 3.7 用正则表达式为文本分词
+
+利用正则表达式分词：`re.split(r'[ \t\n]+', raw)
+
+### 3.8 分割
+
+断句与分词
+
+## 第四章：编写结构化程序
+
+这一章是 python 教程
+
++ lambda 表达式
++ networkX (P165 画图，挺有用)
+
+## 第五章：分类和标注词汇
+
+将词汇按照它们的词性(parts-of-speech, POS)分类以及相应的标注它们的过程被称为词性标注(part-of-speech tagging, POS tagging)。词性也称为词类或者词汇范畴。用于特定任务的标记的集合被称为一个标记集。
+
+这个暂且不管
+
+## 第六章：学习分类文本
+
+暂时用 Textrank 提取关键字，来进行分类。需要一些训练集
+
+## 第七章：从文本提取信息
+
+暂时用 Textrank 提取关键字
