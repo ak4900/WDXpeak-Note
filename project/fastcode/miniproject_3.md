@@ -1,5 +1,14 @@
 # Miniproject 3 - 3 Tasks
 
+## Report
+
+expected speedup
+
+observed speedup
+
+analysis
+
+
 ## Task 1: Compute N-gram Counts(Extend functionality)
 
 GOAL: Implement a version of the N-gramCount that counts all n-grams over the test data up to length N.
