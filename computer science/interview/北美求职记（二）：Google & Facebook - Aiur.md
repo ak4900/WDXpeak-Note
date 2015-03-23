@@ -1,4 +1,4 @@
-  
+
 
 #  北美求职记（二）：Google & Facebook
 
@@ -108,21 +108,4 @@ hire / strong no hire 四档（不一定完全一致，比如可能会多一档 
 hiring committee 讨论要不要给你 offer，以及 package 如何。有亮点（某位面试官的 strong hire）很重要，一个
 strong hire 和几个 weak no hire 会比平庸的清一色的 weak hire 好。
 
-Posted by zellux •2012年12月26日 •
-[Career](http://blog.yxwang.me/category/career/)
-
-本作品采用 [知识共享署名-非商业性使用 3.0 版本许可协议](http://creativecommons.org/licenses/by-
-nc/3.0/deed.zh)进行许可，欢迎转载，演绎，但是必须保留本文的署名 [zellux](http://blog.yxwang.me/2012/12
-/job-hunting-in-usa-2/)（包含链接），且不得用于商业目的。
-
-[Tweet](http://twitter.com/share) [+1](https://plusone.google.com/_/+1/confirm
-?hl=en&url=http://blog.yxwang.me/2012/12/job-hunting-in-usa-2/)
-[Share](http://www.facebook.com/sharer.php?u=http://blog.yxwang.me/2012/12
-/job-hunting-in-usa-2/)
-
-[« 北美求职记（一）：Microsoft](http://blog.yxwang.me/2012/12/job-hunting-in-usa-1/)
-[北美求职记（三）：Hulu & Twitter »](http://blog.yxwang.me/2012/12/job-hunting-in-
-usa-3/)
-
-  
 

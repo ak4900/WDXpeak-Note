@@ -1,4 +1,4 @@
-  
+
 
 #  北美求职记（一）：Microsoft
 
@@ -79,21 +79,4 @@ Responsibility 的原则设计了几个分工明确的类，另外把网络对�
 onsite 面试后的第二天后就收到了 HR 的邮件，祝贺我拿到了 offer，并和我约时间谈具体的 offer
 细节。虽然微软一开始拖了两个多月才开始安排面试，但是一旦开始面试后他家的效率非常高，是这次面试的几家公司里效率最高的了。
 
-Posted by zellux •2012年12月24日 •
-[Career](http://blog.yxwang.me/category/career/)
-
-本作品采用 [知识共享署名-非商业性使用 3.0 版本许可协议](http://creativecommons.org/licenses/by-
-nc/3.0/deed.zh)进行许可，欢迎转载，演绎，但是必须保留本文的署名 [zellux](http://blog.yxwang.me/2012/12
-/job-hunting-in-usa-1/)（包含链接），且不得用于商业目的。
-
-[Tweet](http://twitter.com/share) [+1](https://plusone.google.com/_/+1/confirm
-?hl=en&url=http://blog.yxwang.me/2012/12/job-hunting-in-usa-1/)
-[Share](http://www.facebook.com/sharer.php?u=http://blog.yxwang.me/2012/12
-/job-hunting-in-usa-1/)
-
-[« Impossible is Nothing](http://blog.yxwang.me/2012/10/impossible-is-
-nothing/) [北美求职记（二）：Google & Facebook »](http://blog.yxwang.me/2012/12/job-
-hunting-in-usa-2/)
-
-  
 

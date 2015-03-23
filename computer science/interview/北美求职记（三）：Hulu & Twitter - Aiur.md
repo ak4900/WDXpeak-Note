@@ -1,4 +1,4 @@
-  
+
 
 #  北美求职记（三）：Hulu & Twitter
 
@@ -45,7 +45,7 @@ beta，他觉得改动没有当年母巢之战的有意思，因为前期的改�
 Hulu 的总部在洛杉矶，Santa Monica 附近，离海滩只有几公里的路程。一进面试的会议室就看到白板上写着「Welcome Yuanxuan to
 Hulu」，一下子对这个公司充满了好感。
 
-Hulu 的 onsite 面试题是面过的几家公司里最难的，一共有四轮。前三轮由来自内容团队、API 团队和架构团队的工程师面试，最后一轮的面试是 CTO 
+Hulu 的 onsite 面试题是面过的几家公司里最难的，一共有四轮。前三轮由来自内容团队、API 团队和架构团队的工程师面试，最后一轮的面试是 CTO
 亲自面的。题目也是涵盖了算法、设计和实际的编码，有一轮的问题从设计一个分布式系统开始，讨论了这个系统的身份验证、数据分片、原子性、容错等问题的设计，考察了很
 多细节的地方，最后还让我写了 SQL，以及如何优化这些查询指令。不过我对 SQL 很不熟悉，每次用都要查手册，当时用了 ActiveRecord
 的查询接口代替。
@@ -110,22 +110,4 @@ onsite 面试，我在签掉 Facebook 后就联系 HR 把招聘进程终止了�
 最后签了 Facebook，等着下一步关于工作签证手续的通知。mm 也表示愿意和我一起去美国，她应该会先在那里读个硕士再找工作。
 
 希望接下来的签证手续等事情都一切顺利了。
-
-Posted by zellux •2012年12月27日 •
-[Career](http://blog.yxwang.me/category/career/)
-
-本作品采用 [知识共享署名-非商业性使用 3.0 版本许可协议](http://creativecommons.org/licenses/by-
-nc/3.0/deed.zh)进行许可，欢迎转载，演绎，但是必须保留本文的署名 [zellux](http://blog.yxwang.me/2012/12
-/job-hunting-in-usa-3/)（包含链接），且不得用于商业目的。
-
-[Tweet](http://twitter.com/share) [+1](https://plusone.google.com/_/+1/confirm
-?hl=en&url=http://blog.yxwang.me/2012/12/job-hunting-in-usa-3/)
-[Share](http://www.facebook.com/sharer.php?u=http://blog.yxwang.me/2012/12
-/job-hunting-in-usa-3/)
-
-[« 北美求职记（二）：Google & Facebook](http://blog.yxwang.me/2012/12/job-hunting-in-
-usa-2/) [为 Octopress 添加多个 Atom 地址 »](http://blog.yxwang.me/2012/12/multiple-
-feeds-in-octopress/)
-
-  
 
