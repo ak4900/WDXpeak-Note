@@ -5,7 +5,7 @@ I'm planning to migrate all my note to github. I can not stand the evernote anym
 
 Evernote is a great tool to collect and connect to the word. But not a good tool to build links within. So It's time to change!
 
-I‘ve merge my blog into this note.
+不要导入，整理并思考，完整的复制没有意义，有目的收集才是正道
 
 ---
 
