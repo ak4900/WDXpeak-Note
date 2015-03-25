@@ -35,13 +35,9 @@
     - Hybrid Approaches
     - References￼
 - Personal Knowledge Management(PKM)
+    - Nature of PKM
+    - Development of PKM
     - Knowledge Management
-        - Who
-        - What
-        - Why
-        - When
-        - Where
-        - How
     - Schema
         - Two Types of Knowledge
 - 基于遗传算法的新书推荐系统研究
@@ -575,36 +571,97 @@ Smart Models
 
 Our students, who will spend most of their working lives in the 21st century, will need to see the computer and related technologies as an extension of themselves, as a tool as important as the pencil was for the past several hundred years.
 
+PKM is still an under-explored or under-researched area (Pauleen 2009; Tsui 2002; Zhang 2009).
+
+Ahmed et al. (2002) mentioned that knowledge management involves individuals combining and sharing their experience, skills, intuition, ideas, judgments, context, motivations and interpretations. One of the knowledge management strategies proposed by Wiig (1997) is personal knowledge responsibility. It means to focus on individual responsibility for knowledge-related investments, innovations and also on the competitive side, renewal, effective use and availability to others of the knowledge assets within each employee’s area of accountability.
+
+### Nature of PKM
+
+**(1) Frand and Hixon (1999)**
+
+Personal Knowledge Management is a system designed by individuals for their own personal use (Frand & Hixon 1999) and “it is a conceptual framework to organise and integrate information that we, as individuals, feel is important so that it becomes part of our personal knowledge base. It provides a strategy for transforming what might be random pieces of information into something that can be systematically applied and that expands our personal knowledge.”
+
+**(2) Avery et al. (2001)**
+
+Avery et al. (2001) argued that “PKM assumes that individuals have developed a self-awareness of their limits and abilities, i.e. what they know and what they can do. This personal self-awareness is an understanding of how much they know, how to access the things they know, strategies for acquiring new knowledge and strategies for accessing new information as needed. In the vast amount of information available and many means for acquiring new information, individuals have each mapped out their own areas of expertise and their own methods for additional learning.”
+
+**(3) Higgsion (2004)**
+
+Higgison (2004) defined personal knowledge management as “managing and supporting personal knowledge and information so that it is accessible, meaningful and valuable to the individual; maintaining networks, contacts and communities; making life easier and more enjoyable, and exploiting personal capital”
+
+**(4) Jefferson (2006)**
+
+Jefferson (2006) argued that “PKM is focused on bottom up approach, with an individual perspective to KM. The goal is to allow individuals to choose what information to collect, how to structure it, and who to share it with. Individuals need to be able to manage their own information so that is meaningful, accessible when it needed, can be easily exploited. PKM allows workers to organise both digital and paper content in such a way to allow them to make sense of the deluge they are continually exposed to.”
+
+**(5) Volkel and Abecker (2008)**
+
+Volkel and Abecker (2008) termed “Personal Knowledge Management to denote the process of the individuals to manage knowledge” and “PKM deals with embrained, embodied and encoded knowledge i.e. mostly with personal, self- authored artefacts.”
+
+**(6) Jerome Martin (2008)**
+
+Martin (2008) argued that “PKM is knowing what knowledge we have and how we can organise it, mobilise it and use it to accomplish our goal, and how we can continue to create knowledge.”
+
+**(7) Harold Jarche (2010)**
+
+Jarche (2010) mentioned that “PKM is an individual, disciplined process by which we make sense of information, observations and ideas. In the past it may have been keeping a journal, writing letters or having conversations. These are still valid, but with digital media we can add context by categorising, commenting or even remixing it. We can also store digital media for easy retrieval”
+
+Irrespective of how personal knowledge management is defined by different scholars, Cheong and Tsui (2010 Forthcoming) argued that the key purpose of personal knowledge management is to provide a framework for individuals to manage new information, integrate it and enrich each individual knowledge database in an effective manner; doing this successfully will empower each individual to easily apply their own personal knowledge to deal with new and old problems, to learn from new experience and to create new knowledge; and it is a continuous and interactive process which is not independent of other knowledge management.
+
+
+### Development of PKM
+
+Pauleen (2009) mentioned that the history of personal knowledge management begins with the idea of the knowledge worker by Drucker (1968) but Volkel and Abecker (2008) argued that the term of personal knowledge management has already been used since Polanyi (1958). In this section, the development of personal knowledge management was discussed since Frand and Hixon (1999), their work has impacted and drawn the focus of many scholars in this areas in the past decade.
+
+Frand and Hixon (1999) mentioned that we are living in a sea of data, our challenge is knowledge and its management that everyone must listen to a great deal of noise in order to retrieve the few bits of information that are of value to them. Some problems appear to be intrinsic knowledge management, whether it is being performed using a word processor, a formal language-based tool or pencil and paper. These problems include (1) Categorising or classifying; (2) Naming things and making distinctions between them; and (3) Evaluating and assessing The PKM framework proposed by Frand and Hixon (1995) focused on personal information management and failed to address the importance of inter-personal knowledge activities.
+
+Avery et al (2001) based on the idea created by Paul Dorsey and developed another PKM framework which addressed this gap to include collaborating around, securing and presenting information. Avery et al (2001) believed that PKM requires to clarify the distinction between data, information and knowledge and believed that information could become knowledge which entails activities such as comparing, exploring consequences, making connection to other information and knowledge and conversing with others. Their proposed PKM framework focused on the information skills which consisted of seven PKM skills namely (1) Retrieving information; (2) Evaluating information; (3) Organising information; (4) Collaborating around information; (5) Analysing information; (6) Presenting information, and (7) Securing Information.
+
+Tsui (2002) provided a technology-centric view on PKM and also explored the issues when using the PKM tools available at that time. In the view of Tsui (2002), PKM is a collection of processes that individuals need to carry out in their daily activities in order to manage their own knowledge management work including gather, classify, store, search and retrieve knowledge, it is not limited to work-related activities but also the social activities. Tsui (2002) suggested that the knowledge workers need constantly to (1) locate the right information quickly, (2) stay abreast with business and technology trend, (3) switching between learning and practising, (4) create new knowledge and be innovative, and (5) maintain communications and build trust among peers. These five suggestions are actually in line with the Avery et al (2001) PKM framework and communications and working with peers are a key element in PKM. In addition, PKM should enable innovation and put PKM in practise.
+
+Berman and Annexstein (2003) based on the Avery et al. (2001) proposed PKM Skills and developed a personal knowledge book, “PK-Book”, model to actualise the PKM. Berman and Annexstein (2003) argued that the ability to actualise context for PKM is facilitated by a design combination consisted of (a) a structured and secured container for the organisation of information, (b) algorithms for the generation of associated contextual metadata, and (c) utilisation of a contextual engine driven by applications. It is the natural processes associated with the organisation of focused information which leads to an ability to actualise context in information applications, and conversely, through the usage of context in applications, the focused information unit can be augmented and improved over time. The PK-Book model seeks to provide users with a natural organisational structure and methodology, along with a set of associated tools and applications that together to capture and reflect the structure of information as understood by the individual (Berman & Annexstein 2003).
+
+Pollard (2004) worked out his model of personal knowledge management which focused on the information acquisition, information processing and social activities. The information acquisition includes looking up data, finding / retrieving information & answers, compiling/ researching / reading/ studying / learning, and subscribing to information source. The information processing activities include writing / analysing / narrating / interpreting, editing /reviewing / annotating, and sharing and publishing knowledge work. The social activities include finding people / experts, connecting to people, collaborating, and interacting. Pollard (2004) argued that this “system” has no pre-defined sequence, no flow and it is just an undifferentiated set of knowledge activities that underpin human intellectual activities.
+
+Efimova (2005) argued that PKM is an interactive process between individuals, other people and ideas. This is an approach which focuses on supporting knowledge worker productivity by taking an active perspective in studying their work. Efimova (2005) defined PKM as managing a one-person enterprise, the knowledge product, e.g. the processes, tools, relations with partners, customers and suppliers, are connected with literature on personal effectiveness and time management or personal branding and networking. Efimova (2005) used Weblog as an example to illustrate the PKM works.
+
+Agnihotri and Troutt (2009) argued that technology is a critical part of PKM to enhances individual efficiency and effectiveness such that it will help users to classify ideas and information, or to archive interactions emails and other items of they are easy to locate. Agnihotri and Troutt (2009) referenced to the PKM tools classification by Tsui (2002) and addressed the importance of fit between PKM skills and the tools.
+
+In recent years, the development of PKM started to focus on technologies, e.g. online tools, Web 2.0 technology and semantic web, which enabled the development of PKM tools to support the workers to practise PKM in online and virtual environment. Pettenati et al. (2007) studied the relationship between social networking software and PKM skills; Diao, Zuo & Liu (2009) investigated the artificial intelligence in PKM; Kim, Breslin and Decker (2009) proposed a wiki-based semantic tagging system for PKM and Volkel and Haller (2009) proposed a conceptual data structures for PKM.
+
+Diao, Zuo & Liu (2009) argued that although the application of artificial intelligence in personal knowledge was still at the initial stage, the requirement of artificial intelligence were increasing. The artificial intelligence can be applied to PKM for (1) intelligent search of knowledge, (2) automatic classification of knowledge, and (3) conversion of tacit knowledge. The use of artificial intelligence technology to assist in PKM illustrates the usefulness of artificial intelligence.
+
+
+
 ### Knowledge Management
 
 + Davenport & Prusak: A systematic attempt to create, gather, distribute and use knowledge
 + Lethbridege: The process of acquiring, representing, storing and manipulating the categorizations, characterizations and definitions of both things and their relationship
 
-#### Who
+**Who**
 
 + Initially geared toward UCLA MBA students
 + Introduced to corporate managers
 + Generalize to anyone in any field
 
-#### What
+**What**
 
 + A conceptual framework to organize and integrate information that we, as individuals, fell is important so that it becomes part of our personal knowledge base
 + A strategy for transforming what might be random pieces of information into something that is more systematic and expands our personal knowledge
 
-#### Why
+**Why**
 
-**Information Explosion**
+Information Explosion
 
-**Information Chaos**
+Information Chaos
 
 If the WWW were compared to a library, the 'books' on its shelves would keep changing their relative locations as well as their sizes and names. Individual 'pages' in those publications would be shuffled ceaselessly. Finally, much of the data on those pages would be revised, updated, extended, shortened or even deleted without warning almost daily.
 
-**Information Overload**
+Information Overload
 
 + Makes keeping track of information difficult
 + Volume of information in the world degrades value due to redundancy and noise
 
-#### When
+**When**
 
 Must become part of routine and used whenever working with information and knowledge:
 
@@ -615,7 +672,7 @@ Must become part of routine and used whenever working with information and knowl
 + cataloging/classifying/indexing
 + retrieving from personal memory
 
-#### Where
+**Where**
 
 One schema for all:
 
@@ -624,7 +681,7 @@ One schema for all:
 + Web bookmarks
 + Personal home library
 
-#### How
+**How**
 
 + Initiate a process for developing a mental map of the knowledge with which you work
 + Create an organizational structure which facilitates your finding and relating personal and professional information
@@ -680,6 +737,8 @@ One schema for all:
 
 > I call my field knowledge management, but you can't really manage knowledge. What a company can do is manage the environment that optimizes knowledge. --Larry Prusak, IBM, 1998
 
+
+
 ---
 
 ## 基于遗传算法的新书推荐系统研究
@@ -694,7 +753,7 @@ One schema for all:
 
 [1] “基于遗传算法的新书推荐系统研究,” pp. 1–5, Mar. 2015.
 [1] “Personal Knowledge Management,” pp. 1–63, Apr. 2013.
-The Knowledge-Creating Company 1995
-Practical Techniques for Organizing and Measuring Knowledge 1994
-The New Organizational Weatlth: Managing & Measuring Knowledge-based Assets, 1997
-
+[1] The Knowledge-Creating Company 1995
+[1] Practical Techniques for Organizing and Measuring Knowledge 1994
+[1] The New Organizational Weatlth: Managing & Measuring Knowledge-based Assets, 1997
+[1] K. F. Cheong, “From Skills and Competences to outcome-based Collaborative Work: Tracking a decade’s development of Personal Knowledge Management (PKM) Models,” Sep. 2012.
