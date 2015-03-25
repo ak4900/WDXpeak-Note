@@ -25,11 +25,25 @@
             - Approaches
         - Context-aware Recommendations
             - Pre-Filtering
+            - Post-filtering
+            - Contextual Modeling
         - Deep Learning
         - Similarity
+            - What is similarity?
         - Social Recommendations
+            - Defining Trust
     - Hybrid Approaches
     - References￼
+- Personal Knowledge Management(PKM)
+    - Knowledge Management
+        - Who
+        - What
+        - Why
+        - When
+        - Where
+        - How
+    - Schema
+        - Two Types of Knowledge
 - 基于遗传算法的新书推荐系统研究
 - Paper
 
@@ -436,21 +450,237 @@ Variants and combinations of these are possible
 
 ##### Pre-Filtering
 
+Using contextual information to select the most relevant data for generating recommendations.
 
+Example: if a person wants to see a movie on Saturday, onlye the Saturday rating data is used to recommend movies.
+
++ Context Over-Specification
+    + Using an exact context may be too narrow
+    + Certain aspects of the overly specific context may not be significant(e.g. Saturday vs. weekend)
+    + Sparsity problem: overly specified context may not have enough training examples for accurate prediction
++ Pre-Filer Generalization
+    + Different Approaches
+    + Roll up to higher level concepts in context hierarchies (e.g. Saturday => weekend, or movie theater => any location)
+    + Use latent factors models or dimensionality reduction approaches(Matrix factorization, LDA, etc.)
+
+##### Post-filtering
+
+Ignore context in the data selection and modeling phases, but filter or (re-rank) recommendations based on contextual information.
+
++ Contextual Post-Filtering is generally heuristic in nature
+    + Basic Idea: Treat the context as an additional constraint
+    + Many different approaches are possible
+
+##### Contextual Modeling
+
+Using contextual information directly in the modeling learning phase(Multi-dimensional recommendation models)
+
+Contextual variables are added as dimensions D~1 ,..., D~n in the feature space in addition to the Users and Items dimensions
+
+R: U x I x D~1 x ... x D~n => Ratings
 
 **Tensor Factorization**
 
-**Factorization Machines**
+各种公式，暂时略
+
+**Factorization Machines(Rendle, 2010)**
+
+各种公式，暂时略
 
 #### Deep Learning
 
+这个完全不懂，略
+
 #### Similarity
+
+##### What is similarity?
+
++ Similarity can refer to different dimensions(metadata/tags, user play behavior, user rating hehavior)
++ SimRank(Jeh & Widom, 02): two objects are similar if they are referenced by similar objects
++ Similarity ensembles
+    + Come up with a score of play similarity, rating similarity, tag-based similarity...
+    + Combine them using an ensemble (Weights are learned using regression over existing response)
++ The final concept of "similarity" responds to what users vote as similar
 
 #### Social Recommendations
 
+大概涉猎一下
+
++ A social recommender system recommends items that are "popular" in the social proximity of the user
++ **A person being close in our social network does not mean we trust their judgement**
++ This idea of trust is central in social based systems
++ It can be a general per-user value that takes into account social proximity but can also be topic-specific
+
+##### Defining Trust
+
++ Trust is very complex
+    + Involves personal background, history of interaction, context, similarity, reputatioin
++ Sociological definitions
+    + Trust requires a belief and a commitment
+    + Similar to a bet
++ In the context of recommender systems, trust is generally used to describe similarity in opinion
+    + Ignores authority, correctness on facts
+
+**Trust Inference**
+
+Major Algorithms - Networks:
+
++ Advogato(Levien)
++ Appleseed (Ziegler and Lausen)
++ MoleTrust(Massa and Avesani)
++ TidalTrust(Golbeck)
+
+**Building Recommender Systems Using Trust**
+
++ Use trust as a way to give more weight to some users
++ Trust fro collaborative filtering
+    + Use trust in place of (or combined with) similarity
++ Trust for sorting and filtering
+    + Prioritize information from trusted sources
+
+**Other ways to use Social**
+
++ Social connections can be used in combination with other approaches
++ In particular, "friendships" can be fed into collaborative filtering methods in different ways
++ Demographic Methods
+
 ### Hybrid Approaches
 
+Smart Models
+
++ Regression models(Logistic Linear, Elastic nets)
++ GBDT/RF
++ SVD & other MF models
++ Factorization Machines
++ Restricted Boltzmann Machines
++ Markov Chains & other graphical models
++ Clustering (from k-means to HDP)
++ Deep ANN
++ LDA
++ Association Rules
++ ...
+
 ### References￼
+
+![rs11](./_resources/rs11.jpg)
+
+![rs12](./_resources/rs12.jpg)
+
+![rs13](./_resources/rs13.jpg)
+
+![rs14](./_resources/rs14.jpg)
+
+
+## Personal Knowledge Management(PKM)
+
+Our students, who will spend most of their working lives in the 21st century, will need to see the computer and related technologies as an extension of themselves, as a tool as important as the pencil was for the past several hundred years.
+
+### Knowledge Management
+
++ Davenport & Prusak: A systematic attempt to create, gather, distribute and use knowledge
++ Lethbridege: The process of acquiring, representing, storing and manipulating the categorizations, characterizations and definitions of both things and their relationship
+
+#### Who
+
++ Initially geared toward UCLA MBA students
++ Introduced to corporate managers
++ Generalize to anyone in any field
+
+#### What
+
++ A conceptual framework to organize and integrate information that we, as individuals, fell is important so that it becomes part of our personal knowledge base
++ A strategy for transforming what might be random pieces of information into something that is more systematic and expands our personal knowledge
+
+#### Why
+
+**Information Explosion**
+
+**Information Chaos**
+
+If the WWW were compared to a library, the 'books' on its shelves would keep changing their relative locations as well as their sizes and names. Individual 'pages' in those publications would be shuffled ceaselessly. Finally, much of the data on those pages would be revised, updated, extended, shortened or even deleted without warning almost daily.
+
+**Information Overload**
+
++ Makes keeping track of information difficult
++ Volume of information in the world degrades value due to redundancy and noise
+
+#### When
+
+Must become part of routine and used whenever working with information and knowledge:
+
++ creating
++ acquiring
++ evaluating/assessing
++ organizing/storing
++ cataloging/classifying/indexing
++ retrieving from personal memory
+
+#### Where
+
+One schema for all:
+
++ Paper documents
++ Electronic documents
++ Web bookmarks
++ Personal home library
+
+#### How
+
++ Initiate a process for developing a mental map of the knowledge with which you work
++ Create an organizational structure which facilitates your finding and relating personal and professional information
++ Use techonology as an organic tool, an extension of your own memory, enhancing your natural abilities, skills, and talents for synthesis and processing of ideas for more effective problem solving and decision making
+
+### Schema
+
++ begin with data
++ add context to get information
++ add understanding to get knowledge
++ add judgement (value) to get wisdom
+
+#### Two Types of Knowledge
+
++ Tacit(Subjective) Knowledge
+    + Insights, intuitions, and hunches
+    + Knowledge of experience(body)
+    + Not easily visible and expressible
+    + Highly personal, hard to formalize, difficult to communicate or share with others
+    + Rooted in individual's actions and experiences, including ideals, values, or emotions
++ Explicit(Objective) Knowledge
+    + Formal and systematic
+    + Knowledge of rationality(mind)
+    + Can be expressed in words and numbers
+    + Easily communicated and shared in form of hard data, formula, codified procedures, or universal principles
+    + Can be expressed in computer code, chemical formula, sets of general principles
+
+**University Environment/Culture**
+
++ Goal is knowledge
+    + Acquisition through study and assignment
+    + Transmission through teaching, reading, study groups
++ Emerging Environments: Knowledge as Process
+    + Expectation that it's Life Long Learning
+    + Blurring of roles and responsibilities in this new, digitally enhanced communication environment
+    + Library evolving into "Information Resource Center" with knowledge guides and facilitators
+
+**Knowledge Management Challenges**
+
+1. Categorizing / Classifying
+2. Naming things / Making distinctions
+3. Evaluating / Assessing
+
+![pkm1](./_resources/pkm1.jpg)
+
+**Knowledge Spiral**
+
+![pkm2](./_resources/pkm2.jpg)
+
+**Knowledge Transfer Process**
+
+![pkm3](./_resources/pkm3.jpg)
+
+> I call my field knowledge management, but you can't really manage knowledge. What a company can do is manage the environment that optimizes knowledge. --Larry Prusak, IBM, 1998
+
+---
 
 ## 基于遗传算法的新书推荐系统研究
 
@@ -463,4 +693,8 @@ Variants and combinations of these are possible
 ## Paper
 
 [1] “基于遗传算法的新书推荐系统研究,” pp. 1–5, Mar. 2015.
+[1] “Personal Knowledge Management,” pp. 1–63, Apr. 2013.
+The Knowledge-Creating Company 1995
+Practical Techniques for Organizing and Measuring Knowledge 1994
+The New Organizational Weatlth: Managing & Measuring Knowledge-based Assets, 1997
 
