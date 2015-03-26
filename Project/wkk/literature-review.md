@@ -38,8 +38,12 @@
     - Nature of PKM
     - Development of PKM
     - Knowledge Management
-    - Schema
-        - Two Types of Knowledge
+    - Two Types of Knowledge
+    - New Personal Knowledge Management Model
+        - (1) Personal Information Management (PIM)
+        - (2) Personal Knowledge Internalisation (PKI)
+        - (3) Personal Wisdom Creation (PWC)
+        - (4) Interpersonal Knowledge Transferring (IKT)
 - 基于遗传算法的新书推荐系统研究
 - Paper
 
@@ -566,6 +570,8 @@ Smart Models
 
 ![rs14](./_resources/rs14.jpg)
 
+![rs15](./_resources/rs15.jpg)
+
 
 ## Personal Knowledge Management(PKM)
 
@@ -630,7 +636,13 @@ In recent years, the development of PKM started to focus on technologies, e.g. o
 
 Diao, Zuo & Liu (2009) argued that although the application of artificial intelligence in personal knowledge was still at the initial stage, the requirement of artificial intelligence were increasing. The artificial intelligence can be applied to PKM for (1) intelligent search of knowledge, (2) automatic classification of knowledge, and (3) conversion of tacit knowledge. The use of artificial intelligence technology to assist in PKM illustrates the usefulness of artificial intelligence.
 
+Kim, Breslin and Decker (2009) argued that typical personal management systems do not provide effective ways for representing knowledge worker’s unstructured knowledge or idea. Based on this, a Wiki-based semantic tagging system (Wiki-based social Network Thin Client – WANT) was proposed to facilitate the collaboration and communication of the knowledge creation and maintenance and also the social semantic cloud of tags (SCOT) was suggested to represent tag data at a semantic level and combine this ontology in WANT. Kim, Breslin and Decker (2009) mentioned that the PKM system is not only focused on managing data, but also on connecting people and enabling them to share data between them.
 
+Volkel and Haller (2009) developed a unified data model called Conceptual Data Structure (CDS) to bridge the gap between unstructured content (e.g. informal notes) and formal semantics (e.g. ontologies) by allowing the use of vague semantics and by subsuming arbitrary relation types under more general ones. The purpose of the CDS serves as a guideline for future PKM tools, providing a set of crucial structural primitives as well as provides a knowledge exchange format.
+
+![pkm4](./_resources/pkm4.jpg)
+
+Based on the evaluation of the PKM models, it is clear that PKM has evolved from mere individual activities to something that are more outcome/impact oriented; from information handling skills to personal competencies, sensemaking and self-reflection; from individually focused to a community and social collaborative focused. Increasingly the model also provides an alignment of the appropriate technologies. This evolution necessitates the definition of requirements for a comprehensive PKM model that comprehensively encapsulates the need for personal information management, knowledge internalisation, transferring of knowledge and knowledge creation, and learning.
 
 ### Knowledge Management
 
@@ -687,14 +699,7 @@ One schema for all:
 + Create an organizational structure which facilitates your finding and relating personal and professional information
 + Use techonology as an organic tool, an extension of your own memory, enhancing your natural abilities, skills, and talents for synthesis and processing of ideas for more effective problem solving and decision making
 
-### Schema
-
-+ begin with data
-+ add context to get information
-+ add understanding to get knowledge
-+ add judgement (value) to get wisdom
-
-#### Two Types of Knowledge
+### Two Types of Knowledge
 
 + Tacit(Subjective) Knowledge
     + Insights, intuitions, and hunches
@@ -708,6 +713,45 @@ One schema for all:
     + Can be expressed in words and numbers
     + Easily communicated and shared in form of hard data, formula, codified procedures, or universal principles
     + Can be expressed in computer code, chemical formula, sets of general principles
+
+### New Personal Knowledge Management Model
+
+A conceptual model of PKM 2.0 was developed by the authors based on the literature review and also the results of a global survey about the roles and values of the PKM (Cheong & Tsui 2010b). There are four core components in this model, namely Personal Information Management (PIM), Personal Knowledge Internalisation (PKI), Personal Wisdom Creation (PCW) and Inter-Personal Knowledge Transferring (IKT). The interaction action of the components is illustrated in figure 5.1 and table 5.1 and provides more a detailed view of the model in terms of the required skill/competence, the belonging layer of the DIKW transformation, the inherent knowledge conversion and the involved KM process.
+
+![pkm5](./_resources/pkm5.jpg)
+
+![pkm6](./_resources/pkm6.jpg)
+
+The underlying theories of this PKM 2.0 framework includes the DIKW hierarchy defined by Russell Ackoff (1989), the knowledge conversion framework suggested by Nonaka and Takeuchi (1995) and the KM process described by Seufert et al. (2003).
+
+#### (1) Personal Information Management (PIM)
+
+PIM is the focus of many scholars in the area of PKM and it is the process to capture or locate knowledge as defined by Seufert et al. (2003). The data is transformed to information and vice versa in this process and it is mainly deal with the past knowledge, as argued by Russell Ackoff (1989). Knowledge conversion is in the form of explicit knowledge (from one media, e.g. hard copy to another media, e.g. electronic copy), and is the combination process as suggested by Nonaka and Takeuchi (1995). The PIM is the foundation of PKM , where individuals are able to create their own knowledge database for immediate or future use in this process.
+
+The required skills / competences in PIM are retrieving, evaluating and organising, which are the skills playing significant roles in capture / locate knowledge.
+
+#### (2) Personal Knowledge Internalisation (PKI)
+
+PKI is the process of creating knowledge in the KM cycles, suggested by Seufert et al. (2003). The information is transformed to knowledge and vice versa in this process. It requires understanding of the past knowledge and current information / knowledge available to an individual. It represents the understanding layer as mentioned by Russell Ackoff (1989) between knowledge and wisdom. The knowledge conversion is mainly in the form of explicit to tacit knowledge; it is the internalisation process in the SECI model (Nonaka & Takeuchi 1995). PKI is beyond PIM as it turns the past knowledge into new knowledge.
+
+The required competences in PKI are analysis, learning / self development and reflection.
+
+#### (3) Personal Wisdom Creation (PWC)
+
+PWC is the process of applying knowledge in the KM cycles, suggested by Seufert et al. (2003). The knowledge is transformed to wisdom in this process, and putting the knowledge in practise to tackle the current challenges and prepare for the future, as argued by Russell Ackoff (1989) that wisdom is dealing with the future. The knowledge conversion in this process is between tacit to tacit/explicit; it involves the socialisation and externalisation process in the SECI model (Nonaka & Takeuchi 1995). PWC is beyond PKI as it puts knowledge in practise in tackling the daily challenges from personal life, social life and work.
+
+The required skills / competences in PWC are problem solving, creativity and mental agility.
+
+#### (4) Interpersonal Knowledge Transferring (IKT)
+
+IKT plays an important role in PKM which maximises the knowledge work by others to form a knowledge collaborating environment for individuals. It is the process to share / transfer knowledge in the KM cycles suggested by Seufert et al. (2003). The information is transformed to knowledge in both explicit and tacit form in this process. It is a bidirectional transfer through different social activities in both face-to-face and virtual models. IKT is beyond PIM, PKI and PWC as it positions PKM 2.0 in an interactive and collaborating mode. It links the networked individuals together and gears the distributed process of socialisation, externalisation, combination and internalisation (Nonaka & Takeuchi 1995) in a meshed knowledge network to increase the knowledge flow and knowledge quality.
+
+The required skills / competence in IKT are securing, presenting and communication, and collaborating.
+
+---
+
+PKM is en emerging discipline and this paper evaluated the previous literatures and introduced a new PKM model. It is cleared that PKM is an important aspect in knowledge management but it is also an open question to the researchers that what is the roles and values of PKM in different individual, organisation and social context. The authors set a research direction to explore this research question and also to explore how technology can enable PKM to maximise the contribution to competency improvement. The authors believe that this future research would lead the scholars and researchers to continue or refocus to this important discipline.
+
 
 **University Environment/Culture**
 
@@ -738,8 +782,9 @@ One schema for all:
 > I call my field knowledge management, but you can't really manage knowledge. What a company can do is manage the environment that optimizes knowledge. --Larry Prusak, IBM, 1998
 
 
+Personal Knowledge Management (PKM) focuses on the indivi- dual for the quest to learn, work efficiently or socialise. An important aspect of PKM is to allow the individual to better manage their knowledge processes and interaction, collaboration and knowledge exchanges with others. PKM reflects the goal of supporting individual knowledge workers rather than establishing an organisational approach. Initially PKM was approached as a framework to organise the knowledge of individuals that is important for individuals (Frand and Hixson, 1999). The concept has evolved over time and involves organising personal information, making sense of information, negotiating meaning, creating new ideas, developing networks, collaborating, sharing and interacting (Efimova, 2004; Wright, 2005). PKM environments integrate individual work environments and infrastructures to support joint creation, distribution, sharing and application of knowledge (Maier and Sametinger, 2004).
 
----
+
 
 ## 基于遗传算法的新书推荐系统研究
 
@@ -753,7 +798,34 @@ One schema for all:
 
 [1] “基于遗传算法的新书推荐系统研究,” pp. 1–5, Mar. 2015.
 [1] “Personal Knowledge Management,” pp. 1–63, Apr. 2013.
-[1] The Knowledge-Creating Company 1995
+[1] Nonaka, I & Takeuchi, H 1995, The Knowledge-Creating Company: How Japanese Companies Create the Dynamics of Innovation, Oxford University Press, Oxford.
 [1] Practical Techniques for Organizing and Measuring Knowledge 1994
 [1] The New Organizational Weatlth: Managing & Measuring Knowledge-based Assets, 1997
 [1] K. F. Cheong, “From Skills and Competences to outcome-based Collaborative Work: Tracking a decade’s development of Personal Knowledge Management (PKM) Models,” Sep. 2012.
+[1] Pauleen, D 2009, 'Personal knowledge management: Putting the "person" back into the knowledge equation', Online Information Review, vol. 33, no. 2, pp. 221-4.
+[1] Schwarz, S 2006, 'A context model for personal knoweldge management', Modeling and Retrieval of Context, Lexture Notes in Computer Science, vol. 3946, pp. 18-33.
+[1] Volkel, M & Abecker, A 2008, Cost-Benefit Analysis for the design of Personal Knowledge Management Systems.
+[1] Wright, K 2005, 'Personal knowledge management: supporting individual knowledge worker performance', Knowledge Management Research & Practice, vol. 3, no. 3, pp. 156-65.
+[1] Zhang, Z 2009, 'Personalising organisational knowledge and organisationalising personal knowledge', Online Information Review, vol. 33, no. 2, pp. 237-56.
+[1] Zuber-Skerritt, O 2005, 'A model of values and actions for personal knowledge management', THe Journal of Workplace Learning, vol. 17, no. 1/2, pp. 49-64.
+
+[1]  Wiig, K. M., 2011. The Importance of Personal Knowledge Management in the Knowledge Society, In: Pauleen, D. J. and Gorman, G. E. (Eds.), Personal Knowledge Management, pp. 229-262, Gower.
+[1] Stewart, I. and Cohen, J., 1999. Figments of Reality - The Evolution of the Curious Mind, Cambridge University Press.
+[1] Schmitt, U., 2012. Knowcations - The Quest for a Personal Knowledge Management Solution, 12th International Conference on Knowledge Management and Knowledge Technologies (i-Know), Graz, Austria, Copyright 2012 ACM 978-1-4503-1242-4/12/09.
+[1] Schmitt, U., 2013. Innovating Personal Knowledge Creation and Exploitation, 2nd Global Innovation and Knowledge Academy (GIKA), Jul 9-11, 2013, Valencia, Spain, 978-1- 909507-26-5.
+[1] Schmitt, U., 2013. Managing Personal Knowledge to make a Difference, 27th British Academy of Management Conference Proceedings (BAM), Sep 10-12, 2013, Liverpool, UK, 978-0-9549608-6-5.
+[1] Schmitt, U., 2013. Knowcations - Conceptualizing a Personal Second Generation Knowledge Management System, 8th Conference on Knowledge, Information & Creativity Support Systems (KICSS), Nov 07-09, 2013, Krakow, Poland, 978-83-912831-6-5.
+[1] Schmitt, U., 2014. Overcoming the Seven Barriers to Innovating PKM Systems, International Forum on Knowledge Asset Dynamics (IFKAD), June 11-13, Matera, Italy.
+
+[1] Bora, “Effective Personal Knowledge Management: A Proposed Online Framework,” pp. 1–9, Jan. 2013.
+[1]
+[1]
+[1]
+[1]
+[1]
+[1]
+[1]
+[1]
+[1]
+[1]
+
