@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This paper presents an effective toolkit for personal information management(PIM). The development of this toolkit is based on the idea that new information retrieval methods and natural language processing methods can help people extract useful information when facing the information explosion/chaos/overload. With a automatic and unified information processing pipeline, this toolkit focuses on improving the effectvieness of three main PIM processes: get/retrive, understand/analyse and connect/organize.
+This paper presents an effective toolkit for personal information management(PIM). The development of this toolkit is based on the idea that new information retrieval methods and natural language processing methods can help people extract useful information when facing the information explosion/chaos/overload. With a automatic and unified information processing pipeline, this toolkit focuses on improving the effectiveness of three main PIM processes: get/retrieve, understand/analyze and connect/organize.
 
 ## Introduction
 
@@ -50,7 +50,7 @@ For natural language processing, with the help of NLTK[9], I modified the proces
 
 Now that we have the selected daily information that will be merged into the note application and the important information from the notes, lots of applications can be done on this basis. I'll make a book recommender system as an example. Based on tags[10] and collaborative filtering[11], it will recommend related books from user's notes to help people extend their range of knowledge.
 
-These three parts improves the effectvieness of three main PIM processes(get/retrive, understand/analyse and connect/organize) with an unified and easy-to-use program that can also be integrated with other services(such as github/dropbox) easily.
+These three parts improves the effectvieness of three main PIM processes(get/retrieve, understand/analyze and connect/organize) with an unified and easy-to-use program that can also be integrated with other services(such as github/dropbox) easily.
 
 ## Reference
 
