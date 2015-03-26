@@ -22,19 +22,19 @@ Irrespective of how personal knowledge management is defined by different schola
 
 Here's the comparison of PKM process among different authors:
 
-![tp1](./_resources/tp1.jpg)
+![Different Authors have Different Design](./_resources/tp1.jpg)
 
 But these year there is another more complex model which becomes the most popular model. There are four core components in this model, namely Personal Information Management (PIM), Personal Knowledge Internalisation (PKI), Personal Wisdom Creation (PCW) and Inter-Personal Knowledge Transferring (IKT).
 
-![pkm6](./_resources/pkm6.jpg)
+![PKM 2.0 Components](./_resources/pkm6.jpg)
 
 Based on this model, there are some attempts to apply it to daily usage. PKM Tools[6], adopted from Dorsey (2000) and Barth (2005), use lots of cross-platform application to finish the PKM pipeline.
 
-![tp3](./_resources/tp3.jpg)
+![PKM Tools with Different Elements](./_resources/tp3.jpg)
 
 Knowcations[5], another Generation Knowledge Management System, using the 'Information Space' or 'I-Space' model with a 33-dimensianl matrix to build the system.
 
-![tp4](./_resources/tp4.jpg)
+![Knowcations with I-Space](./_resources/tp4.jpg)
 
 They are all too complicated for people to use in daily life. So I want to build a toolkit to make PIM available to more people in an elegant and easy-to-use way.
 
