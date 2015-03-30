@@ -198,7 +198,7 @@ True Arithmetic Intensity (AI) ~ Total Flops / Total DRAM Bytes
 + Sequential Locality
     * Many memory address patterns access cache lines sequentially
     * CPU's hardware stream prefetchers exploit this observation to hide speculatively load data to memory lantency
-    * Tansform loops to generate long, unit-stride accesses 
+    * Tansform loops to generate long, unit-stride accesses
 
 ## GPU is an Accelerator
 
@@ -761,3 +761,50 @@ Small number of large files preferred over a large number of small files
     * Breaks functional programming paradigm due to state preservation
     * Preserving state -> algorithm behavior might depend on execution order
 
+## How do you interpret speedup results?
+
+Based on the PALLAS paper from UC Berkeley
+
++ (SW) Application Developers
+    + Provide end-user with new capabilites within cost constraints
+    + Concerned about a specific subset of applications at a time
+    + Pragmatic towards processor platform choices
+    + Gains no value from documenting multiple implementation platforms
+    + **Platform as a black box**
++ (HW) Architecture Researchers
+    + Develop new micro-architectures features for next-gen processors
+    + Understand the pros and cons of architectural features of a **broad range** of platform for a **broad range** of applications
+    + Use **toy problems** to exercise all features
+    + **Application as a black box**
+
+## Computational Finance
+
+Use Value-at-Risk(VaR) estimates - based on Monte Carlo methods Pattern.
+
++ VaR
+    + Maximum expected loss that will not be exceeded
+    + under normal market considerations
+    + over a predetermined period
+    + at a given confidence level
+
++ Different Optimization Across Platforms
+    + Oganization & Structure: Reduce Computation
+    + Algorithm Strategies: Fast Convergence
+    + Implementation Strategies: Saving Memory BW / Kernel Merge Vectorization
+
+## Speedup
+
+Before: Performance x  -- After: Performance y -- ROI(speedup): y/x
+
+## Term Project Report
+
++ Clearly describe what is the **baseline** you are comparing to, in terms of:
+    + Platform used
+    + Software architecture
+    + Algorithm strategies
+    + Implementation strategies
++ Present your speed ups, which is often **NOT** only the result of differences in the processor or the platform, but also include:
+    + Differences in application architecture
+    + Differences in algorithm strategy
+    + Differences in implementation strategy techniques
+    + Differences in the fine-tuning of parameters
