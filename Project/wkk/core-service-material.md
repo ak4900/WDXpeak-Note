@@ -46,8 +46,8 @@ The Daily Me is a term popularized by MIT Media Lab founder Nicholas Negroponte 
 ## Books
 
 + 入门
-    + 深入浅出数据分析
-    + 啤酒与尿布
+    + 深入浅出数据分析 √
+    + 啤酒与尿布 √
     + 数据之美
 + 数据分析
     + SciPy and NumPy
@@ -62,7 +62,7 @@ The Daily Me is a term popularized by MIT Media Lab founder Nicholas Negroponte 
     + 《Web数据挖掘》
 + 偏实践
     + 《智能web算法》
-    + 《集体智慧编程》
+    + 《集体智慧编程》 √
     + 《Collective Intelligence实战》
     + 《推荐系统实践》!!
 + 《Recommender Systems Handbook》
