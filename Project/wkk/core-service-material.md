@@ -64,7 +64,7 @@ The Daily Me is a term popularized by MIT Media Lab founder Nicholas Negroponte 
     + 《智能web算法》
     + 《集体智慧编程》 √
     + 《Collective Intelligence实战》
-    + 《推荐系统实践》!!
+    + 《推荐系统实践》√
 + 《Recommender Systems Handbook》
 + 专业
     + Learning to Rank for Information Retrieval 刘铁岩
