@@ -2,8 +2,7 @@
 
 ID | Name | Unit
 --- | --- | ---
-15213 | Introduction to Computer Systems
-| 12
+15213 | Introduction to Computer Systems | 12
 15214 | Principles of Software Construction: Objects, Design, and Concurrency | 12
 15605 | Operating System Design and Implementaion | 15
 15611 | Compiler Design | 15
