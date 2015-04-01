@@ -7,7 +7,7 @@
 3.30 | 66.6 | insanity 02
 3.31 | 66.4 | insanity 11 & 4.0km running
 4.1 | 66.4 | insanity 05
-4.2 | x | x
+4.2 | 66.4 | insanity 02
 4.3 | x | x
 4.4 | x | x
 4.5 | x | x
