@@ -5,8 +5,8 @@
 日期(2015) | 体重(kg) | 运动记录
 ---|---|---
 3.30 | 66.6 | insanity 02
-3.31 | 66.4 | insanity 11
-4.1 | x | x
+3.31 | 66.4 | insanity 11 & 4.0km running
+4.1 | 66.4 | insanity 05
 4.2 | x | x
 4.3 | x | x
 4.4 | x | x

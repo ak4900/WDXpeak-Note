@@ -52,8 +52,6 @@ This is why I make WKK.The main focus of WKK is Minimalism. It is a different li
 
 Minimalism is a tool that can assist you in finding freedom. Freedom from fear. Freedom from worry. Freedom from overwhelm. Freedom from guilt. Freedom from depression. Freedom from the trappings of the consumer culture we’ve built our lives around. Real freedom.
 
-Minimalism is a tool used to rid yourself of life’s excess in favor of focusing on what’s important so you can find happiness, fulfillment, and freedom.
-
 When I know minimalism, it seems that what I have been pursuing for such a long time finally got an answer. So I want to make WKK in a minimalism way.
 
 So I want to make WKK as simple and elegant as possible, the less dependency the better. In that case, I can put more energy to those things that really matters.
