@@ -73,5 +73,3 @@ These three parts improves the effectvieness of three main PIM processes(get/ret
 [9] Bird, Steven. "NLTK: the natural language toolkit." Proceedings of the COLING/ACL on Interactive presentation sessions. Association for Computational Linguistics, 2006.
 
 [10] Y. G. P. D. Y. Z. Guandong Xu, “SemRec: A Semantic Enhancement Framework for Tag based Recommendation,” pp. 1–6, Jun. 2011.
-
-[11] “Book Recommendation System Based on Collaborative Filtering and Association Rule Mining for College Students,” pp. 1–4, Nov. 2014.
