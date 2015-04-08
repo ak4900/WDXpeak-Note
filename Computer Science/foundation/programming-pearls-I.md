@@ -16,13 +16,51 @@
     - 深入阅读
 - 第 4 章：编写正确的程序
     - 习题与个人解答
+- 第 5 章：编程小事
+- 第 6 章：程序性能分析
+    - 原理
+- 第 7 章：粗略估算
+    - 基本技巧
+    - 习题与个人解答
+- 第 8 章：算法设计技术
+    - 问题的提出
+    - 最初的算法（算法1）
+    - 二次算法（算法2）
+    - 分治算法（算法3）
+    - 扫描算法（算法4）
+    - 原则
+- 第 9 章：代码调优
+    - 问题1：整数取模
+    - 问题2：函数、宏和内联代码
+    - 问题3：顺序搜索
+    - 问题4：计算球面距离
+    - 问题5：二分查找
+    - 原则
+- 第 10 章：节省空间
+    - 关键在于简单性
+    - 数据空间技术
+- 第 11 章：排序
+    - 插入排序
+    - 一种简单的快速排序
+    - 更好的几种快速排序
+    - 习题与个人解答
+- 第 12 章：取样问题
+    - 原理
+    - 习题与个人解答
+- 第 13 章：搜索
 
 <!-- /MarkdownTOC -->
 
 
 ## 第 1 章：开篇
 
-对小问题的资信分析有时可以得到明显的实际益处。
+一开头就拿出了这么一个例子，给10000000个7位整数排序（无重复的整数），但是你可能只有1MB的主存，怎么办又快又好呢？通常的想法是归并，多几次就可以了。但是其实还有更好的方法，就是利用位图的位向量。例如如果集合是{1，2，3，5，8，13}，那么可以存储在下面这个字符串中：
+
+	0 1 1 1 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0
+
+集合中代表数字的各个位设置为1，而其他的位全部都设置为0。这时候如果要个这10000000个整数排序，就可以分成这三步：1）初始化一个大数组。2）遍历一遍这10000000个数，出现过的就在数组中标注为1。3）最后再遍历一遍这个数组，把出现1的对应位置的数字输出一遍即可。
+
+瞬间什么排序都不用了，而且只需要两次遍历，豁然开朗，柳暗花明之感。从这个例子可以总结出一些值得以后借鉴的经验：
 
 **正确的问题**。明确了问题，就更能找到最佳的解答。
 
@@ -40,8 +78,8 @@
 
 python 的 list 的 sort 方法就挺好，简单粗暴
 
-    list = [1,2,3,4,5]
-    list.sort()
+	list = [1,2,3,4,5]
+	list.sort()
 
 > 2.如何使用位逻辑运算(与，或，移位)来实现位向量？
 
@@ -53,13 +91,13 @@ c++中有现成的 bitset，原理应该差不多
 
 位图的实现我用了三种，一个是c语言的（简称cvec），一个是c++的（简称cppvec），还有时c++现成的bitset（简称bitset）。系统排序用的是sort命令，加上-n选项。排序用了c的qsort，c++的sort和c++的set。
 
-    cvec  1.737 1.001
-    cppvec 1.769 1.033
-    bitset 2.644 1.908
-    系统sort命令 5.290 4.554
-    qsort 2.081 1.345
-    sort 2.802 2.066
-    set 5.921 5.185
+	cvec  1.737 1.001
+	cppvec 1.769 1.033
+	bitset 2.644 1.908
+	系统sort命令 5.290 4.554
+	qsort 2.081 1.345
+	sort 2.802 2.066
+	set 5.921 5.185
 
 输入输出的时间是0.736s。左右分别为带输入输出和不带的。
 
@@ -69,26 +107,26 @@ c++中有现成的 bitset，原理应该差不多
 
 如果要想生成这样一个数组，可以直接从头到尾循环，每个数随机位置交换值就可以。
 
-    #include<iostream>
-    #include<cstdlib>
-    #include<algorithm>
-    #include<cstdio>
-    using namespace std;
-    const int N = 10000000;
-    const int K = 10000000;
-    int randint( int l, int r ){
-        return rand() % ( r-l ) + l;
-    }
-    int a[ N ];
-    int main(void){
-        for( int i = 0; i < N; i++ )
-            a[i] = i;
-        for( int i = 0; i < K; i++ ){
-            swap( a[i], a[ randint(i,N) ] );
-            printf("%d\n",a[i]);
-        }
-        return 0;
-    }
+	#include<iostream>
+	#include<cstdlib>
+	#include<algorithm>
+	#include<cstdio>
+	using namespace std;
+	const int N = 10000000;
+	const int K = 10000000;
+	int randint( int l, int r ){
+	    return rand() % ( r-l ) + l;
+	}
+	int a[ N ];
+	int main(void){
+	    for( int i = 0; i < N; i++ )
+	        a[i] = i;
+	    for( int i = 0; i < K; i++ ){
+	        swap( a[i], a[ randint(i,N) ] );
+	        printf("%d\n",a[i]);
+	    }
+	    return 0;
+	}
 
 > 5.如果存储[0,10000000]大概需要1.25MB，但内存限定为1MB，要如何处理呢？
 
@@ -116,10 +154,10 @@ c++中有现成的 bitset，原理应该差不多
 
 解决方法使用了两个额外的向量，`from`和`to`，变量`top`。如果对i位置进行初始化，进行以下步骤：
 
-    from[i] = top;
-    to[top] = i;
-    data[i] = 0;
-    top++;
+	from[i] = top;
+	to[top] = i;
+	data[i] = 0;
+	top++;
 
 `from[i]=top`的目的是将`i`在`to`中的索引放入`to`中，`to[top]=i`的意思是，这个`top`位置对应的是`i`，这时data就可以做相应的操作，然后top右移。
 
@@ -139,13 +177,15 @@ c++中有现成的 bitset，原理应该差不多
 
 ### 深入阅读
 
-Michael Jackson <Software Requirements & Specifications>
+Michael Jackson \<Software Requirements & Specifications\>
 
 程序员的主要问题与其说是技术问题，还不如说是心理问题。很多时候没有办法解决问题是因为想要解决错误的问题。问题的最终解决，是通过打破概念壁垒，进而去解决一个较简单的问题而实现的。
 
 James L. Adams <Conceptual Blockbusting>
 
 ## 第 2 章：啊哈！算法
+
+看起来很困难的问题解决起来可能很简单，并且还很可能出人意料之外。只有经过广泛的研究之后才能对算法具备那种出神入化的理解力。任何愿意在编码前、编码期间以及编码后任职思考的程序员都可具备这种能力。
 
 算法与其他哪些深奥的思想一样重要，但在更一般的编程层面上具有更重要的影响
 
@@ -159,6 +199,10 @@ James L. Adams <Conceptual Blockbusting>
 
 采用已知包含至少一个缺失元素的一系列整数作为范围，并使用包含所有这些整数在内的文件表示这个范围，通过统计中间点之上和之下的元素来探测范围：或者上面或者下面的范围具有至多全部范围的一半元素。由于整个范围中有一个缺失元素，因此我们所需的那一半范围中必然也包含缺失的元素
 
+问题是这样的，给定一个包含32位整数的顺序文件，它至多只能包含40亿个这样的整数，并且整数的次序是随机的。请查找一个此文件中不存在的32位整数。
+
+这个时候二分查找法就非常有用，首先遍历一遍这40亿个数字，并分为两组，一组是左边第一位为1的，一组是左边第一位为0的，正常来说，上下应该各占据一半，但因为总范围内有遗漏元素（假设只有一个），那么比较小的那一组必包含此遗漏元素。继续在比较小的那一组使用1与0的分组，很快就可以找到这个遗漏的整数。
+
 ### 问题 2
 
 简单的方法就不说了，另一个想法是给出了旋转的位数其实每个字母的最终位置是确定的，只需要一个临时变量，把对应的放过去即可。但是这种方法比较容易出错，不容易维护。
@@ -167,10 +211,10 @@ James L. Adams <Conceptual Blockbusting>
 
 ab - a'b - a'b' - (a'b')' - ba
 
-    假设原来是 abcdefgh，向左旋转 3 位
-    reverse(0, i-1) // cbadefgh
-    reverse(i, n-1) // cbahgfed
-    reverse(0, n-1) // defghabc
+	假设原来是 abcdefgh，向左旋转 3 位
+	reverse(0, i-1) // cbadefgh
+	reverse(i, n-1) // cbahgfed
+	reverse(0, n-1) // defghabc
 
 这种方法高效且简短
 
@@ -184,7 +228,7 @@ ab - a'b - a'b' - (a'b')' - ba
 
 > 1.考虑查找给定输入单词的所有变位词的问题。仅给定单词和字典的情况下，如何解决该问题？如果有一些时间和空间可以在响应任何查询之前预先处理字典，又会如何？
 
-在给定单词和字典的情况下，遍历字典，计算每个的标签，然后与给定的单词的标签比较。可以预处理的话就好说了，将所有单词按照标签排序，然后可以用equal_range求出区间，O(logN)。
+在给定单词和字典的情况下，遍历字典，计算每个的标签，然后与给定的单词的标签比较。可以预处理的话就好说了，将所有单词按照标签排序，然后可以用equal\_range求出区间，O(logN)。
 
 > 2.给定包含 4300000000 个 32 位整数的顺序文件，如何找出一个出现至少两次的整数？
 
@@ -194,73 +238,73 @@ ab - a'b - a'b' - (a'b')' - ba
 
 gao函数是那个杂技算法，gaogao是块交换算法。经过简单的测试还没有发现什么问题。n和len的最大公约数就是置换的次数。
 
-    #include<iostream>
-    #include<string>
-    #include<algorithm>
-    using namespace std;
-    int gcd( int a, int b ){
-        return b==0?a:gcd(b, a%b);
-    }
-    int gao( int *start, int *end, int n ){
-        int len = end - start;
-        int d = gcd( n, len );
-        for( int i = 0; i < d; i++ ){
-            int t = *(start+i);
-            int next = i;
-            while( (next+n)%len != i ){
-                *(start+next) = *(start+(next+n)%len);
-                next = (next+n)%len;
-            }
-            *(start+next) = t;
-        }
-    }
+	#include<iostream>
+	#include<string>
+	#include<algorithm>
+	using namespace std;
+	int gcd( int a, int b ){
+	    return b==0?a:gcd(b, a%b);
+	}
+	int gao( int *start, int *end, int n ){
+	    int len = end - start;
+	    int d = gcd( n, len );
+	    for( int i = 0; i < d; i++ ){
+	        int t = *(start+i);
+	        int next = i;
+	        while( (next+n)%len != i ){
+	            *(start+next) = *(start+(next+n)%len);
+	            next = (next+n)%len;
+	        }
+	        *(start+next) = t;
+	    }
+	}
 
 gaogao函数用到了一个辅助函数，rangeswap，就是将[start1,start1+n)和[start2,start2+n)的值进行交换。
 
-    void rangeswap( int *start1, int *start2, int n ){
-        for( int i = 0; i < n; i++ )
-            swap( *(start1+i), *(start2+i) );
-    }
+	void rangeswap( int *start1, int *start2, int n ){
+	    for( int i = 0; i < n; i++ )
+	        swap( *(start1+i), *(start2+i) );
+	}
 
-    void gaogao( int *start, int *end, int shift ){
-        int len = end - start;
-        shift = ( shift%len + shift )%len;
-        if( len <= 1 ) return;
-        if( shift <= len / 2 ){
-            rangeswap( start, end - shift, shift );
-            gaogao( start, end - shift, shift );
-        }
-        else{
-            rangeswap( start, start+shift, len - shift );
-            gaogao( end - shift, end, shift - len );
-        }
-    }
+	void gaogao( int *start, int *end, int shift ){
+	    int len = end - start;
+	    shift = ( shift%len + shift )%len;
+	    if( len <= 1 ) return;
+	    if( shift <= len / 2 ){
+	        rangeswap( start, end - shift, shift );
+	        gaogao( start, end - shift, shift );
+	    }
+	    else{
+	        rangeswap( start, start+shift, len - shift );
+	        gaogao( end - shift, end, shift - len );
+	    }
+	}
 
-    const int n = 1000000;
-    int main(void){
-        int a[n];
-        for( int i = 0; i < n; i++ )
-            a[i] = i;
-        gao( a, a+n, 6);
-        for( int i = 0; i < n; i++ )
-            cout << a[i] << ' ';
-        cout << endl;
-        return 0;
-    }
+	const int n = 1000000;
+	int main(void){
+	    int a[n];
+	    for( int i = 0; i < n; i++ )
+	        a[i] = i;
+	    gao( a, a+n, 6);
+	    for( int i = 0; i < n; i++ )
+	        cout << a[i] << ' ';
+	    cout << endl;
+	    return 0;
+	}
 
 STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其简单的代码就实现了循环位移。代码如下：
 
-    template <class ForwardIterator>
-    void rotate ( ForwardIterator first, ForwardIterator middle, ForwardIterator last )
-    {
-      ForwardIterator next = middle;
-      while (first!=next)
-      {
-        swap (first++,next++);
-        if (next==last) next=middle;
-        else if (first == middle) middle=next;
-      }
-    }
+	template <class ForwardIterator>
+	void rotate ( ForwardIterator first, ForwardIterator middle, ForwardIterator last )
+	{
+	  ForwardIterator next = middle;
+	  while (first!=next)
+	  {
+	    swap (first++,next++);
+	    if (next==last) next=middle;
+	    else if (first == middle) middle=next;
+	  }
+	}
 
 除了Orz我已经无话可说了。。
 
@@ -282,7 +326,7 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 > 8.给定一个 n 元实数集合、一个实数 t 和一个整数 k，如何快速确定是否存在一个 k 元子集，其元素之和不超过 t？
 
-第一感觉想到的是排序，然后看前k个数的和是否不超过t，不超过的话肯定存在。更优的方法用O(N)的选择算法求出第k大的数，然后把数组扫描一遍，求出小于第k大数的数的和sum，加上第k大。这样看似没有什么错误，但是仔细想想，如果第k-1大，第k大，第k+1大的数一样，肿么办？easy~扫描的时候顺便统计小于第k大数的数的个数a，和第k大的数的个数b，嗯，然后如果`a<k-1`,就从b中取出m个，直到`a+m == k-1`。
+第一感觉想到的是排序，然后看前k个数的和是否不超过t，不超过的话肯定存在。更优的方法用O(N)的选择算法求出第k大的数，然后把数组扫描一遍，求出小于第k大数的数的和sum，加上第k大。这样看似没有什么错误，但是仔细想想，如果第k-1大，第k大，第k+1大的数一样，肿么办？easy\~扫描的时候顺便统计小于第k大数的数的个数a，和第k大的数的个数b，嗯，然后如果`a<k-1`,就从b中取出m个，直到`a+m == k-1`。
 
 > 9.顺序搜索和二分搜索代表了搜索时间和预处理时间之间的折中。处理一个 n 元表格时，需要执行多少次二分搜索才能弥补对表进行排序所消耗的预处理时间？
 
@@ -293,6 +337,8 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 用水来测体积
 
 ## 第 3 章：数据决定数据结构
+
+合适的数据结构确实构造了程序。本章描述了各种不同的程序，通过重构它们的内部数据，使其变得更加简短（而且更好）。数据结构本该短小、干净、漂亮，而不是巨大、混乱、丑陋不堪的。
 
 能用小程序实现，就不要编写大程序。
 
@@ -321,70 +367,70 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 > 4.编写处理如下日期问题的函数：给定两个日期，计算两者之间的天数；给定一个日期，返回值为周几；给定月和年，使用字符数组生成该月的日历
 
-    #include<iostream>
-    #include<string>
-    #include<vector>
-    using namespace std;
-    int month[13] = {
-    0,  31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-    //  1   2   3   4   5   6   7   8   9   10  11  12
-    };
+	#include<iostream>
+	#include<string>
+	#include<vector>
+	using namespace std;
+	int month[13] = {
+	0,  31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+	//  1   2   3   4   5   6   7   8   9   10  11  12
+	};
 
-    class D{
-    public:
-        int year,mon,day;// 1900 <= year, 1 <= mon <= 12,
-                        // 1 <= day <= 31
-        D(){}
-        D(int y, int m, int d):
-            year(y),mon(m),day(d){}
+	class D{
+	public:
+	    int year,mon,day;// 1900 <= year, 1 <= mon <= 12,
+	                    // 1 <= day <= 31
+	    D(){}
+	    D(int y, int m, int d):
+	        year(y),mon(m),day(d){}
 
-        int yearday(void){//返回这一天是这一年的第几天
-            int sum = day;
-            for( int i = 1; i < mon; i++ )
-                sum += month[i];
-            if( isrun() && mon > 2 )
-                sum ++;
-            return sum;
-        }
-        bool isrun( void ){//是否是闰年
-            return (year%4==0&&year%100!=0)||(year%400==0);
-        }
-    };
+	    int yearday(void){//返回这一天是这一年的第几天
+	        int sum = day;
+	        for( int i = 1; i < mon; i++ )
+	            sum += month[i];
+	        if( isrun() && mon > 2 )
+	            sum ++;
+	        return sum;
+	    }
+	    bool isrun( void ){//是否是闰年
+	        return (year%4==0&&year%100!=0)||(year%400==0);
+	    }
+	};
 
-    int dist( D d1, D d2 ){//两个日期相差的天数
-        int sum = -(d1.yearday());
-        for( ; d1.year < d2.year ; d1.year++ )
-            sum += d1.isrun()?366:365;
-        return sum + d2.yearday();
-    }
+	int dist( D d1, D d2 ){//两个日期相差的天数
+	    int sum = -(d1.yearday());
+	    for( ; d1.year < d2.year ; d1.year++ )
+	        sum += d1.isrun()?366:365;
+	    return sum + d2.yearday();
+	}
 
-    int xingqiji( D d ){//某一天是星期几
-        D temp(1900,1,1);
-        return dist( temp, d )%7+1;
-    }
+	int xingqiji( D d ){//某一天是星期几
+	    D temp(1900,1,1);
+	    return dist( temp, d )%7+1;
+	}
 
-    int print(int year, int mon ){//输出某月日历
-        D d(year, mon, 1 );
-        int week = xingqiji(d);
-        int sum = month[ mon ];
-        for( int i = 1; i < week; i++ )
-            cout << "   ";
-        for( int i = 1; i <= sum; i++){
-            cout << i << "  ";
-            if( week == 7 ){
-                week = 1;
-                cout << endl;
-            }
-            else week++;
-        }
-        cout << endl;
-    }
+	int print(int year, int mon ){//输出某月日历
+	    D d(year, mon, 1 );
+	    int week = xingqiji(d);
+	    int sum = month[ mon ];
+	    for( int i = 1; i < week; i++ )
+	        cout << "   ";
+	    for( int i = 1; i <= sum; i++){
+	        cout << i << "  ";
+	        if( week == 7 ){
+	            week = 1;
+	            cout << endl;
+	        }
+	        else week++;
+	    }
+	    cout << endl;
+	}
 
-    int main(void){
-        D a(2012,6,3);
-        cout << xingqiji(a) << endl;
-        print(1990,2);
-        return 0;
+	int main(void){
+	    D a(2012,6,3);
+	    cout << xingqiji(a) << endl;
+	    print(1990,2);
+	    return 0;
 
 > 5.处理英语中的一小部分连字符问题。
 
@@ -414,16 +460,16 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 最终的函数为
 
-    l = 0; u = n - 1
-    loop
-        { mustbe(l, u) }
-        if l > u
-            p = -1; break;
-        m = (l + u) / 2
-        case
-            x[m] < t: l = m+1
-            x[m] == t: P = m; break
-            x[m] > t: u = m-1
+	l = 0; u = n - 1
+	loop
+	    { mustbe(l, u) }
+	    if l > u
+	        p = -1; break;
+	    m = (l + u) / 2
+	    case
+	        x[m] < t: l = m+1
+	        x[m] == t: P = m; break
+	        x[m] > t: u = m-1
 
 ### 习题与个人解答
 
@@ -431,31 +477,31 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 为了保证范围不超过范围，我们需要在初始化的时候，让变量不超出范围。这样每次循环得到的新的范围是慢慢缩小的，不会越界。
 
-> !!2.把 t 在数组 x 中地一次出现的位置返回给 p(如果存在多个的话，原始的算法会任意返回其中的一个)。要求代码对数组元素进行对数次比较(在log~2 n 次比较内完成)
+> !!2.把 t 在数组 x 中地一次出现的位置返回给 p(如果存在多个的话，原始的算法会任意返回其中的一个)。要求代码对数组元素进行对数次比较(在log\~2 n 次比较内完成)
 
-    int bs( int *a, int l, int r, int v ){
-        while( l <= r ){
-            if( a[l] == v ) return l;
-            int mid = (l+r)/2;
-            if( a[mid] < v ) l = mid+1;
-            if( a[mid] == v )r = mid;
-            if( a[mid] > v ) r = mid-1;
-        }
-        return -1;
-    }
+	int bs( int *a, int l, int r, int v ){
+	    while( l <= r ){
+	        if( a[l] == v ) return l;
+	        int mid = (l+r)/2;
+	        if( a[mid] < v ) l = mid+1;
+	        if( a[mid] == v )r = mid;
+	        if( a[mid] > v ) r = mid-1;
+	    }
+	    return -1;
+	}
 
 这个二分可以返回所需要查询的元素第一次出现的位置，如果不存在，则返回-1.在每个循环内，我们假定元素第一次出现的范围是闭区间[l，r]内，当循环体内语句执行完之后，我们得到了一个新的区间。新的区间的范围是一直在收敛的（不会存在r，l执行完循环之后大小没有变化。），所以程序可以终止，得到正确结果。
 
 > 3.编写一个递归的二分搜索程序
 
-    int bss( int *a, int l, int r, int v ){
-        if( l > r ) return -1;
-        if( a[l] == v ) return l;
-        int mid = (l+r)/2;
-        if( a[mid] < v ) return bss( a, mid+1, r, v );
-        if( a[mid] == v )return bss( a, l, mid, v );
-        if( a[mid] > v ) return bss( a, l, mid-1, v );
-    }
+	int bss( int *a, int l, int r, int v ){
+	    if( l > r ) return -1;
+	    if( a[l] == v ) return l;
+	    int mid = (l+r)/2;
+	    if( a[mid] < v ) return bss( a, mid+1, r, v );
+	    if( a[mid] == v )return bss( a, l, mid, v );
+	    if( a[mid] > v ) return bss( a, l, mid-1, v );
+	}
 
 递归每加深一层，[l,r]的范围就减小。本层的后置条件要和下一层的前置条件吻合。
 
@@ -465,11 +511,11 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 > 5.证明下面的程序在输入 x 为正整数时能够终止
 
-    while x != 1 do
-        if even(x)
-            x = x/2
-        else
-            x = 3 * x + 1
+	while x != 1 do
+	    if even(x)
+	        x = x/2
+	    else
+	        x = 3 * x + 1
 
 找一下规律
 
@@ -484,10 +530,10 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 化简到最后的阶段
 
-    1 白 1 黑 -> 白
-    2 白 -> 黑
-    2 黑 -> 白
-    可得出以下结论：
+	1 白 1 黑 -> 白
+	2 白 -> 黑
+	2 黑 -> 白
+	可得出以下结论：
 
 如果最后留下的是白色的，那么开始时候白色的个数为奇数，否则为偶数。
 
@@ -499,7 +545,7 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 
 暂时没有想到什么
 
-> 9.证明程序有消息的题目
+> 9.证明程序有效性的题目
 
 两个n维的向量相加。初开始时：i=0表示前i个维度的都已经计算好了。在循环之中，计算一个维度，然后i加一，计算下一个维度，每个循环结束表明前i个维度已经计算完毕。i一直在增大，证明这个过程是可以终止的。当最后一个循环执行完毕的时候，i的值是n，表明前n个维度已经计算好了。所以其代码是正确的。
 
@@ -508,3 +554,425 @@ STL中还有一种更bt的实现方法，algorithm中有个rotate，他用及其
 当循环找个一个t的时候，就停止循环，或者当i超出范围的时候停止。i在每一次循环的时候值都增加，所以这个算法是可以结束的。当超出范围的时候，返回-1，否则返回的就是第一次出现的位置，因为i的值是从小到大递增的。
 
 每次递归，问题的规模都是缩小的，所以问题可以在有限步骤内结束。每次递归完成一次，就可以得到上次层想要的运算结果，接着向上传递。
+
+## 第 5 章：编程小事
+
+**脚手架**。最好的脚手架通常是最容易构建的脚手架。
+
+**编码**。对于比较难写的函数，我发现最容易的方法是使用方便的高级伪代码来构建程序框架，然后将伪代码翻译成要实现的语言。
+
+**测试**。在脚手架中对组件进行测试要比在大系统中更容易、更彻底。
+
+**调试**。对隔离在其脚手架中的程序进行调试是很困难的，但是若将其嵌入真实运行环境中，调试工作会更困难。
+
+**计时**。用以测试达到预期的性能
+
+## 第 6 章：程序性能分析
+
+可以通过以下几个不同层次的改进，来获得巨大的加速：
+
++ **算法和数据结构**。改进访问的效率，分治法
++ **算法调优**。配合数据结构进行优化
++ **数据结构重组**
++ **代码调优**。对于不需要特别高精度的计算，可以用精度较低的类型代替
++ **硬件**。升级性能我会乱说
+
+### 原理
+
++ 计算机系统中最廉价、最快速且可靠的元件是根本不存在的
++ 如果仅需要较小的加速，就对效果最佳的层面做改进
++ 如果需要较大的加速，就对多个层面做改进
+
+## 第 7 章：粗略估算
+
+### 基本技巧
+
++ **两个答案比一个答案好**。如果两种方法得到的估算结果比较接近，那么很可能答案是靠谱的。
++ **快速检验**。量纲检验
++ **经验法则**。比如说，假设以年利率 r% 投资一笔钱 y 年，如果 r x y = 72，那么你的投资差不多会翻倍。
+
+计算的输入决定了其输出的质量。基于良好的数据，简单的计算也可以得到精确的计算结果。
+
+Brooklyn Bridge的设计者John Reobling是一个很有趣的人，在1940年左右，有许多桥因为暴风雨断裂了，那时候因为科学的限制并没有办法具体算出气动上升现象究竟需要多少的承载力。但是John Roebling充分意识到他不知道某些东西，所以在他意识到气动上升现象时，知道自己不足以对其建模，于是将Brooklyn Bridge桥上的铁索强度设计成基于已知的静态和动态负载的常规计算所要求强度的六倍。
+
+Roebling是一名优秀的工程师，他使用一个巨大的安全系数来补偿他对某些方面的无知，从而使得Brooklyn Bridge成为当时所建现在唯一没有垮掉的桥。所以在对软件系统进行性能计算时，最好按照2、4或6的系数降低性能，以补偿我们的无知。
+
+**Little 定律**：队列中物体的平均数量为进入速率与平均停留时间的乘积。
+
+下面举三个例子来说明利特尔法则：
+
+有一个非常火爆的夜总会，你现在在排队，前面有20个人，你知道这个地方可以容纳60个人，平均来说每个人进去待3个小时，所以进入率就是每小时20个人，你大概就知道你大约需要等待1个小时。（同样可以推广到在游乐场等待游戏设施，不过最好别算，算了总是让人伤心）
+
+假如我在地下室中存有150个酒瓶，我每年会喝掉25瓶并买回新的25瓶酒，那么每个容器我要保存多少年。应用利特尔法则，150除以25，得到每个容器保存六年。
+
+假设平均思考时间为z的n个用户连接到了一个任意的系统中，其响应时间为r。每个用户都在思考和等待响应之间循环，所以总计作业数都是n。如果切断系统输出到用户之间的路径，你就能看到一个元系统，其平均负载为n，平均响应时间为z+r，吞吐量x=n/(r+z)
+
+**任何事都应尽量简单，但不宜过于简单。**
+
+### 习题与个人解答
+
+> 1.贝尔实验室距离狂野的密西西比河大约有1000英里，而我们距离平时比较温和的帕塞伊克河只有几英里。在一个星期的倾盆大雨后，报纸说“帕塞伊克河的流速为200英里每小时，大约是平时的五倍”，你有何评论？
+
+什么叫温和，我觉得可能是流速大约在跑步与汽车低速之间，假设是20英里每小时好了。一条河的流速的影响因素很多，比方说总流量，宽度，还有水量。经过综合考虑，我觉得报道上的流速太夸张了，200英里，吓死人。
+
+> 2.在什么距离下骑自行车的送信人使用移动存储介质传递信息的速度高于高速数据线的传输速度？
+
+假设这个移动存储介质的容量是无限的，要传递的信息的大小是 N mb，然后高速数据线的传输速率是 V mb/h，骑车的速度是 S km/h
+
+可以转化为 N / V x S = 临界距离，具体找几个可能的数值代入进去算，考虑一些额外消耗即可。
+
+> 3.手动录入文字来填满一张软盘需要多长时间？
+
+考虑到软盘几近灭绝，我们就拿填满 1MB 为例子吧。
+
+一个汉字占两个字节，我的打字速度大概是一分钟80个字，也就是一分钟可以填充160个字节，那么 1 MB = 1024 KB = 1024 x 1024 B
+
+1024 x 1024 / 160 = 6553 min = 109 hour
+
+> 4.假设整个世界变慢为原来的百万分之一。你的计算机执行一条指令需要多长时间？你的磁盘旋转一周需要多长时间？磁盘臂在磁盘上搜索需要多长时间？键入自己的名字又需要多长时间？
+
+CPU的时钟频率为5MHz，即一个时钟周期为0.2μs，那么一条指令大约需要6-20个周期。现在的硬盘大约是7200转或者5400转，后面的类推即可
+
+> 5.如何进一步检验 72 法则？
+
+这个暂时不知道
+
+> 6.联合国估算1998年的世界人口为59亿，年增长率为1.33%。如果按照这个速率，到2050年世界人口会是多少？
+
+2050-1998=52； 52\*1.33≈70
+
+因此根据72法则，2050年人口约为59\*2=118亿。
+
+> 10.请估计一下你所在城市的死亡率，用每年的总人口百分比来度量
+
+暂时没有好的想法
+
+> 11.给出 Little 定律的概要证明
+
+不知道
+
+> 12.一些报纸称，25美分硬币的平均寿命是30年，该如何检验真伪呢？
+
+抽样统计？
+
+## 第 8 章：算法设计技术
+
+算法领悟可以使程序更加简单。复杂算法有时可以极大地提高性能。
+
+### 问题的提出
+
+一个具有n个浮点数字的数组x，目标是要找到之中连在一起的数组元素中找到最大和。例如如果输入的数组是以下这十个元素：
+
+	31  -41  59  26  -53  58  97  -93  -23  84
+
+那么程序应该返回从59到97的综合，也就是187。第一个算法迭代了所有满足 0 ≤ i ≤ j ＜ n 的 i 和 j 整数对，分别计算总和，最终找到综合最大的组合。
+
+### 最初的算法（算法1）
+
+	maxsofar = 0
+	for i = [0, n)
+	    for j = [i, n)
+	        sum = 0
+	        for k = [i, j]
+	            sum += x[k]
+	            maxsofar = max(maxsofar, sum)
+
+这段代码比较简短、直观并且易于理解，唯一遗憾的就是——慢。基本上来说可以判断这个算法的大O是n的三次方。
+
+### 二次算法（算法2）
+
+第一个二次算法注意到 x[i..j]中的总和与前面已计算的 x[i..j-1] 的总和密切相关，从而减少了计算量。
+
+	maxsofar = 0
+	for i = [0, n)
+	    sum = 0
+	    for j = [i, n)
+	        sum += x[j]
+	        maxsofar = max(maxsofar, sum)
+
+外循环和内循环都要执行n次，所以大O是n的平方。但是如果这样我们依然觉得不够，因为检测所有值肯定需要花费二次方时间，如何可以避开这个问题？
+
+### 分治算法（算法3）
+
+分治法的思想是这样的：要解决规模为 n 的问题，可递归解决两个规模近似为 n/2 的子问题，然后将它们的答案进行合并以得到整个问题的答案。
+
+具体到这个问题上，可以把整个数组分为两个大约相等的部分，就叫 a 和 b。然后递归找出 a 和 b 中元素和最大的子数组，称为 ma 与 mb。然后再找到 ma 与 mb 之间的最大子数组称为 mc。最后找到最大的一个即可。代码如下：
+
+	float maxsum3(l, u)
+	    if (l > u)    return 0
+	    if (l == u )    return max(0, x[l])
+	    m = (l + u) / 2
+	    lmax = sum = 0
+	    for (i = m; i >= l; i--)
+	         sum += x[i]
+	         lmax = max (lmax, sum)
+	    rmax = sum = 0
+
+	    for i = (m, u]
+	         sum += x[i]
+	         rmax = max (rmax, sum)
+
+	    return max(lmax+rmax, maxsum(l, m), maxsum3(m+1, u))
+
+代码非常微妙，也就意味着非常容易出错，但是复杂度是O(n log n)。
+
+### 扫描算法（算法4）
+
+从最左端（元素 x[0]）开始，一直扫描到最右端（元素 x[n-1]），记下所碰到过的最大总和子数组。最大值初始为0.假设我们已经解决了针对 x[0..i-1] 的问题，现在需要拓展到 x[i] 中。可以使用类似分治法中的道理，前 i 个元素中，最大总和子数组要么在 i-1 个元素中（存储在 maxsofar 中），要么截止到位置 i（存储在 maxendinghere中）。下面就是扫描算法：
+
+	maxsofar = 0
+	maxendinghere = 0
+
+	for i = [0, n)
+	    maxendinghere = max(maxendinghere + x[i], 0)
+	    maxsofar = max(maxsofar, maxendinghere)
+
+这个算法代码更加简短，但是运行起来是最快的，运行时间是O(n)，已经是线性算法，不可能再快了。
+
+### 原则
+
+这个问题的原型其实是Grenander面对的模式匹配问题（在最大子数组问题中，给定 n x n 的实数数组，如何找出任意具有最大总和的举行子数组）。为了简便，所以化为一维，并且经过不同人的努力，得到了最后的扫描算法。总这里我们就可以看出来几个重要的算法设计技术。
+
++ **保存状态，避免重新计算**。算法2和4使用了简单的动态编程形式。
++ **将信息预处理到数据结构中**
++ **分治算法**
++ **扫描算法**
++ **累积**
++ **下限**
+
+只有经过广泛地研究和实践，才能熟练地使用算法设计技术
+
+## 第 9 章：代码调优
+
+优秀的程序员会保持代码效率：效率在软件中只是众多问题中的一个，但有时也是极其重要的一个。代码优化确定现有程序中的开销昂贵的部分并提高其速度，虽然并不总是适当的方法，并且很少能吸引人，但是有时确实可以使程序的性能大不一样。
+
+### 问题1：整数取模
+
+原来的代码
+
+	k = (j + rotdist) % n;
+
+但在C语言中取模(其实大部分语言都是)的开销很大，使用下面代码可以减少时间
+
+	k = j + rotdist;
+	if (k >= n)
+	    k -= n;
+
+如果程序的运行时间主要消耗在输入输出上，那么对程序中的计算进行加速是毫无意义的。
+
+### 问题2：函数、宏和内联代码
+
+因为现代编译器的优化，小心出现很难发现的错误
+
+### 问题3：顺序搜索
+
+原来的代码是这样的
+
+	int ssearch1(t)
+	    for i = [0,n)
+	        if x[i] == t
+	            return i
+	    return -1
+
+可以使用 loop unrooling 技术减少分支判断提高速度
+
+### 问题4：计算球面距离
+
+这个问题就是地理或集合数据处理方面的典型应用场合。先输入一个由球面上5000个点组成的S集，每个点都由经度和纬度表示。然后读入20000个点组成的序列，每个点都由经度和纬度表示。对于该序列中的每个点，程序需要指出S集中哪个点最接近它，其中的距离是以球体中心到两个点的连线之间的角度来度量的。
+
+如果想要利用别出心裁的算法（很可能需要好几百行代码），那么可能付出很大的代价。为什么不是用简单的数据结构？于是更换成三维坐标系而不是精度纬度。这样只需要几十行的代码优化，运行时间从几个小时降低为半分钟。
+
+### 问题5：二分查找
+
+代码优化在二分查找中通常不是必需的，因为二分查找算法的效率已经较高了。但是对于特定问题其实仍有优化的空间，比如如果一个序列中同一数字出现多次的情况，这里就不细说。
+
+### 原则
+
+有关代码优化最重要的原则就是尽量少用代码优化。总的来说可以概括为以下几点：
+
++ **效率的角色**。软件的许多其他属性和效率一样重要，甚至更重要。不成熟的优化是大量编程灾害的根源。
++ **度量工具**。当效率变得重要时，第一步就是对系统进行配置，找出花费时间的位置。对程序进行剖析将指出关键的区域；对于其他区域，“没有坏的话就不要修复它”。
++ **设计层次**。在优化代码以前，我们应该确保其他方法不会提供更加有效的解决方案。
++ **双刃剑**。有时候使用if语句替换%求余运算符可以得到两倍的加速，而有时候则没有什么差别。“咬人的人也应该提防被咬”。
+
+## 第 10 章：节省空间
+
+时常努力考虑压缩程序是很有利的。有时这种思考会带来新的启示，使程序变得更加简单。减少空间通常带来运行时间上合理的副作用：程序越小，加载的时候也越快，也越容易填充到高速缓存中；需要操作的数据越少，操作时所花的时间通常也就越少。
+
+### 关键在于简单性
+
+简单性可以产生功能性、健壮性以及速度和空间。简单性也可以减少代码的空间。
+
+例如遇到稀疏数组，就有多种方法可以进行空间的压缩，一种就是把一个二维数组转化为一个一维数组+链表的组合。
+
+### 数据空间技术
+
+**不存储，重新计算**。如果我们在需要某一给定对象的任何时候，都对其进行重新计算而不保存，那么所需空间就可以急剧减少。
+
+**稀疏数据结构**。使用指针来共享大型对象可以消除存储同一对象的众多副本所需的开销。
+
+**数据压缩**
+
+**分配策略**。动态分配
+
+**垃圾回收**
+
+## 第 11 章：排序
+
+使用库排序函数并不总是有效的，有时使用起来会非常麻烦，这种时候，手动编写排序函数就成为了唯一的选择。
+
+### 插入排序
+
+伪代码
+
+	for i = [1,n)
+	    for (j=i; j>0 && x[j-1] > x[j]; j--)
+	        swap(j-1, j)
+
+swap 函数调用会带来很大的额外开销，内联之后还可以进一步优化
+
+	for i = [1, n)
+	    t = x[i]
+	    for (j=i; j>0 && x[j-1] > t; j--)
+	        x[j] = x[j-1]
+	    x[j] = t
+
+### 一种简单的快速排序
+
+排序数组时，将数组分成两个小部分，然后对它们递归排序。
+
+	void qsort(l, u)
+	    if l >= u then
+	        /* at most one element, do nothing */
+	        return
+	    /* goal:partition array around a particular value,
+	       which is eventually placed in its correct position p
+	    */
+	    qsort(l, p-1)
+	    qsort(p+1, u)
+
+更详细一点的代码是 qsort1，可以通过调用 qsort1(0, n-1) 来排序数组 x[n]
+
+	void qsort2(l, u)
+	    if (l >= u)
+	        return
+	    m = l
+	    for i = [l+1, u]
+	        /* invariant: x[l+1..m] < x[l] && x[m+1..i-1] >= x[l] */
+	        if (x[i] < x[l])
+	            swap(++m, i)
+	    swap(l, m)
+	    /* x[1..m-1] < x[m] <= x[m+1..u] */
+	    qsort2(l, m-1)
+	    qsort2(m+1, u)
+
+当输入数组是不同元素的随机排列时，该快速排序平均需要 O(n log n) 的时间和 O(log n) 的栈空间。
+
+### 更好的几种快速排序
+
+考虑一种极端的情况：n 个相同元素组成的数组，对于这种输入，qsort1 的性能非常糟糕，总的性能为O(n^2)
+
+使用双向划分可以避免这个问题，下标 i 和 j 初始化为待划分数组的两端。主循环内有两个内循环，第一个内循环将 i 向右移过小元素，遇到大元素时停止；第二个内循环将 j 向左移过大元素，遇到小元素时停止。然后主循环测试这两个下标是否交叉并交换它们的值。
+
+遇到相同的元素时停止扫描，并交换 i 和 j 的值。虽然这样做使交换的次数增加了，但却将所有元素都相同的最坏情况变成了比较好的情况
+
+    void qsort3(l, u)
+        if l >= u
+            return
+        t = x[l]; i = 1; j = u+1
+        loop
+            do i++ while i <= u && x[i] < t
+            do j-- while x[j] > t
+            if i > j
+                break
+            swap(i, j)
+        swap(l, j)
+        qsort3(l, j-1)
+        qsort3(j+1, u)
+
+我们的快盘程序花费了大量的时间来排序很小的子数组。如果用插入排序之类的简单方法来排序这些很小的数组，程序的速度会更快。
+
+    void qsort4(l, u)
+        if u-l < cutoff
+            return
+        swap(l, randint(l, u))
+        t = x[l]; i = 1; j = u+1
+        loop
+            do i++ while i <= u && x[i] < t
+            do j-- while x[j] > t
+            if i > j
+                break
+            temp = x[i]; x[i] = x[j]; x[j] = temp
+        swap(l, j)
+        qsort4(l, j-1)
+        qsort4(j+1, u)
+
+    qsort4(0, n-1)
+    isort3() // 再用插入排序
+
+### 习题与个人解答
+
+> 3.在特定的系统上如何求出最佳的 cutoff 值？
+
+> 4.虽然快速排序平均只需要 O(log n) 的栈空间，但是在最坏情况下需要线性空间，请解释原因。修改程序，使得最坏情况下仅使用对数空间。
+
+> 5.编写程序，在O(n)时间内从数组 x[0..n-1] 中找出第 k 个最小的元素。算法可以对 x 中的元素进行排序
+
+## 第 12 章：取样问题
+
+编写程序从 0 到 n-1 中随机输出 m 个有序整数
+
+    void gensets(int m, int n){
+        set<int> S;
+        while(S.size() < m)
+            S.inseart(bigrand() % n);
+        set<int>iterator i;
+        for (i = S.begin(); i != S.end(); ++i)
+            cout << *i << "\n";
+    }
+
+但是用 set 的话，时间开销比较大。
+
+另一种方法是把包含 0 到 n-1 的数组顺序打乱，然后把前 m 个元素排序输出
+
+    for i = [0, n)
+        swap(i, randint(i, n-1))
+
+其实只需要打乱前 m 个元素即可
+
+    void genshuf(int m, int n){
+        int i, j;
+        int *x = new int[n];
+        for (i = 0; i < n; i++)
+            x[i] = i;
+        for (i = 0; i < m; i++){
+            j = randint(i, n-1)
+            int t = x[i]; x[i] = x[j]; x[j] = t;
+        }
+        sort(x, x+m);
+        for (i = 0; i < m; i++)
+            cout << x[i] << "\n";
+    }
+
+### 原理
+
+**正确理解所遇到的问题**。与用户讨论问题产生的北京。问题的陈述通常就包含了与解决方案有关的想法。
+
+**提炼出抽象问题**。简洁、明确的问题陈述不仅可以帮助我们解决当前遇到的问题，还有助于我们把解决方案应用到其他问题中。
+
+**考虑尽可能多的解法**
+
+**实现一种解决方案**
+
+### 习题与个人解答
+
+> 1.C库函数 rand() 通常返回约15个随机位。使用该函数实现函数 bigrand() 和 randint(l,u)，要求前者至少返回30个随机位，后者返回[l,u]范围内的一个随机整数
+
+> 8.如何从 0 到 n-1 中随机选择 m 个整数，使得最终的输出顺序是随机的？如果有序列表中允许有重复整数，如何生成该列表？如果既允许重复，又要求按随机顺序输出，情况又如何？
+
+> 9.[R. W. Floyd] 当 m 接近于 n 时，基于集合的算法生成的很多随机数都要丢掉，因为它们之前已经存在于集合中了。能否给出一个算法，使得即使在最坏情况下也只使用 m 个随机数？
+
+> 10.如何从 n 个对象(可以依次看到这 n 个对象，但事先不知道 n 的值)中随机选择一个？具体说来，如何在事先不知道文本文件行数的情况下读取该文件，从中随机选择并输出一行？
+
+## 第 13 章：搜索
+
